@@ -1,9 +1,10 @@
-
+import AdsSlider from '../component/main/AdsSlider/Slider';
 
 export default function Home() {
   return (
     <div>
-      Home
+      home
+      <AdsSlider/>
     </div>
   )
 }
