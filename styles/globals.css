@@ -1,4 +1,10 @@
-html,
+html{}
+
+@font-face {
+  font-family: IRANSans;
+  src:url('');
+}
+
 body {
   padding: 0;
   margin: 0;
