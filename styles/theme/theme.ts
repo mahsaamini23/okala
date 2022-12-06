@@ -1,13 +1,23 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
-    palette: {
+    palette:{
         primary:{
-            main:'#F01436',
+            main:'#121212'
         },
-        secondary:{
-            main:'#02a0b8',
-        },    
+        error:{
+            light:'#fff',
+            main:'#e74c3c'
+        },
+        warning:{
+            main:'#f1c40f'
+        },
+        info:{
+            main:'#3498db'
+        },
+        success:{
+            main:'#07bc0c'
+        }
     },
     typography:{
         fontFamily: 'IRANSans',
