@@ -3,7 +3,7 @@ import StoreCard from '../component/main/StoreCard/StoreCard';
 
 export default function Home() {
   return (
-    <div>
+    <div  dir="rtl">
 
 
       <AdsSlider/>
