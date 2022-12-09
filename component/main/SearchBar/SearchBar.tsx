@@ -2,6 +2,8 @@ import React from 'react';
 import { Divider, Grid, IconButton, OutlinedInput, styled } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import {items} from './data/data'
+import {itemType} from './data/data'
 import { useState } from 'react';
 function SearchBar() {
 
@@ -17,7 +19,9 @@ function SearchBar() {
     const handleSearch = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setShowResult('flex')
         setsearch(e.target.value)
+
     }
+    
     return (
         <Grid container xs={4} md={8} sx={{ justifyContent: 'center' }}>
             <Grid container item xs={12} bgcolor='white' height='60px' borderRadius='6px'>
@@ -25,7 +29,9 @@ function SearchBar() {
                     <SearchIcon sx={{ position: 'absolute', right: '11px' }} />
                 </Grid>
                 <Grid item xs={10}>
-                    <MyComponent placeholder='جستجو در همه  فروشگاه ها' style={{ width: '100%' }} value={search}
+                    <MyComponent placeholder='جستجو در همه  فروشگاه ها'
+                     style={{ width: '100%' }} 
+                     value={search}
                         onChange={handleSearch}></MyComponent>
                 </Grid>
                 <Grid md={1} item sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
