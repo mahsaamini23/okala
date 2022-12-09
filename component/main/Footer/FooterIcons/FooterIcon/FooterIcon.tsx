@@ -4,6 +4,7 @@ import { useState } from "react";
 const FooterIcon=({icon1,icon2}:any)=>{
     const[show1,setshow1]=useState('block');
     const[show2,setshow2]=useState('none');
+    const[show,setshow]=useState(false)
     const MyComponent = styled(IconButton)({
 
         /*'&:hover': {
@@ -19,7 +20,7 @@ const handleMouseOver=()=>{
     return(
         <Grid container item xs={3} >
 <MyComponent>
-<Image src={icon1} alt={icon1} style={{width:'30px',height:'30px',display:show1}} onMouseOver={handleMouseOver}/>
+<Image src={icon1} alt={icon1} style={{width:'30px',height:'30px',display:show1,}} onMouseOver={handleMouseOver} />
 <Image src={icon2} alt={icon2} style={{width:'30px',height:'30px',display:show2}} />
 </MyComponent>
         </Grid>
