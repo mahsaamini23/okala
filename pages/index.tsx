@@ -6,6 +6,7 @@ import SearchBar from '../component/main/SearchBar/SearchBar'
 import StoreCards from '../component/main/StoreCards-B/StoreCards';
 import Container from '@mui/material/Container';
 import SimpleAccordion from '../component/main/describtion/des';
+import ProductCard from '../component/common/ProductCard/ProductCard';
 
 export default function Home() {
   return (
@@ -20,8 +21,8 @@ export default function Home() {
       <StoreCards/>
       <SimpleAccordion />
       <Footer/>
+      <ProductCard/>
       </Container>
-      
 
 
     </Grid>

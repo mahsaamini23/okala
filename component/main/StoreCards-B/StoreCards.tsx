@@ -8,12 +8,12 @@ const StoreCards = () => {
     return (
         <Grid container item xs={12} marginTop='30px'>
             <Grid container item xs={12}>
-                <Grid item xs={0.25}>
+                <Grid item xs={1} md={0.25}>
                     <StoreIcon />
                 </Grid>
-                <Grid item xs={11.75}>
+                <Grid item xs={11} md={11.75}>
                     <Typography variant='h1'>فروشگاه‌های محله شما</Typography>
-                    <Typography variant='subtitle1' sx={{ color: '#757575' }}>3 فروشگاه</Typography>
+                    <Typography variant='subtitle1' sx={{ color: 'secondary.main' }}>3 فروشگاه</Typography>
                 </Grid>
             </Grid>
             <Grid container item xs={12} sx={{ gap: '10px', marginTop: '20px' }}>

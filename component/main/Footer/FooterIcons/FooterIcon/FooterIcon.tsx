@@ -4,7 +4,6 @@ import { useState } from "react";
 const FooterIcon=({icon1,icon2}:any)=>{
     const[show1,setshow1]=useState('block');
     const[show2,setshow2]=useState('none');
-    const[show,setshow]=useState(false)
     const MyComponent = styled(IconButton)({
 
         /*'&:hover': {
