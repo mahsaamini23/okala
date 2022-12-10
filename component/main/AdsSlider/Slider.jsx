@@ -17,20 +17,20 @@ import "swiper/css";
 SwiperCore.use([EffectCoverflow, Pagination]);
 
  const AdsSlider=()=>{
-  const [slide, setSlide] = useState(0)
+  const [adsSlide, setAdsSlide] = useState(0)
   const swiperRef = useRef(null)
 
   const handleNextSlide = useCallback(()=>{
-    slide === Ads.length - 1 ? setSlide(prev => 0) : setSlide(prev => prev + 1)
-  },[slide])
+    adsSlide === Ads.length - 1 ? setAdsSlide(prev => 0) : setAdsSlide(prev => prev + 1)
+  },[adsSlide])
 
   const handlePrevSlide = useCallback(()=>{
-    slide === 0 ? setSlide(prev => Ads.length -1) : setSlide(prev => prev - 1)
-  },[slide])
+    adsSlide === 0 ? setAdsSlide(prev => Ads.length -1) : setAdsSlide(prev => prev - 1)
+  },[adsSlide])
 
   useEffect(() => {
-    swiperRef.current.swiper.slideTo(slide)
-  }, [slide])
+    swiperRef.current.swiper.slideTo(adsSlide)
+  }, [adsSlide])
 
 
     return(
@@ -73,11 +73,11 @@ SwiperCore.use([EffectCoverflow, Pagination]);
           <Grid container px={4} display={'flex'} justifyContent={'space-between'} position={'absolute'} top={'120px'} zIndex={'100'}>
             <Grid container  item className="prev-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff', borderRadius:'100%', cursor:'pointer'}} 
              display={'flex'} justifyContent={'center'} alignItems={'center'} onClick={handlePrevSlide}>
-              <ArrowBackIosIcon/>
+              <ArrowForwardIosIcon/>
             </Grid> 
             <Grid container  item className="next-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff',borderRadius:'100%', cursor:'pointer'}} 
              display={'flex'} justifyContent={'center'} alignItems={'center'}  onClick={handleNextSlide}>
-              <ArrowForwardIosIcon/>
+              <ArrowBackIosIcon/>
             </Grid> 
           </Grid>
           
