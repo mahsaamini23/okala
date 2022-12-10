@@ -1,4 +1,4 @@
-import picture1 from "../../assets/image/1m.png";
+import picture1 from "../../assets/image/3.png";
 import picture2 from "../../assets/image/2m.png";
 import picture3 from "../../assets/image/3m.png";
 import picture4 from "../../assets/image/4m.png";
@@ -8,7 +8,7 @@ import picture7 from "../../assets/image/7m.png";
 import picture8 from "../../assets/image/8m.png";
 
 
-const category = [
+const categories = [
     {id:1, name:"خواربار", background:'#c3f3c1', image:picture1},
     {id:2, name:"لبنیات", background:'#98c6f6', image:picture2},
     {id:3, name:"محصولات پروتیینی", background:'#f8d3ca', image:picture3},
@@ -19,4 +19,4 @@ const category = [
     {id:8, name:"آجیل و خشکبار", background:'#c1d0ff', image:picture8},
 ]
 
-export default category;
+export default categories;
