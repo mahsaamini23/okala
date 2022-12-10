@@ -24,7 +24,7 @@ const StoreCard = ({img,title,rate,subtitle}:props) => {
                         <Grid item xs={1}>
                         <Image src={star} alt='star' style={{width:'20px',height:'20px'}}></Image>
                         </Grid>
-                        <Grid item xs={11}>
+                        <Grid item xs={11} sx={{color:'secondary.main'}}>
                         <Typography variant='subtitle1'>{rate}</Typography>
                         </Grid>
                     </Grid>
@@ -36,7 +36,7 @@ const StoreCard = ({img,title,rate,subtitle}:props) => {
                     <Grid item xs={1}>
                     <AccessTimeIcon fontSize="small"/>
                     </Grid>
-                    <Grid item xs={11}>
+                    <Grid item xs={11} sx={{color:'secondary.main'}}>
                     <Typography variant='subtitle1'>{subtitle}</Typography>
                     </Grid>
                 </Grid>
