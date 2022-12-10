@@ -22,6 +22,4 @@ const StoreCards = () => {
                 <StoreCard img={pic3} title={'ابیزینس'} rate={'4.45'} subtitle={'تحویل در 15 دقیقه'}></StoreCard>
             </Grid>
         </Grid>
-    )
-}
 export default StoreCards
