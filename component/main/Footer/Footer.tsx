@@ -10,14 +10,14 @@ const Footer = () => {
                     <Typography variant='h1'>راه های ارتباطی</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2' sx={{ marginTop: '25px' }}>تلفن پشتیبانی : 1536</Typography>
+                    <Typography variant='subtitle2' sx={{ marginTop: '25px' }}>تلفن پشتیبانی : 1536</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>آدرس: خیابان احمد قصیر (بخارست)، خیابان پانزدهم غربی (احمدیان)، پلاک 11،
+                    <Typography variant='subtitle2'>آدرس: خیابان احمد قصیر (بخارست)، خیابان پانزدهم غربی (احمدیان)، پلاک 11،
                         طبقه 3</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>ایمیل: info@okala.com</Typography>
+                    <Typography variant='subtitle2'>ایمیل: info@okala.com</Typography>
                 </Grid>
                 <Grid>
                 <FooterIcons/>
@@ -28,17 +28,17 @@ const Footer = () => {
                     <Typography variant='h1'>اکالا</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2' sx={{ marginTop: '25px' }}>بلاگ</Typography>
+                    <Typography variant='subtitle2' sx={{ marginTop: '25px' }}>بلاگ</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>
+                    <Typography variant='subtitle2'>
                         درباره اکالا</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>تماس با اکالا</Typography>
+                    <Typography variant='subtitle2'>تماس با اکالا</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>
+                    <Typography variant='subtitle2'>
                         اکالا رنک
                     </Typography>
                 </Grid>
@@ -48,17 +48,17 @@ const Footer = () => {
                     <Typography variant='h1'>خدمات مشتریان</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2' sx={{ marginTop: '25px' }}>حمل و نقل</Typography>
+                    <Typography variant='subtitle2' sx={{ marginTop: '25px' }}>حمل و نقل</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>
+                    <Typography variant='subtitle2'>
                         سوالات متداول</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>شرایط مرجوعی کالا</Typography>
+                    <Typography variant='subtitle2'>شرایط مرجوعی کالا</Typography>
                 </Grid>
                 <Grid>
-                    <Typography variant='h2'>حریم خصوصی</Typography>
+                    <Typography variant='subtitle2'>حریم خصوصی</Typography>
                 </Grid>
             </Grid>
             <Grid item xs={12} md={3}>
