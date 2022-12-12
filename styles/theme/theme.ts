@@ -3,52 +3,56 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     direction: 'rtl',
-    palette:{
-        primary:{
-            main:'#121212'
+    palette: {
+        primary: {
+            main: '#121212'
+
         },
-        error:{
-            light:'#fff',
-            main:'#e74c3c'
+        secondary: {
+            main: '#757575'
         },
-        warning:{
-            main:'#f1c40f'
+        error: {
+            light: '#fff',
+            main: '#e74c3c'
         },
-        info:{
-            main:'#3498db'
+        warning: {
+            main: '#f1c40f'
         },
-        success:{
-            main:'#07bc0c'
-        }
+        info: {
+            main: '#3498db'
+        },
+        success: {
+            main: '#07bc0c'
+        },
     },
-    typography:{
+    typography: {
         fontFamily: 'IRANSans',
-        h1:{
+        h1: {
             fontSize: 20,
             fontWeight: 500,
-            color:'rgb(54, 54, 54)',
+            color: 'rgb(54, 54, 54)',
         },
-        h2:{
+        h2: {
             fontSize: 18,
             fontWeight: 400,
-            color:'rgb(54, 54, 54)',
+            color: 'rgb(54, 54, 54)',
         },
-        subtitle1:{
+        subtitle1: {
             fontSize: 16,
             fontWeight: 500,
-            color:'rgb(0, 0, 0, 0,.87)',
+            color: 'rgb(0, 0, 0, 0,.87)',
         },
-        subtitle2:{
-            fontSize: 14,
-            fontWeight: 400,
-            color:'rgb(54, 54, 54)',
-        },
-        button:{
+        subtitle2: {
             fontSize: 14,
             fontWeight: 400,
             color: 'rgb(54, 54, 54)',
         },
-        caption:{
+        button: {
+            fontSize: 14,
+            fontWeight: 400,
+            color: 'rgb(54, 54, 54)',
+        },
+        caption: {
             fontSize: 12,
             fontWeight: 400,
             color: 'rgb(104, 104, 104)',
