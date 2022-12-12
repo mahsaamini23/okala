@@ -17,6 +17,6 @@ const categories = [
     {id:6, name:"صبحانه", background:'#eeb7e4', image:picture6},
     {id:7, name:"تنقلات", background:'#b8e6d8', image:picture7},
     {id:8, name:"آجیل و خشکبار", background:'#c1d0ff', image:picture8},
-]
+]    
 
 export default categories;
