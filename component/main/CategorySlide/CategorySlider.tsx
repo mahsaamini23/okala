@@ -1,4 +1,8 @@
+import React from "react";
 import {useCallback, useEffect, useRef, useState} from "react";
+import categories from '../../../data/CategorySlider/CategorySlider';
+import Category from "../../main/CategorySlide/Category/Category";
+
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -6,10 +10,8 @@ import Typography from "@mui/material/Typography";
 import Image from 'next/image'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import categories from '../../../data/CategorySlider/CategorySlider';
+import GridViewIcon from '@mui/icons-material/GridView';
 
-import Category from "../../main/CategorySlide/Category/Category";
-import photo from "../../../assets/image/4m.png";
 import SwiperCore, { EffectCoverflow, Pagination, Autoplay, Navigation, Scrollbar} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -20,9 +22,11 @@ SwiperCore.use([EffectCoverflow, Pagination ,Scrollbar]);
 
 const CategorySlide=():JSX.Element=>{
     const [categorySlide, setCategorySlide] = useState(0)
+    const [showBackButton, setShowBackButton] = useState(false);
     const swiperCategoryRef = useRef<any>(null)
 
     const handleNextCategory = useCallback(()=>{
+        setShowBackButton(true);
         categorySlide === categories.length - 1 ? setCategorySlide(prev => 0) : setCategorySlide(prev => prev + 1)
       },[categorySlide])
     
@@ -35,74 +39,51 @@ const CategorySlide=():JSX.Element=>{
       }, [categorySlide])
 
     return(
-        <Grid>
-          <Swiper style={{height:300, position:'relative'}}  ref={swiperCategoryRef} 
-          loop={true}
-          //  effect={"coverflow"}
-           grabCursor={true}
-           centeredSlides={true}
-           slidesPerView={"auto"}
-          //  coverflowEffect={{
-          //    rotate: 0,
-          //    stretch:0,
-          //    depth: 100,
-          //    modifier: 1,
-          //    slideShadows: false,
-          //  }}
-           scrollbar={{
-            el: '.swiper-scrollbar',
-            hide: true,
-          }}
-            className="mySwiper"
-          // spaceBetween={10}
-          // centeredSlides={true} 
-        modules={[Autoplay, Pagination, Navigation]}
-        >
-            <Grid container display={'flex'} justifyContent={'space-between'} position={'relative'} mt={4}>
-              <Grid container item width={'80%'} height={'400px'} overflow={'scroll'} display={'flex'} flexDirection={'row'} justifyContent={'center'} margin={'auto'}>
-              {categories.map(item => (
-                  <SwiperSlide  style={{ width:'40%',margin:'auto',display:'flex', justifyContent:'space-between', flexShrink:'100%', gap:'20px'}}>
-                    <Grid container item width={'150px'} height={'150px'}>
-                      <Grid container item  bgcolor={item.background} borderRadius={'100%'}>
-                        <Image src={item.image} alt={'pic'} style={{width:'100%', height:'100%'}}/>
-                      </Grid>
-                      <Grid container item >
-                        <Typography>{item.name}</Typography>
-                      </Grid>
-                    </Grid>
-                  </SwiperSlide>
-              ))}      
+        <Grid pt={{xs:3, md:4}} pb={{xs:4.5, md:4}} mb={{xs:3, md:4}} px={{xs:0, md:2}}>
+          <Grid>
+            <Grid pb={{xs:0, md:2}} width={'100%'} display={'flex'} alignItems={'center'}>
+              <GridViewIcon sx={{fontSize:'20px', marginLeft:'6px'}}/>
+              <Typography sx={{fontSize:'18px'}}>دسته بندی</Typography>
+            </Grid>
+            <Grid py={{xs:0, md:4}} sx={{position:'relative'}}>
+              <Swiper style={{height:250, position:'relative', padding:'0 8px'}}  ref={swiperCategoryRef} 
+                loop={false}
+                grabCursor={false}
+                centeredSlides={false}
+                slidesPerView={7}
+                scrollbar={{
+                  el: '.swiper-scrollbar',
+                  hide: true,
+                }}
+                className="mySwiper"
+                spaceBetween={0}
+                modules={[Autoplay, Pagination, Navigation]}
+              >
+                <Grid container display={'flex'} justifyContent={'space-between'}>
+                  <Grid container item width={'80%'} height={'400px'} overflow={'scroll'} display={'flex'} flexDirection={'row'} justifyContent={'center'} margin={'auto'}>
+                    {categories.map(item => (
+                    <SwiperSlide  style={{ width:'40%',margin:'auto 40px auto -40px',display:'flex', justifyContent:'space-between', flexShrink:'100%', gap:'20px'}}>
+                      <Category  id={item.id} name={item.name} background={item.background} image={item.image}/>
+                    </SwiperSlide>
+                    ))}      
+                  </Grid>
+                </Grid>
+              </Swiper>
+              <Grid container display={'flex'} justifyContent={'space-between'} position={'absolute'} top={'115px'}  zIndex={'100'}>
+                <Grid container  item className="prev-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff', borderRadius:'100%', cursor:'pointer'}} 
+                  display={showBackButton ? 'flex' : 'none'} justifyContent={'center'} alignItems={'center'} position={'absolute'} top={'0px'} right={'0'}
+                  onClick={handlePrevCategory}>
+                  <ArrowForwardIosIcon sx={{fontSize:20}}/>
+                </Grid> 
+                <Grid container  item className="next-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff',borderRadius:'100%', cursor:'pointer'}} 
+                  display={'flex'} justifyContent={'center'} alignItems={'center'} position={'absolute'} top={'0px'} left={'0'} 
+                  onClick={handleNextCategory}>
+                  <ArrowBackIosIcon sx={{fontSize:25, paddingLeft:'5px'}}/>
+                </Grid> 
               </Grid>
             </Grid>
-          </Swiper>
-          <Grid container px={4} display={'flex'} justifyContent={'space-between'} position={'absolute'} top={'120px'} zIndex={'100'}>
-            <Grid container  item className="prev-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff', borderRadius:'100%', cursor:'pointer'}} 
-             display={'flex'} justifyContent={'center'} alignItems={'center'} onClick={handlePrevCategory}>
-              <ArrowForwardIosIcon/>
-            </Grid> 
-            <Grid container  item className="next-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff',borderRadius:'100%', cursor:'pointer'}} 
-             display={'flex'} justifyContent={'center'} alignItems={'center'}  onClick={handleNextCategory}>
-              <ArrowBackIosIcon/>
-            </Grid> 
-          </Grid> 
-          
+          </Grid>
         </Grid>
     )
 }
-export default CategorySlide
-
-
-
-
-          // <Grid container width={'500px'} height={'200px'} display={'inline-block'} gap={'30px'} sx={{overflowX:'scroll', overflowY:'hidden', height:'200px',whiteSpace:'nowrap'}}>
-          //   {categoryData.map(item => (
-          //     <Grid >
-          //         <Box key={item.id} width={'160px'} height={'160px'} bgcolor={item.background} borderRadius={'100%'}>
-          //           <Image src={item.image} alt="photo" style={{width:'100%', height:'100%'}}/>
-          //         </Box>
-          //         <Grid display={'flex'} justifyContent={'center'} py={2}>
-          //           <Typography>{item.name}</Typography>
-          //         </Grid>
-          //     </Grid>
-          //   ))}
-          // </Grid>
+export default CategorySlide;
