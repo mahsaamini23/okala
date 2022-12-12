@@ -20,6 +20,13 @@ import "swiper/css";
 
 SwiperCore.use([EffectCoverflow, Pagination ,Scrollbar]);
 
+type props ={
+  id:number,
+  name:string,
+  background:string,
+  image:any,
+}
+
 const CategorySlide=():JSX.Element=>{
     const [categorySlide, setCategorySlide] = useState(0)
     const [showBackButton, setShowBackButton] = useState(false);
@@ -61,7 +68,7 @@ const CategorySlide=():JSX.Element=>{
               >
                 <Grid container display={'flex'} justifyContent={'space-between'}>
                   <Grid container item width={'80%'} height={'400px'} overflow={'scroll'} display={'flex'} flexDirection={'row'} justifyContent={'center'} margin={'auto'}>
-                    {categories.map(item => (
+                    {categories.map((item:props) => (
                     <SwiperSlide  style={{ width:'40%',margin:'auto 40px auto -40px',display:'flex', justifyContent:'space-between', flexShrink:'100%', gap:'20px'}}>
                       <Category  id={item.id} name={item.name} background={item.background} image={item.image}/>
                     </SwiperSlide>
