@@ -1,17 +1,31 @@
 import React from 'react';
-import { Grid, Typography } from "@mui/material"
-import pic1 from '../../../../assets/image/3.png'
-import Image from 'next/image'
-const Category=():JSX.Element=>{
-return(
-<Grid container item xs={3} md={1}>
-    <Grid container item xs={12} sx={{bgcolor:'#a5edb6',borderRadius:'50%',justifyContent:'center'}}>
-        <Image src={pic1} alt={'pic'} style={{width : '100%',marginTop:'-20px'}}/>
-    </Grid>
-    <Grid item xs={12} sx={{display:'flex',justifyContent:'center'}}>
-        <Typography>خواروبار</Typography>
-    </Grid>
-</Grid>
-)
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Image from 'next/image';
+import Link from 'next/link';
+
+type Props={
+    id: number,
+    name: string,
+    background: string,
+    image: any,
 }
+
+const Category=({id, name, background, image}:Props):JSX.Element=>{
+    return(
+        <Grid>
+            <Link href='/browse/category'>
+                <Grid container item key={id} display={'flex'} flexDirection={'column'} alignItems={'center'} px={2} ml={4} sx={{cursor:'pointer'}}>
+                    <Grid container item width={'140px'} height={'140px'} borderRadius={'100%'} bgcolor={background}>
+                        <Image src={image} alt={'pic'} style={{width:'140px', height:'140px',margin:'-16px 0' }} />
+                    </Grid>
+                    <Grid  sx={{display:'flex',justifyContent:'center'}}>
+                        <Typography sx={{ paddingTop:'24px'}}>{name}</Typography>
+                    </Grid>
+                </Grid>
+            </Link>
+        </Grid>
+    )
+}
+
 export default Category

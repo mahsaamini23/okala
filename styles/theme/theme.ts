@@ -58,7 +58,7 @@ const theme = createTheme({
             color: 'rgb(104, 104, 104)',
         },
     },
-    spacing: [0, 4, 8, 16, 32, 64],
+    
 });
 
 export default theme;
