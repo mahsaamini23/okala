@@ -11,18 +11,18 @@ const ProductCard = () => {
             <Image src={picture1} alt='product' style={{width:'158px',height:'148px'}}></Image>
         </Grid>
         <Grid container item xs={12}>
-            <Grid item xs={10}>
-                <Typography >204,000 ریال</Typography>
+            <Grid item xs={9} md={9}>
+                <Typography sx={{fontSize:{xs:'10px',md:'15px'}}}>204,000 ریال</Typography>
             </Grid>
-            <Grid item xs={2} sx={{display:'flex',justifyContent:'center',bgcolor:'#f01436',borderRadius:'6px',padding:'2px',color:'white'}}>
-                <Typography>15%</Typography>
+            <Grid item xs={3} md={3}sx={{display:'flex',justifyContent:'center',bgcolor:'#f01436',borderRadius:'6px',padding:'2px',color:'white'}}>
+                <Typography sx={{fontSize:{xs:'10px',md:'15px'}}}>15%</Typography>
             </Grid>
         </Grid>
         <Grid item xs={12}>
-        <Typography sx={{textDecoration:'line-through'}}>240,000</Typography>
+        <Typography sx={{textDecoration:'line-through',fontSize:{xs:'10px',md:'15px'}}}>240,000</Typography>
         </Grid>
         <Grid item xs={12}>
-            <Typography>
+            <Typography sx={{fontSize:{xs:'10px',md:'15px'}}}>
                 اسپاگتی 1.2 رشته ای 700 گرمی
             </Typography>
         </Grid>
