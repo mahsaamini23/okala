@@ -6,7 +6,7 @@ import pic3 from '../../../assets/image/obinsness.webp'
 import StoreIcon from '@mui/icons-material/Store';
 const StoreCards = () => {
     return (
-        <Grid container item xs={12} marginTop='30px'>
+        <Grid container item xs={12} margin='30px 0'>
             <Grid container item xs={12}>
                 <Grid item xs={1} md={0.25}>
                     <StoreIcon />
@@ -22,6 +22,9 @@ const StoreCards = () => {
                 <StoreCard img={pic3} title={'ابیزینس'} rate={'4.45'} subtitle={'تحویل در 15 دقیقه'}></StoreCard>
             </Grid>
         </Grid>
-)
+
+    )
+
+
 }
 export default StoreCards
