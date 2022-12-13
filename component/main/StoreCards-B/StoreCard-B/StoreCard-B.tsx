@@ -44,5 +44,5 @@ const StoreCard = ({img,title,rate,subtitle}:props) => {
         </Grid>
     )
 }
-export default StoreCar;
+export default StoreCard;
 
