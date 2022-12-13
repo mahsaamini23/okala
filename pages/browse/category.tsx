@@ -15,7 +15,7 @@ const Categories =()=>{
             </Grid>
             <Grid container item>
                 <Grid md={3} bgcolor={'blue'} height={'700px'}>
-                    
+                    <BrandFilter/>
                 </Grid>
                 <Grid md={9}></Grid>
             </Grid>
