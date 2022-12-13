@@ -17,8 +17,8 @@ export default function Home() {
       <Container maxWidth="lg">
           <SearchBar/>  
       </Container>
-      <Container maxWidth="lg">
         <AdsSlider/>
+      <Container maxWidth="lg">
         <StoreCards/>
         <CategorySlider/>
         <SimpleAccordion />
