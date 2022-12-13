@@ -1,10 +1,10 @@
 import { Grid, Typography } from "@mui/material"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import star from '../../../../assets/image/star.png'
 type props={
-    img: StaticImageData,
+    img:string,
     title:string,
     rate:string,
     subtitle:string,
@@ -42,7 +42,7 @@ const StoreCard = ({img,title,rate,subtitle}:props) => {
                 </Grid>
             </Grid>
         </Grid>
-    )
+    ) 
 }
 export default StoreCard;
 
