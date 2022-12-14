@@ -1,6 +1,6 @@
 import { GetStaticPaths } from "next";
 import params from "../../data/CategorySlider/CategorySlider";
-import BrandFilter from "../../component/store/BrandFilter/BrandFilter";
+import BrandFilter from "../../component/filter/BrandFilter/BrandFilter";
 
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
