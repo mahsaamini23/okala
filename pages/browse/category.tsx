@@ -8,13 +8,13 @@ import Typography from "@mui/material/Typography";
 
 const Categories =()=>{
     return(
-        <Grid container mt={3} mb={4} mx={'auto'} px={3}>
-            <Grid container item display={'flex'} justifyContent={'space-between'}>
+        <Grid container mt={3} mb={4} mx={'auto'} px={3} bgcolor={'#fafafa'}>
+            <Grid container item mb={4} display={'flex'} justifyContent={'space-between'}>
                 <Typography variant={'caption'}>نام فروشگاه</Typography>
                 <Typography variant={'caption'}>تعداد کالا</Typography>
             </Grid>
             <Grid container item>
-                <Grid md={3} bgcolor={'blue'} height={'700px'}>
+                <Grid md={3} height={'700px'}>
                     <BrandFilter/>
                 </Grid>
                 <Grid md={9}></Grid>
