@@ -30,7 +30,7 @@ const AdsSlider=()=>{
   },[adsSlide])
 
   useEffect(() => {
-    swiperRef.current.swiper.slideTo(adsSlide)
+    // swiperRef.current.swiper.slideTo(adsSlide)
   }, [adsSlide])
 
 

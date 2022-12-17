@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import exampleReducer from './slices/exampleSlice/example.slice'
+import commonSlice from './slices/commonSlice/common.slice'
 
 export const store = configureStore({
   reducer: {
-    exampe: exampleReducer
+    exampe: exampleReducer,
+    common: commonSlice,
   },
 })
 
