@@ -1,12 +1,26 @@
 import { createTheme } from '@mui/material/styles';
 
-
 const theme = createTheme({
-    direction: 'rtl',
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: (themeParam) => ({
+                body: themeParam.palette.mode = 'dark',
+            }),
+        },
+        MuiIconButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: "10px",
+                    fontSize: ".875rem",
+                    fontWeight: 800,
+                }
+            },
+        },
+    },
+    
     palette: {
         primary: {
             main: '#121212'
-
         },
         secondary: {
             main: '#757575'
@@ -23,7 +37,7 @@ const theme = createTheme({
         },
         success: {
             main: '#07bc0c'
-        },
+        }
     },
     typography: {
         fontFamily: 'IRANSans',
@@ -48,17 +62,18 @@ const theme = createTheme({
             color: 'rgb(54, 54, 54)',
         },
         button: {
-            fontSize: 14,
-            fontWeight: 400,
-            color: 'rgb(54, 54, 54)',
+            fontSize: "14px",
+            fontWeight: 500,
+            color: 'black',
         },
         caption: {
             fontSize: 12,
             fontWeight: 400,
             color: 'rgb(104, 104, 104)',
         },
+
     },
-    
+
 });
 
 export default theme;
