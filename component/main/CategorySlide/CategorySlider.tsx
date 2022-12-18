@@ -1,6 +1,6 @@
 import React from "react";
 import {useCallback, useEffect, useRef, useState} from "react";
-import categories from '../../../data/CategorySlider/CategorySlider';
+import {items} from "../../../data/CategorySlider/CategorySlider";
 import Category from "../../main/CategorySlide/Category/Category";
 
 
@@ -34,11 +34,11 @@ const CategorySlide=():JSX.Element=>{
 
     const handleNextCategory = useCallback(()=>{
         setShowBackButton(true);
-        categorySlide === categories.length - 1 ? setCategorySlide(prev => 0) : setCategorySlide(prev => prev + 1)
+        categorySlide === items.length - 1 ? setCategorySlide(prev => 0) : setCategorySlide(prev => prev + 1)
       },[categorySlide])
     
       const handlePrevCategory = useCallback(()=>{
-        categorySlide === 0 ? setCategorySlide(prev => categories.length -1) : setCategorySlide(prev => prev - 1)
+        categorySlide === 0 ? setCategorySlide(prev => items.length -1) : setCategorySlide(prev => prev - 1)
       },[categorySlide])
     
       useEffect(() => {
@@ -68,7 +68,7 @@ const CategorySlide=():JSX.Element=>{
               >
                 <Grid container display={'flex'} justifyContent={'space-between'}>
                   <Grid container item width={'80%'} height={'400px'} overflow={'scroll'} display={'flex'} flexDirection={'row'} justifyContent={'center'} margin={'auto'}>
-                    {categories.map((item:props) => (
+                    {items.map((item:props) => (
                     <SwiperSlide  style={{ width:'40%',margin:'auto 40px auto -40px',display:'flex', justifyContent:'space-between', flexShrink:'100%', gap:'20px'}}>
                       <Category  id={item.id} name={item.name} background={item.background} image={item.image}/>
                     </SwiperSlide>

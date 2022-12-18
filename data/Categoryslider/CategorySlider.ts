@@ -8,7 +8,7 @@ import picture7 from "../../assets/image/7m.png";
 import picture8 from "../../assets/image/8m.png";
 
 
-const categories = [
+export const items = [
     {id:1, name:"خواربار", background:'#c3f3c1', image:picture1},
     {id:2, name:"لبنیات", background:'#98c6f6', image:picture2},
     {id:3, name:"محصولات پروتیینی", background:'#f8d3ca', image:picture3},
@@ -19,4 +19,3 @@ const categories = [
     {id:8, name:"آجیل و خشکبار", background:'#c1d0ff', image:picture8},
 ]    
 
-export default categories;
