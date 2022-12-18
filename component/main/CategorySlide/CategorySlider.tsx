@@ -1,6 +1,6 @@
 import React from "react";
 import {useCallback, useEffect, useRef, useState} from "react";
-import {items} from "../../../data/CategorySlider/CategorySlider";
+import { items } from "../../../data/CategorySlider/CategorySlider";
 import Category from "../../main/CategorySlide/Category/Category";
 
 
@@ -69,7 +69,7 @@ const CategorySlide=():JSX.Element=>{
                 <Grid container display={'flex'} justifyContent={'space-between'}>
                   <Grid container item width={'80%'} height={'400px'} overflow={'scroll'} display={'flex'} flexDirection={'row'} justifyContent={'center'} margin={'auto'}>
                     {items.map((item:props) => (
-                    <SwiperSlide  style={{ width:'40%',margin:'auto 40px auto -40px',display:'flex', justifyContent:'space-between', flexShrink:'100%', gap:'20px'}}>
+                    <SwiperSlide key={item.id} style={{ width:'40%',margin:'auto 40px auto -40px',display:'flex', justifyContent:'space-between', flexShrink:'100%', gap:'20px'}}>
                       <Category  id={item.id} name={item.name} background={item.background} image={item.image}/>
                     </SwiperSlide>
                     ))}      
