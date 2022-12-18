@@ -1,8 +1,6 @@
 import {useState} from "react";
 import { GetStaticPaths } from "next";
 
-
-import params from "../../data/CategorySlider/CategorySlider";
 import BrandFilter from "../../component/filter/BrandFilter/BrandFilter";
 import PriceFilter from "../../component/filter/PriceFilter/PriceFilter";
 import AllFilter from "../../component/filter/AllFilters/AllFilters";
