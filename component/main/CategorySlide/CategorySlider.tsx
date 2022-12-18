@@ -1,6 +1,6 @@
 import React from "react";
 import {useCallback, useEffect, useRef, useState} from "react";
-import {items} from "../../../data/CategorySlider/CategorySlider";
+import { items } from "../../../data/CategorySlider/CategorySlider";
 import Category from "../../main/CategorySlide/Category/Category";
 
 
