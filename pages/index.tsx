@@ -24,7 +24,7 @@ export default function Home() {
     <Grid>
       <Container maxWidth="lg">
         <Header />
-        <SearchBar />
+        {/* <SearchBar /> */}
       </Container>
       <AdsSlider />
       <Container maxWidth="lg">
