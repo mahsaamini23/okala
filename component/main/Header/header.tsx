@@ -16,7 +16,6 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import loginIcon from '../../../assets/image/main/header/AccountMenu/accountLogin.icon.svg'
 
 import Image from 'next/image';
-import AccountMenu from './AccountMenu/accountMenu';
 import { Container, Divider, Grid, Grow, ListItemText, Menu, MenuItem, MenuList, Paper, Popper } from '@mui/material';
 import Link from 'next/link';
 import Searchbar from '../../common/Searchbar/Searchbar';
@@ -47,8 +46,6 @@ export default function header() {
 
     // Function handle ScrollBar
     const onScroll = React.useCallback(() => {
-        const { pageYOffset, scrollY } = window;
-        console.log("yOffset", pageYOffset, "scrollY", scrollY);
         return setScrollYState(window.pageYOffset);
     }, []);
 
