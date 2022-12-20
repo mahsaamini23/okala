@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import FooterCards from "./FooterCards/FooterCards";
-import FooterIcons from "./FooterIcons/FooterIcons";
+import FooterIcons from "./FooterIcon/FooterIcons";
 
 const Footer = () => {
     return (
