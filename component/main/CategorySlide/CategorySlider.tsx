@@ -46,14 +46,14 @@ const CategorySlide=():JSX.Element=>{
       }, [categorySlide])
 
     return(
-        <Grid pt={{xs:3, md:4}} pb={{xs:4.5, md:4}} mb={{xs:3, md:4}} px={{xs:0, md:2}}>
+        <Grid pt={{xs:6, md:8}} pb={{xs:4.5, md:4}} mb={{xs:6, md:1}} px={{xs:0, md:2}}>
           <Grid>
-            <Grid pb={{xs:0, md:2}} width={'100%'} display={'flex'} alignItems={'center'}>
+            <Grid pb={{xs:0, md:1}} width={'100%'} display={'flex'} alignItems={'center'} mb={{xs:0, md:4}}>
               <GridViewIcon sx={{fontSize:'20px', marginLeft:'6px'}}/>
-              <Typography sx={{fontSize:'18px'}}>دسته بندی</Typography>
+              <Typography variant='h2'>دسته بندی</Typography>
             </Grid>
-            <Grid py={{xs:0, md:4}} sx={{position:'relative'}}>
-              <Swiper style={{height:250, position:'relative', padding:'0 8px'}}  ref={swiperCategoryRef} 
+            <Grid py={{xs:0, md:2}} sx={{position:'relative'}}>
+              <Swiper style={{height:185, position:'relative', padding:'0 4px'}}  ref={swiperCategoryRef} 
                 loop={false}
                 grabCursor={false}
                 centeredSlides={false}
@@ -64,6 +64,16 @@ const CategorySlide=():JSX.Element=>{
                 }}
                 className="mySwiper"
                 spaceBetween={0}
+                breakpoints={{
+                  300:{
+                    spaceBetween:15,
+                    slidesPerView:2.5
+                  },
+                  768:{
+                    spaceBetween:25,
+                    slidesPerView:6
+                  }
+                }}
                 modules={[Autoplay, Pagination, Navigation]}
               >
                 <Grid container display={'flex'} justifyContent={'space-between'}>
@@ -76,7 +86,7 @@ const CategorySlide=():JSX.Element=>{
                   </Grid>
                 </Grid>
               </Swiper>
-              <Grid container display={'flex'} justifyContent={'space-between'} position={'absolute'} top={'115px'}  zIndex={'100'}>
+              <Grid container display={'flex'} justifyContent={'space-between'} position={'absolute'} top={{xs:'50px', md:'115px'}}  zIndex={'100'}>
                 <Grid container  item className="prev-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff', borderRadius:'100%', cursor:'pointer'}} 
                   display={showBackButton ? 'flex' : 'none'} justifyContent={'center'} alignItems={'center'} position={'absolute'} top={'0px'} right={'0'}
                   onClick={handlePrevCategory}>
