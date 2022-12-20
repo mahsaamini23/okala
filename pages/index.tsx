@@ -7,7 +7,6 @@ import { styled } from '@mui/material/styles';
 
 import CategorySlider from '../component/main/CategorySlide/CategorySlider';
 import AdsSlider from '../component/main/AdsSlider/AdsSlider';
-import Footer from '../component/Layout/Footer/Footer';
 import StoreCards from '../component/main/StoreCards/StoreCards';
 import Banner from '../component/main/banner/banner';
 import Header from '../component/Layout/Header/header';
@@ -27,7 +26,6 @@ export default function Home() {
         <StoreCards />
         <CategorySlider />
         <Banner/>
-        <Footer/>
       </Container>
     </Grid>
   )
