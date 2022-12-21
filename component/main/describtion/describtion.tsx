@@ -8,7 +8,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function SimpleAccordion() {
 return (
 <div>
-    <Accordion>
+    <Accordion sx={{boxShadow:'none'}}>
     <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"

@@ -11,10 +11,10 @@ import Banner1 from '../assets/image/green.webp'
 import Banner2 from '../assets/image/orange.webp'
 import ProductCard from '../component/common/ProductCard/ProductCard';
 import DownloadApp from '../component/main/DownloadApp/DownloadApp';
+import con from '../component/main/container/container';
 
 
 export default function Home() {
-
   return (
     <Grid>
       <Container maxWidth="lg">
@@ -26,6 +26,9 @@ export default function Home() {
       <CategorySlider/>
       <Banner image={Banner1} />
       <Banner image={Banner2} />
+      </Container>
+      <hr />
+      <Container>
       <Describtion />
       <DownloadApp/>
       <Footer/>
