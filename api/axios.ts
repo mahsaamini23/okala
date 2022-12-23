@@ -1,9 +1,6 @@
 import axios from "axios";
 
-export const baseUrl = "mirage";
-
 const api = axios.create({
-  baseURL: baseUrl,
   timeout: 60000,
 });
 

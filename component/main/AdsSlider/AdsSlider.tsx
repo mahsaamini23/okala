@@ -30,12 +30,12 @@ const AdsSlider=()=>{
   },[adsSlide])
 
   useEffect(() => {
-    swiperRef.current.swiper.slideTo(adsSlide)
+    // swiperRef.current.swiper.slideTo(adsSlide)
   }, [adsSlide])
 
 
   return(
-    <Grid>
+    <Grid mt={6} position={'relative'}>
       <Swiper 
         style={{
           height:350,
@@ -65,7 +65,7 @@ const AdsSlider=()=>{
         }}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        <Grid container display={'flex'} justifyContent={'space-between'} position={'relative'} mt={4}>
+        <Grid container display={'flex'} justifyContent={'space-between'} mt={4}>
           <Grid container item width={'80%'} height={'500px'} display={'flex'} flexDirection={'row'} justifyContent={'center'} margin={'auto'}>
           {Ads.map(slide => (
             <SwiperSlide key={slide.id} style={{ width:'75%',height:'300px', margin:'auto',display:'flex', justifyContent:'space-between', gap:'20px', cursor:'pointer'}}>

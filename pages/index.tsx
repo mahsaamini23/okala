@@ -1,37 +1,41 @@
 import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+
+import { getExample } from '../api/api';
+import { useEffect } from 'react';
+import { styled } from '@mui/material/styles';
+
 import CategorySlider from '../component/main/CategorySlide/CategorySlider';
 import AdsSlider from '../component/main/AdsSlider/AdsSlider';
-import Footer from '../component/main/Footer/Footer';
-import SearchBar from '../component/main/SearchBar/SearchBar';
-import StoreCards from '../component/main/StoreCards-B/StoreCards';
-import Container from '@mui/material/Container';
-import Describtion from '../component/main/describtion/describtion';
+import StoreCards from '../component/main/StoreCards/StoreCards';
 import Banner from '../component/main/banner/banner';
-import Banner1 from '../assets/image/green.webp'
-import Banner2 from '../assets/image/orange.webp'
+import Describtion from  '../component/main/describtion/describtion';
 import ProductCard from '../component/common/ProductCard/ProductCard';
-import DownloadApp from '../component/main/DownloadApp/DownloadApp';
 import con from '../component/main/container/container';
+import Header from '../component/Layout/Header/header';
 
 
 export default function Home() {
+
+  useEffect(() => { getExample().then(res => console.log(res)); })
+
+
   return (
-    <Grid>
+    <Grid bgcolor={'#fafafa'} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
       <Container maxWidth="lg">
-      <SearchBar/>  
-      </Container>
-      <AdsSlider/>
+      <Header />
+      </Container >
+      <AdsSlider />
       <Container maxWidth="lg">
-      <StoreCards/>
-      <CategorySlider/>
-      <Banner image={Banner1} />
-      <Banner image={Banner2} />
-      </Container>
-      <hr />
-      <Container>
+      <StoreCards />
+      <CategorySlider />
+      <Banner/>
+      </Container >
+      <hr/>
+      <Container maxWidth="lg">
       <Describtion />
-      <DownloadApp/>
-      <Footer/>
+
+      {/* <Footer/> */}
       </Container>
     </Grid>
   )
