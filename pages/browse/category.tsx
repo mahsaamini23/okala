@@ -5,6 +5,7 @@ import { GetStaticPaths } from "next";
 import params from "../../data/CategorySlider/CategorySlider";
 import BrandFilter from "../../component/filter/BrandFilter/BrandFilter";
 import PriceFilter from "../../component/filter/PriceFilter/PriceFilter";
+import SwitchFilter from "../../component/filter/SwitchFilter/SwitchFilter";
 import AllFilter from "../../component/filter/AllFilters/AllFilters";
 import Products from "../../component/filter/Products/Products";
 
@@ -19,16 +20,17 @@ interface stateInterface {
 const Categories =(): JSX.Element=>{
     const [showAllFilter, setShowAllFilter] = useState<boolean>(false)
     return(
-        <Grid mt={3} mb={4} mx={'auto'} px={3} bgcolor={'#fafafa'}>
+        <Grid mt={3} mb={4} mx={'auto'} px={4} bgcolor={'#fafafa'}>
             <Grid container item mb={4} display={'flex'} justifyContent={'space-between'}>
                 <Typography variant={'caption'}>نام فروشگاه</Typography>
                 <Typography variant={'caption'}>تعداد کالا</Typography>
             </Grid>
             <Grid display={'flex'} justifyContent={'space-between'} gap={'15px'}>
-                <Grid mb={3} height={'700px'} display={'flex'} flexDirection={'column'} gap={'15px'}>
+                <Grid mb={3} width={'300px'} height={'700px'} display={'flex'} flexDirection={'column'} gap={'15px'}>
                     <AllFilter showAllFilter={showAllFilter} setShowAllFilter={setShowAllFilter}/>
-                    {/* <BrandFilter setShowAllFilter={setShowAllFilter}/> */}
-                    {/* <PriceFilter setShowAllFilter={setShowAllFilter}/> */}
+                    <BrandFilter setShowAllFilter={setShowAllFilter}/>
+                    <SwitchFilter/>
+                    <PriceFilter setShowAllFilter={setShowAllFilter}/>
                 </Grid>
                 <Grid container item display={'flex'} flexDirection={'column'}
                 bgcolor={'#fff'} borderRadius={'4px'} padding={'25px 16px'}
