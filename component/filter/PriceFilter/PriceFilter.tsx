@@ -55,7 +55,7 @@ const PriceFilter =({setShowAllFilter}:stateInterface) :JSX.Element=>{
                 </Grid>
             </Grid>
             <Grid display={showPriceFilter ? 'block' : 'none'}>
-                <Grid mb={'12px'}>
+                <Grid mb={'12px'} pr={'25px'}>
                     <Stack width={'220px'}>
                         <StyledSlider
                         // slots={{ thumb: AirbnbThumbComponent }}
