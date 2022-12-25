@@ -34,7 +34,7 @@ const Categories =(): JSX.Element=>{
                     <Products/>
                 </Grid>
             </Grid>
-            <Grid container mt={4} mb={28} bgcolor={'red'}>hello</Grid>
+            <Grid container mt={4} mb={28}>footer</Grid>
         </Grid>
     )
 }
