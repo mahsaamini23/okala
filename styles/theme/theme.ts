@@ -1,9 +1,39 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material";
+
+
+//add Typography varient
+declare module '@mui/material/styles' {
+    interface TypographyVariants {
+      poster: React.CSSProperties;
+    }
+    // allow configuration using `createTheme`
+    interface TypographyVariantsOptions {
+      poster?: React.CSSProperties;
+    }
+  }
+  // Update the Typography's variant prop options
+  declare module '@mui/material/Typography' {
+    interface TypographyPropsVariantOverrides {
+      poster: true;
+    }
+  }
+
+  //add Palette varient
+  declare module '@mui/material/styles' {
+    interface Palette {
+      Poster: Palette['primary'];
+    }
+    interface PaletteOptions {
+      Poster: PaletteOptions['primary'];
+    }
+  
+  }
+  
 
 const theme = createTheme({
     components: {
         MuiCssBaseline: {
-            styleOverrides: (themeParam) => ({
+            styleOverrides: (themeParam: { palette: { mode: string; }; }) => ({
                 body: themeParam.palette.mode = 'dark',
             }),
         },
@@ -12,13 +42,16 @@ const theme = createTheme({
                 root: {
                     borderRadius: "10px",
                     fontSize: ".875rem",
-                    fontWeight: 800,
+                    fontWeight: 800
                 }
             },
         },
     },
     
     palette: {
+        Poster:{
+            main: 'rgba(55,143,56)'
+        },
         primary: {
             main: '#121212'
         },
@@ -41,6 +74,12 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: 'IRANSans',
+        poster: {
+            fontSize: "2rem",
+            fontWeight: 800,
+            color: 'rgba(55,143,56)',
+        },
+
         h1: {
             fontSize: 20,
             fontWeight: 500,

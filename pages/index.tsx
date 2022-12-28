@@ -12,14 +12,26 @@ import AdsNoLogin from '../component/main/AdsNoLogin/AdsNoLogin';
 import type { NextPageWithLayout } from './_app'
 import type { ReactElement } from 'react'
 import Layout from '../component/Layout/Layout';
+import { createStyles } from '@mui/material';
 
 const Home: NextPageWithLayout = () => {
 
-  useEffect(() => { getExample().then(res => console.log(res)); })
+  useEffect(() => { getExample().then(res => console.log(res)); });
 
+  const styles = () =>
+  createStyles({
+    h: {
+      '&::before': {
+        content: 'some content',
+        display: 'block',
+        height: 60,
+        marginTop: -60
+      }
+    }
+  });
   return (
     <>
-      <AdsNoLogin />
+      <AdsNoLogin/>
       <AdsSlider />
       <Container maxWidth="lg">
         <StoreCards />

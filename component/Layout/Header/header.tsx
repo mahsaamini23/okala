@@ -58,12 +58,12 @@ export default function header() {
 
     return (
         <Box sx={{ flexGrow: 1, paddingY: 6 }}>
-            <AppBar position="fixed" sx={{ boxShadow: 0 }}>
+            <AppBar position="fixed" sx={{ boxShadow: 0,["& .MuiContainer-root"]:{padding:0} }}>
                 <Modal />
                 <Container maxWidth="lg">
-                    <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+                    <Toolbar sx={{justifyContent: "space-between"}}>
                         {/* Logo Okala*/}
-                        <Box marginY={2} marginLeft={5} >
+                        <Box marginY ={2} marginLeft={5} >
                             <Link href={'/'} >
                                 <Image src={logo} width={76} alt={'Okala-logo'} />
                             </Link>

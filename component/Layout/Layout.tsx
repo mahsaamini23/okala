@@ -10,12 +10,10 @@ export default function Layout({ children }: any) {
 
     return (
         <>
-            <Container>
-                <Header />
-            </Container>
+            <Header />
             <main>{children}</main>
             <Divider/>
-            <Container>
+            <Container maxWidth="lg">
                 <Description />
                 <DownloadApp />
                 <Footer />
