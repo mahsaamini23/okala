@@ -14,7 +14,7 @@ export default function SimpleAccordion() {
         setShowDetails(current => !current)
     }
     return (
-        <Grid pb={3}  sx={{backgroundColor:{xs:'#fff', md:'#fafafa'}, paddingX:{xs:'16px', md:'0'}}}>
+        <Grid pb={3}  sx={{backgroundColor:{xs:'#fff', md:'#fafafa'}, paddingX:{xs:'16px', md:'0'}}} my={2}>
             <Grid>
                 {showDetails?
                 <Grid pt={2} display={'flex'} justifyContent={{xs:'space-between', md:'center'}} alignItems={'center'}>

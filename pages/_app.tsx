@@ -6,16 +6,29 @@ import { store } from '../Toolkit/store';
 import { Provider } from 'react-redux';
 import makeServer from '../server/mirage';
 import { CssBaseline } from '@mui/material';
+import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
+import Layout from "../component/Layout/Layout";
 
 makeServer();
 
-export default function App({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </Provider>
   )
