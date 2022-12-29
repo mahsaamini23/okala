@@ -19,7 +19,7 @@ interface stateInterface {
     setShowAllFilter: (value : boolean) => void,
 }
 
-const BrandFilter=({setShowAllFilter}:stateInterface) :JSX.Element=>{
+const BrandFilter=({setShowAllFilter}:any) :JSX.Element =>{
 
     const [showBrands, setShowBrand] = useState(true)
     const [searchBrand, SetSearchBrand] = useState('')

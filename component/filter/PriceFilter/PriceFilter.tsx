@@ -24,7 +24,7 @@ interface stateInterface {
     setShowAllFilter: (value : boolean) => void,
 }
 
-const PriceFilter =({setShowAllFilter}:stateInterface) :JSX.Element=>{
+const PriceFilter =({setShowAllFilter}:any) :JSX.Element=>{
     const [showPriceFilter, setShowPriceFilter] = useState(true)
     const [rating, setRating] = useState([1, 11999200])
 
