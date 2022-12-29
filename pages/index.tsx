@@ -1,6 +1,4 @@
 import Container from '@mui/material/Container';
-
-import { getExample } from '../api/api';
 import { useEffect } from 'react';
 
 import CategorySlider from '../component/main/CategorySlide/CategorySlider';
@@ -15,8 +13,6 @@ import Layout from '../component/Layout/Layout';
 import { createStyles } from '@mui/material';
 
 const Home: NextPageWithLayout = () => {
-
-  useEffect(() => { getExample().then(res => console.log(res)); });
 
   const styles = () =>
   createStyles({

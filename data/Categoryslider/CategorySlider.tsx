@@ -7,7 +7,6 @@ import picture6 from "../../assets/image/6m.png";
 import picture7 from "../../assets/image/7m.png";
 import picture8 from "../../assets/image/8m.png";
 
-
 const ItemCategories = [
     {
         id: 1, name: "خواربار", sub: [
