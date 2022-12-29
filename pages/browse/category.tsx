@@ -25,8 +25,9 @@ const Categories =(): JSX.Element=>{
             <Grid display={'flex'} justifyContent={'space-between'} gap={'15px'}>
                 <Grid mb={3} height={'700px'} display={'flex'} flexDirection={'column'} gap={'15px'}>
                     <AllFilter showAllFilter={showAllFilter} setShowAllFilter={setShowAllFilter}/>
-                    {/* <BrandFilter setShowAllFilter={setShowAllFilter}/> */}
-                    {/* <PriceFilter setShowAllFilter={setShowAllFilter}/> */}
+                    <BrandFilter setShowAllFilter={setShowAllFilter}/>
+                    <AvailableFilter setShowAllFilter={setShowAllFilter}/>
+                    <PriceFilter setShowAllFilter={setShowAllFilter}/>
                 </Grid>
                 <Grid container item display={'flex'} flexDirection={'column'}
                 bgcolor={'#fff'} borderRadius={'4px'} padding={'25px 16px'}

@@ -9,6 +9,9 @@ import CategorySlider from '../component/main/CategorySlide/CategorySlider';
 import AdsSlider from '../component/main/AdsSlider/AdsSlider';
 import StoreCards from '../component/main/StoreCards/StoreCards';
 import Banner from '../component/main/banner/banner';
+import Describtion from  '../component/main/describtion/describtion';
+import ProductCard from '../component/common/ProductCard/ProductCard';
+import con from '../component/main/container/container';
 import Header from '../component/Layout/Header/header';
 
 
@@ -16,16 +19,23 @@ export default function Home() {
 
   useEffect(() => { getExample().then(res => console.log(res)); })
 
+
   return (
-    <Grid bgcolor={'#fafafa'} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+    <Grid>
       <Container maxWidth="lg">
-        <Header />
+      <Header />
       </Container >
       <AdsSlider />
-      <Container sx={{borderBottom:'1px solid #757575', margin:'0 0 30px 0'}} >
-        <StoreCards />
-        <CategorySlider />
-        <Banner/>
+      <Container maxWidth="lg">
+      <StoreCards />
+      <CategorySlider />
+      <Banner/>
+      </Container >
+      <hr />
+      <Container maxWidth="lg">
+      <Describtion />
+
+      {/* <Footer/> */}
       </Container>
     </Grid>
   )

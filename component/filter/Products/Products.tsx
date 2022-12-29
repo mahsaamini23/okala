@@ -1,3 +1,4 @@
+
 import { useState } from "react"; 
 
 import Grid from "@mui/material/Grid";
@@ -6,6 +7,7 @@ import SwapVertIcon from '@mui/icons-material/SwapVert';
 import Button from "@mui/material/Button";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import ProductCard from "./ProductCard/ProductCard";
 
 const Products=()=>{
     const [filterBtn, setFilterBtn] = useState([{title:'پرفروشترین'}, {title:'بیشترین تخفیف'},{title:'جدیدترین'},{title:'ارزانترین'},{title:'گرانترین'}]);
@@ -47,6 +49,16 @@ const Products=()=>{
                 <Stack spacing={2} display={'flex'} justifyContent={'center'}>
                     <Pagination count={5} variant="outlined" shape="rounded" sx={{alignSelf:'center'}} />
                 </Stack>
+            </Grid>
+            <Grid container item display={'flex'} justifyContent={'flex-start'} alignItems={'center'}  spacing={0}>
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
             </Grid>
         </Grid>
     )
