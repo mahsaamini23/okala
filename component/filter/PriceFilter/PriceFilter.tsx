@@ -24,7 +24,7 @@ interface stateInterface {
     setShowAllFilter: (value : boolean) => void,
 }
 
-const PriceFilter =({setShowAllFilter}:stateInterface) :JSX.Element=>{
+const PriceFilter =({setShowAllFilter}:any) :JSX.Element=>{
     const [showPriceFilter, setShowPriceFilter] = useState(true)
     const [rating, setRating] = useState([1, 11999200])
 
@@ -55,7 +55,7 @@ const PriceFilter =({setShowAllFilter}:stateInterface) :JSX.Element=>{
                 </Grid>
             </Grid>
             <Grid display={showPriceFilter ? 'block' : 'none'}>
-                <Grid mb={'12px'}>
+                <Grid mb={'12px'} pr={'25px'}>
                     <Stack width={'220px'}>
                         <StyledSlider
                         // slots={{ thumb: AirbnbThumbComponent }}
