@@ -19,6 +19,6 @@
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "component/Layout/Layout.js"],
   "exclude": ["node_modules"]
 }

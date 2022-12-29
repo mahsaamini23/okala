@@ -31,8 +31,9 @@ const Home: NextPageWithLayout = () => {
       <AdsSlider />
       <Container maxWidth="lg">
         <StoreCards />
-        {/* <CategorySlider /> */}
+        <CategorySlider />
         <Banner />
+
       </Container>
     </>
   )
