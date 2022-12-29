@@ -2,20 +2,36 @@ import users from "../data/users";
 import { createServer, Model, Response } from "miragejs";
 import { ModelDefinition } from "miragejs/-types";
 import { User } from "types/model";
+import { Products } from "types/model";
+import products from "../data/Categoryslider/CategorySlider";
 
 const makeServer = () => {
-  return createServer<{ user: ModelDefinition<Omit<User, "id">> }, any>({
+  return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> }, any>({
     models: {
       user: Model,
+      product: Model,
     },
     seeds(server) {
       server.loadFixtures();
     },
     fixtures: {
       users,
+      products,
     },
     routes() {
       this.namespace = "api";
+      
+      this.get(
+        "/CategoriesProducts",
+        (schema, request) => {
+          if (request.queryParams.error) return new Response(400);
+          return {
+            message: "Fetch products success",
+            data: request.queryParams.empty ? [] : schema.all("product").models,
+          };
+        },
+        { timing: 100 }
+      );
 
       this.get(
         "/users",

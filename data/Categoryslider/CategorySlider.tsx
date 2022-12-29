@@ -7,8 +7,7 @@ import picture6 from "../../assets/image/6m.png";
 import picture7 from "../../assets/image/7m.png";
 import picture8 from "../../assets/image/8m.png";
 
-
-export const items = [
+const ItemCategories = [
     {
         id: 1, name: "خواربار", sub: [
             {
@@ -50,3 +49,4 @@ export const items = [
     { id: 8, name: "آجیل و خشکبار", background: '#c1d0ff', image: picture8 },
 ]
 
+export default ItemCategories

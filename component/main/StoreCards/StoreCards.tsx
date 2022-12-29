@@ -10,7 +10,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const StoreCards = (): JSX.Element => {
     return (
-        <Grid container item px={{xs:0, md:1}}>
+        <Grid container>
             <Grid container item xs={12}>
                 <Grid item xs={1} md={0.25}>
                     <StoreIcon />

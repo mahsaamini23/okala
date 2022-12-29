@@ -1,44 +1,50 @@
-import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-
-import { getExample } from '../api/api';
 import { useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 
 import CategorySlider from '../component/main/CategorySlide/CategorySlider';
 import AdsSlider from '../component/main/AdsSlider/AdsSlider';
 import StoreCards from '../component/main/StoreCards/StoreCards';
 import Banner from '../component/main/banner/banner';
-import Describtion from  '../component/main/describtion/describtion';
-import ProductCard from '../component/common/ProductCard/ProductCard';
-import con from '../component/main/container/container';
-import Header from '../component/Layout/Header/header';
+import AdsNoLogin from '../component/main/AdsNoLogin/AdsNoLogin';
 
+import type { NextPageWithLayout } from './_app'
+import type { ReactElement } from 'react'
+import Layout from '../component/Layout/Layout';
+import { createStyles } from '@mui/material';
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
 
-  useEffect(() => { getExample().then(res => console.log(res)); })
-
-
+  const styles = () =>
+  createStyles({
+    h: {
+      '&::before': {
+        content: 'some content',
+        display: 'block',
+        height: 60,
+        marginTop: -60
+      }
+    }
+  });
   return (
-    <Grid>
-      <Container maxWidth="lg">
-      <Header />
-      </Container >
+    <>
+      <AdsNoLogin/>
       <AdsSlider />
       <Container maxWidth="lg">
-      <StoreCards />
-      <CategorySlider />
-      <Banner/>
-      </Container >
-      <hr />
-      <Container maxWidth="lg">
-      <Describtion />
+        <StoreCards />
+        <CategorySlider />
+        <Banner />
 
-      {/* <Footer/> */}
       </Container>
-    </Grid>
+    </>
   )
 }
 
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout>
+      {page}
+    </Layout>
+  )
+}
 
+export default Home;

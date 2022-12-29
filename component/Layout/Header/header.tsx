@@ -16,15 +16,26 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import loginIcon from '../../../assets/image/main/header/AccountMenu/accountLogin.icon.svg'
 
 import Image from 'next/image';
-import { Container, Divider, Grid, Grow, ListItemText, Menu, MenuItem, MenuList, Paper, Popper } from '@mui/material';
+import { Container, Divider, Grid, Grow, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, MenuList, Paper, Popper, SwipeableDrawer } from '@mui/material';
 import Link from 'next/link';
 import Searchbar from '../../common/Searchbar/Searchbar';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import Collapse from '@mui/material/Collapse';
+
+import { getProducts } from '../../../api/api'
 
 
 export default function header() {
     const [onModalState, setModalState] = React.useState(false)
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [scrollYState, setScrollYState] = React.useState<number>(0);
+    const [onMenu, setOnMenu] = React.useState<boolean>(false);
+    const [onCollapse, setOnCollapse] = React.useState("")
+    const [products, setProducts] = React.useState([])
 
     // Function handleClick Search subComponent
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -35,6 +46,8 @@ export default function header() {
         setModalState(false);
         setAnchorEl(null);
     }
+
+    // Modal for gray background
     const Modal = styled('div')(() => ({
         position: 'fixed',
         zIndex: 500,
@@ -43,6 +56,9 @@ export default function header() {
         height: "100%",
         display: onModalState ? "block" : "none"
     }));
+
+    // Get Products data
+    React.useEffect(() => { getProducts().then(res => setProducts(res.data)) }, []);
 
     // Function handle ScrollBar
     const onScroll = React.useCallback(() => {
@@ -56,39 +72,130 @@ export default function header() {
         }
     }, []);
 
-    return (
-        <Box sx={{ flexGrow: 1, paddingY: 6 }}>
-            <AppBar position="fixed" sx={{ boxShadow: 0 }}>
-                <Modal />
-                <Container maxWidth="lg">
-                    <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-                        {/* Logo Okala*/}
-                        <Box marginY={2} marginLeft={5} >
-                            <Link href={'/'} >
-                                <Image src={logo} width={76} alt={'Okala-logo'} />
-                            </Link>
-                        </Box>
+    // Handle open or close menubar mobile state
 
-                        {/* Shops Button */}
-                        <IconButton
-                            size="small"
-                            sx={{
-                                backgroundColor: "#f8f8f8"
-                            }}
-                        >
-                            <Image src={shopsIcon} alt={'shops-Icon'} />
-                            <Typography
-                                variant='button'>
-                                مشاهده فروشگاه ها
-                            </Typography>
+
+    return (
+        <Box sx={{ flexGrow: 1, paddingY: { xs: 2, md: 6 } }}>
+            <AppBar position="fixed" sx={{ boxShadow: "5px 5px 1000px rgb(229, 231, 233)", ["& .MuiContainer-root"]: { padding: 0 } }}>
+                <Modal />
+                <Container sx={{ maxWidth: { md: "lg" } }}>
+                    <Toolbar sx={{ justifyContent: "space-between" }}>
+
+                        {/* Mobile State .. Hamburger menu */}
+                        <IconButton sx={{ display: { xs: "block", md: "none" } }} onClick={() => setOnMenu(true)}>
+                            <MenuIcon />
                         </IconButton>
+
+                        {/* Menu List */}
+                        <SwipeableDrawer
+
+                            anchor={"right"}
+                            open={onMenu}
+                            onClose={() => setOnMenu(false)}
+                            onOpen={() => setOnMenu(true)}
+                        >
+                            <Box
+                                sx={{ width: 250 }}
+                                role="presentation"
+                            >
+                                <List
+                                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                                    component="nav"
+                                    aria-labelledby="nested-list-subheader"
+                                    subheader={
+                                        <Box position="relative">
+                                            <Box position="absolute" display="block" top={2} left={2} zIndex={500}>
+                                                <IconButton onClick={() => setOnMenu(false)}>
+                                                    <CloseIcon />
+                                                </IconButton>
+                                            </Box>
+                                            <ListSubheader component="div" id="Okala" >
+                                                <Box position="relative" width={40} height={40} margin="auto">
+                                                    <Link href={'/'} >
+                                                        <Image fill={true} src={logo} alt={'Okala-logo'} />
+                                                    </Link>
+                                                </Box>
+                                            </ListSubheader>
+                                        </Box>
+                                    }
+                                >
+                                    {products?.map((item: any) => {
+                                        return (
+                                            <>
+                                                <ListItemButton onClick={() => setOnCollapse(old => old === item.name ? "" : item.name)} dir="rtl" sx={{ flex: "0 0 auto" }}>
+                                                    {onCollapse === item.name ? <ExpandLess /> : <ExpandMore />}
+                                                    <ListItemText primary={item.name} sx={{
+                                                        flexGrow: "0",
+                                                        "& span": {
+                                                            fontSize: { xs: "1rem", md: "1.4rem", lg: "1.7rem" },
+                                                        },
+                                                    }} />
+                                                </ListItemButton>
+
+                                                <Collapse in={onCollapse === item.name} timeout="auto" unmountOnExit>
+                                                    {item?.sub?.map((value: any) => {
+                                                        return (
+                                                            <List component="div" disablePadding>
+                                                                <ListItemButton sx={{ pl: 4 }}>
+                                                                    <ListItemText
+                                                                        sx={{
+                                                                            flexGrow: "0",
+                                                                            "& span": {
+                                                                                fontSize: { xs: "0.9rem", md: "1rem", lg: "1.2rem" },
+                                                                            },
+                                                                            marginRight: "25px",
+                                                                            marginY: 0,
+                                                                            color: "rgb(119, 119, 119)",
+                                                                        }}
+                                                                        primary={value?.title}
+                                                                    />
+                                                                </ListItemButton>
+                                                            </List>
+                                                        )
+                                                    })}
+                                                </Collapse>
+                                            </>
+                                        )
+                                    })}
+                                </List>
+                                <Divider />
+                            </Box>
+                        </SwipeableDrawer>
+
+                        {/* Desktop State .. Logo and Button  */}
+                        <Box sx={{ display: { xs: "relative", md: "flex" } }} margin="auto">
+                            {/* Logo Okala*/}
+                            <Box position="relative" sx={{ width: { xs: 50, md: 76 }, height: { xs: 20, md: 48 } }} marginY={2} marginLeft={5} >
+                                <Link href={'/'} >
+                                    <Image fill={true} src={logo} alt={'Okala-logo'} />
+                                </Link>
+                            </Box>
+
+                            <Box marginY="auto">
+                                {/* Shops Button */}
+                                <IconButton
+                                    size="small"
+                                    sx={{
+                                        backgroundColor: "#f8f8f8",
+                                        display: { xs: "none", md: "flex" }
+                                    }}
+                                >
+                                    <Image src={shopsIcon} alt={'shops-Icon'} />
+                                    <Typography
+                                        variant='button'>
+                                        مشاهده فروشگاه ها
+                                    </Typography>
+                                </IconButton>
+                            </Box>
+
+                        </Box>
 
                         {/* SearchBar */}
                         <ClickAwayListener onClickAway={handleClickAway}>
-                            <Box sx={{ width: 400 }} display="flex" justifyContent={"center"}>
-
+                            <Box sx={{ width: 400, display: { xs: "none", md: "flex" } }} justifyContent={"center"} margin="auto">
                                 {scrollYState > 250 ?
-                                    <Box onClick={handleClick}  zIndex={500}>
+                                    <Box onClick={handleClick} zIndex={500}>
                                         <Searchbar open={!!anchorEl} />
                                         <Box>
                                             <Popper
@@ -123,7 +230,7 @@ export default function header() {
                                         onClick={handleClick}
                                         size="small"
                                     >
-                                        <Box display={"flex"} width="100%" >
+                                        <Box display={"flex"} width="100%">
                                             <Image src={locationIcon} width={18} alt={'shops-Icon'} />
                                             <Typography
                                                 variant='caption'>
@@ -150,21 +257,23 @@ export default function header() {
                                         <KeyboardArrowDownOutlinedIcon />
 
                                     </IconButton>
+
+
                                 }
                             </Box>
                         </ClickAwayListener>
 
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: "10px" }}>
                             {/* <AccountMenu /> */}
-                            <IconButton 
-                            size="small"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
+                            <IconButton
+                                size="small"
+                                aria-label="show 17 new notifications"
+                                color="inherit"
                             >
-                            <Image src={loginIcon} alt="login Icon"/>
-                            <Typography variant='button'>
-                                ورود به اکالا
-                            </Typography>
+                                <Image src={loginIcon} alt="login Icon" />
+                                <Typography variant='button'>
+                                    ورود به اکالا
+                                </Typography>
                             </IconButton>
                             <Divider orientation="vertical" flexItem />
                             <IconButton
