@@ -25,7 +25,7 @@ function SearchBar() {
     }
 
     return (
-        <Grid container xs={4} md={8} sx={{ justifyContent: 'center' }}>
+        <Grid container item xs={4} md={8} sx={{ justifyContent: 'center' }}>
             <Grid container item xs={12} bgcolor='white' height='60px' borderRadius='6px'>
                 <Grid xs={1} item sx={{ display: 'flex', alignItems: 'center' }}>
                     <SearchIcon sx={{ position: 'absolute', right: '11px' }} />

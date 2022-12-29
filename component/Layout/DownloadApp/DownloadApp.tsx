@@ -11,7 +11,7 @@ const DownloadApp =()=>{
         <Grid container  display={'flex'} sx={{flexDirection:{xs:'column', md:'row'}}} justifyContent={'space-between'} bgcolor={'#f8f8f8'} borderRadius={'10px'} px={5} py={3} m={4}>
             <Grid sx={{width:{xs:'100%', md:'80%'}}}>
                 <Typography variant='h2' my={2}>
-                    دانلود اپلیکیشن اکالا 
+                    دانلود اپلیکیشن اکالا
                 </Typography>
                 <Grid container display={'flex'} flexDirection={'row'}>
                     <Grid>

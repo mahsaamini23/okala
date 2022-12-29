@@ -1,8 +1,6 @@
 import {useState} from "react";
 import { GetStaticPaths } from "next";
 
-
-import params from "../../data/CategorySlider/CategorySlider";
 import BrandFilter from "../../component/filter/BrandFilter/BrandFilter";
 import PriceFilter from "../../component/filter/PriceFilter/PriceFilter";
 import SwitchFilter from "../../component/filter/SwitchFilter/SwitchFilter";
@@ -54,8 +52,8 @@ const Categories =(): JSX.Element=>{
             <Grid sx={{display:{xs:'block',md:'none'}}}>
                 <ShowBased setOpenShowBased={setOpenShowBased}/>
                 <DialogShowBased openShowBased={openShowBased} setOpenShowBased={setOpenShowBased}/>
-                
             </Grid>
+            <Grid container mt={4} mb={28}>footer</Grid>
         </Grid>
     )
 }

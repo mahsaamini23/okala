@@ -7,7 +7,7 @@ import twitter1 from '../../../../assets/image/twitter1.png'
 import twitter2 from '../../../../assets/image/twitter2.png'
 import aparat1 from '../../../../assets/image/aparat1.png'
 import aparat2 from '../../../../assets/image/aparat2.png'
-import FooterIcon from "./FooterIcon/FooterIcon";
+import FooterIcon from "./FooterIcons/FooterIcon";
 
 const FooterIcons=()=>{
     return(
