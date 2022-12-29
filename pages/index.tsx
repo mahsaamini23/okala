@@ -21,7 +21,7 @@ export default function Home() {
 
 
   return (
-    <Grid bgcolor={'#fafafa'} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+    <Grid>
       <Container maxWidth="lg">
       <Header />
       </Container >
@@ -31,7 +31,7 @@ export default function Home() {
       <CategorySlider />
       <Banner/>
       </Container >
-      <hr/>
+      <hr />
       <Container maxWidth="lg">
       <Describtion />
 
