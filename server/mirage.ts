@@ -20,8 +20,8 @@ const makeServer = ({ environment = "test" } = {}) => {
       products,
     },
     routes() {
+      this.passthrough('/_next/static/development/_devPagesManifest.json');
       this.namespace = "api";
-      
       this.get(
         "/CategoriesProducts",
         (schema, request) => {
