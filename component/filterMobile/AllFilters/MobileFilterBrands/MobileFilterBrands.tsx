@@ -1,11 +1,11 @@
 
-import Grid from "@mui/material/Grid";
+import Dialog from "@mui/material/Dialog";
 
 const MobileFilterBrands =() => {
     return(
-        <Grid>
+        <>
 
-        </Grid>
+        </>
     )
 }
 

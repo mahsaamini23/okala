@@ -1,12 +1,16 @@
 import * as React from 'react';
+import PriceFilter from "../../filter/PriceFilter/PriceFilter";
+import SwitchFilter from "../../filter/SwitchFilter/SwitchFilter";
 import Dialog from "@mui/material/Dialog";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Button from "@mui/material/Button";
 import IconButton from '@mui/material/IconButton';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -43,11 +47,17 @@ const AllFilters=({openAllFilters, setOpenAllFilters} : any) : JSX.Element =>{
                 <Typography variant='subtitle2'>حذف همه فیلترها</Typography>
             </Grid>
         </Grid>
-        <Grid mt={8}>
-            <Grid>
-                <Typography>دسته بندی</Typography>
-                
+        <Grid mt={8} mb={10} overflow={'scroll'} sx={{overflowX:'hidden'}}>
+            <Grid container px={2} py={3} display={'flex'} justifyContent={'space-between'} borderBottom={'1px solid #e9e9e9'}>
+                <Typography variant='subtitle2'>دسته بندی</Typography>
+                <KeyboardArrowLeftIcon sx={{size:'35px', color:'grey'}}/>
             </Grid>
+            <Grid container px={2} py={3} display={'flex'} justifyContent={'space-between'} borderBottom={'1px solid #e9e9e9'}>
+                <Typography variant='subtitle2'>برند</Typography>
+                <KeyboardArrowLeftIcon sx={{size:'35px', color:"grey"}}/>
+            </Grid>
+            <PriceFilter/>
+            <SwitchFilter/>
 
         </Grid>
         <Grid container p={2} display={'flex'} justifyContent={'center'} position={'fixed'} bottom={'0px'} bgcolor={'#fff'}>

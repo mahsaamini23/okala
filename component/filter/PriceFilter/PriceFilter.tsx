@@ -37,24 +37,26 @@ const PriceFilter =({setShowAllFilter}:any) :JSX.Element=>{
     }
 
     return(
-        <Grid p={2} bgcolor={'#fff'} boxShadow={'0px 2px rgba(22 22 22 4%) !important'} borderRadius={'4px'}>
+        <Grid p={2} bgcolor={'#fff'} boxShadow={'0px 2px rgba(22 22 22 4%) !important'} borderRadius={'4px'} borderBottom={{xs:'1px solid #e9e9e9', md:'0'}}>
             <Grid mb={'10px'} display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
                 <Grid display={'flex'} justifyContent={'flex-start'} alignItems={'center'} gap={'5px'}>
-                    <Grid width='4px' height='16px' bgcolor={'#7cc8cc'} borderRadius={'5px'}></Grid>
+                    <Grid width='4px' height='16px' bgcolor={'#7cc8cc'} borderRadius={'5px'} sx={{display:{xs:'none', md:'block'}}}></Grid>
                     <Grid>
-                        <Typography variant={'subtitle2'} fontWeight={'bold'}>فیلتر قیمت</Typography>
+                        <Typography variant={'subtitle2'} fontWeight={'bold'} sx={{display:{xs:'none', md:'block'}}}>فیلتر قیمت</Typography>
+                        <Typography variant={'subtitle2'} fontWeight={'bold'} sx={{display:{xs:'block', md:'none'}}}>محدوده قیمت</Typography>
                     </Grid>
                 </Grid>
                 <Grid>
-                    <IconButton onClick={handlePriceFilter}>
+                    <IconButton onClick={handlePriceFilter} sx={{display:{xs:'none', md:'block'}}}>
                         {showPriceFilter ? 
                         <KeyboardArrowUpIcon/> :
                         <KeyboardArrowDownIcon/>
                         }
                     </IconButton>
+                    <Typography variant='caption' sx={{display:{xs:'block', md:'none'}}}>مقدار پیشفرض</Typography>
                 </Grid>
             </Grid>
-            <Grid display={showPriceFilter ? 'block' : 'none'}>
+            <Grid display={showPriceFilter ? 'block' : 'none'} sx={{marginTop:{xs:'30px', md:'0px'}}}>
                 <Grid mb={'12px'} pr={'25px'}>
                     <Stack width={'220px'}>
                         <StyledSlider

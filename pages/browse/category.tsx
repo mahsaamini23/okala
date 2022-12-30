@@ -50,7 +50,7 @@ const Categories =(): JSX.Element=>{
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid sx={{display:{xs:'block',md:'none'}}}>
+            <Grid mt={3} sx={{display:{xs:'block',md:'none'}}}>
                 <ShowBased setOpenShowBased={setOpenShowBased} setOpenAllFilters={setOpenAllFilters}/>
                 <DialogShowBased openShowBased={openShowBased} setOpenShowBased={setOpenShowBased}/>
                 <AllFilters openAllFilters={openAllFilters} setOpenAllFilters={setOpenAllFilters}/>
