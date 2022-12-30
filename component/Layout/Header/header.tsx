@@ -28,10 +28,15 @@ import Collapse from '@mui/material/Collapse';
 
 import { getProducts } from '../../../api/api'
 import GridViewIcon from '@mui/icons-material/GridView';
+import { useDispatch, useSelector } from 'react-redux';
+import AccountMenu from './AccountMenu/accountMenu';
+import { setLogin } from '../../../Toolkit/slices/authSlice/auth.slice';
 
 
 
 export default function header() {
+
+    // useState Config
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [scrollYState, setScrollYState] = React.useState<number>(0);
     const [onMenu, setOnMenu] = React.useState<boolean>(false);
@@ -39,6 +44,9 @@ export default function header() {
     const [products, setProducts] = React.useState([])
     const [textSearch, setTextSearch] = React.useState('')
 
+    // Redux ToolKit
+    const isLogin = useSelector((state: any) => state.auth.isLogin)
+    const dispatch = useDispatch();
 
     // Modal for gray background
     const Modal = styled('div')(() => ({
@@ -65,13 +73,18 @@ export default function header() {
         }
     }, []);
 
-    // Handle open or close menubar mobile state
+    //
 
     return (
         <Box sx={{ flexGrow: 1, paddingY: { xs: 2, md: 6 } }}>
+            {/* AppBar */}
             <AppBar position="fixed" sx={{ boxShadow: "5px 5px 1000px rgb(229, 231, 233)", ["& .MuiContainer-root"]: { padding: 0 } }}>
+
+                {/* Modal */}
                 <Modal />
+                {/* Container */}
                 <Container sx={{ maxWidth: { md: "lg" } }}>
+                    {/* main Structure */}
                     <Toolbar sx={{ justifyContent: "space-between" }}>
 
                         {/* Mobile State .. Hamburger menu */}
@@ -81,7 +94,6 @@ export default function header() {
 
                         {/* Menu List */}
                         <SwipeableDrawer
-
                             anchor={"right"}
                             open={onMenu}
                             onClose={() => setOnMenu(false)}
@@ -198,6 +210,7 @@ export default function header() {
                             <Box marginY="auto">
                                 {/* Shops Button */}
                                 <IconButton
+                                    onClick={()=>{}}
                                     size="small"
                                     sx={{
                                         backgroundColor: "#f8f8f8",
@@ -217,7 +230,7 @@ export default function header() {
                         {/* SearchBar */}
                         <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
                             <Box sx={{ width: 400, display: { xs: "none", md: "flex" } }} justifyContent={"center"} margin="auto">
-                                {scrollYState > 251 ?
+                                {isLogin && scrollYState > 251 ?
                                     <Box onClick={(event) => setAnchorEl(event.currentTarget)} zIndex={500}>
                                         <Searchbar w={400} open={!!anchorEl} handleClose={() => setAnchorEl(null)} handleText={setTextSearch} />
                                         <Box>
@@ -263,6 +276,7 @@ export default function header() {
                                         </Box>
                                     </Box>
                                     :
+                                    // Address
                                     <IconButton
                                         onClick={(e) => { setAnchorEl(e.currentTarget) }}
                                         size="small"
@@ -292,26 +306,25 @@ export default function header() {
 
                                         </Box>
                                         <KeyboardArrowDownOutlinedIcon />
-
                                     </IconButton>
-
-
                                 }
                             </Box>
                         </ClickAwayListener>
 
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: "10px" }}>
-                            {/* <AccountMenu /> */}
-                            <IconButton
-                                size="small"
-                                aria-label="show 17 new notifications"
-                                color="inherit"
-                            >
-                                <Image src={loginIcon} alt="login Icon" />
-                                <Typography variant='button'>
-                                    ورود به اکالا
-                                </Typography>
-                            </IconButton>
+                            {isLogin ? <AccountMenu /> :
+                                <IconButton
+                                    size="small"
+                                    aria-label="show 17 new notifications"
+                                    color="inherit"
+                                    onClick = {()=> dispatch(setLogin(true))}
+                                >
+                                    <Image src={loginIcon} alt="login Icon" />
+                                    <Typography variant='button'>
+                                        ورود به اکالا
+                                    </Typography>
+                                </IconButton>
+                            }
                             <Divider orientation="vertical" flexItem />
                             <IconButton
                                 size="small"

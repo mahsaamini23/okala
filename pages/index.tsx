@@ -18,11 +18,16 @@ import { styled } from '@mui/material/styles';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { Box } from '@mui/system';
 import GridViewIcon from '@mui/icons-material/GridView';
+import { useSelector } from 'react-redux';
 
 const Home: NextPageWithLayout = () => {
+  // useState Config
   const [scrollYState, setScrollYState] = React.useState<number>(0);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [textSearch, setTextSearch] = React.useState('')
+
+  // Redux Config
+  const isLogin = useSelector((state: any) => state.auth.isLogin)
 
   // Function handle ScrollBar
   const onScroll = React.useCallback(() => {
@@ -52,59 +57,62 @@ const Home: NextPageWithLayout = () => {
     <>
       <Modal />
       {/* SearchBar */}
-      <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
-        <Box sx={{ display: "flex" }} justifyContent={"center"} marginY="40px">
-          {scrollYState < 251 ?
-            <Box onClick={(event) => setAnchorEl(event.currentTarget)} zIndex={500}>
-              <Searchbar w={600} open={!!anchorEl} handleClose={setAnchorEl} handleText={setTextSearch} />
-              <Box>
-                <Popper
-                  anchorEl={anchorEl}
-                  open={!!anchorEl}
-                  transition
-                  disablePortal
-                >
-                  {!!anchorEl ? ({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement = 'bottom-start',
-                      }}>
-                      <Paper sx={{ margin: "2px" }}>
-                        <MenuList
-                          id="composition-menu"
-                          aria-labelledby="composition-button"
-                        >
-                          <MenuItem sx={{ width: "600px" }}>
-                            {textSearch ?
-                              <Box display="flex" justifyContent="center" marginY={"auto"} alignItems={"center"}>
-                                <GridViewIcon sx={{color:"rgb(224,224,224)"}} />
-                                <Box marginRight={1}>
-                                  <Typography variant='subtitle2'>
-                                    {textSearch}
-                                  </Typography>
-                                  <Typography variant='caption'>
-                                    نمایش همه نتایح برای {textSearch}
-                                  </Typography>
-                                </Box>
-                              </Box> : <></>}
-                          </MenuItem>
-                          <Divider />
-                        </MenuList>
-                      </Paper>
-                    </Grow>
-                  ) : null}
-                </Popper>
+      {isLogin ?
+        <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
+          <Box sx={{ display: { xs: "none", md: "flex" } }} justifyContent={"center"} marginY="40px">
+            {scrollYState < 251 ?
+              <Box onClick={(event) => setAnchorEl(event.currentTarget)} zIndex={500}>
+                <Searchbar w={600} open={!!anchorEl} handleClose={setAnchorEl} handleText={setTextSearch} />
+                <Box>
+                  <Popper
+                    anchorEl={anchorEl}
+                    open={!!anchorEl}
+                    transition
+                    disablePortal
+                  >
+                    {!!anchorEl ? ({ TransitionProps, placement }) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{
+                          transformOrigin:
+                            placement = 'bottom-start',
+                        }}>
+                        <Paper sx={{ margin: "2px" }}>
+                          <MenuList
+                            id="composition-menu"
+                            aria-labelledby="composition-button"
+                          >
+                            <MenuItem sx={{ width: "600px" }}>
+                              {textSearch ?
+                                <Box display="flex" justifyContent="center" marginY={"auto"} alignItems={"center"}>
+                                  <GridViewIcon sx={{ color: "rgb(224,224,224)" }} />
+                                  <Box marginRight={1}>
+                                    <Typography variant='subtitle2'>
+                                      {textSearch}
+                                    </Typography>
+                                    <Typography variant='caption'>
+                                      نمایش همه نتایح برای {textSearch}
+                                    </Typography>
+                                  </Box>
+                                </Box> : <></>}
+                            </MenuItem>
+                            <Divider />
+                          </MenuList>
+                        </Paper>
+                      </Grow>
+                    ) : null}
+                  </Popper>
+                </Box>
               </Box>
-            </Box>
-            :
-            <></>
-          }
-        </Box>
-      </ClickAwayListener>
+              :
+              <></>
+            }
+          </Box>
+        </ClickAwayListener>
+        : <></>
+      }
 
-      <AdsNoLogin />
+      {isLogin ? <></> : <AdsNoLogin />}
       <AdsSlider />
       <Container maxWidth="lg">
         <StoreCards />

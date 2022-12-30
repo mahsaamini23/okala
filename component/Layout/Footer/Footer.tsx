@@ -1,12 +1,12 @@
 import { Grid, Typography } from "@mui/material";
 import FooterCards from "./FooterCards/FooterCards";
 import FooterIcons from "./FooterIcon/FooterIcons";
-import SimpleBottomNavigation from "./FooterMobile/FooterMobile";
+import FooterMobile from "./FooterMobile/FooterMobile";
 
 const Footer = () => {
     return (
         <>
-            <SimpleBottomNavigation/>
+            <FooterMobile/>
             <Grid xs={12} container sx={{ gap: '20px', marginTop: '30px' }}>
                 <Grid item xs={12} md={3}>
                     <Grid>
