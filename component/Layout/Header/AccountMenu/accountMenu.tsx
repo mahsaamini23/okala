@@ -1,36 +1,44 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+import imgBG from '../../../../assets/image/main/header/AccountMenu/accountMenu.bg.svg'
+import iconLogout from '../../../../assets/image/main/header/AccountMenu/accountLogout.icon.svg'
+import iconProfile from '../../../../assets/image/main/header/AccountMenu/profile.icon.svg'
+import iconOrder from '../../../../assets/image/main/header/AccountMenu/order.icon.svg'
+
 
 //Icons
 import UserIcon from "../../../../assets/image/main/header/User.Icon.svg"
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import Image from 'next/image';
-import bgAccountMenu from "../../../assets/image/main/header/AccountMenu/accountMenu.bg.svg"
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../../../Toolkit/slices/authSlice/auth.slice';
+
 
 
 export default function AccountMenu() {
+    // var and useState
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+
+    // var Redux
+    const dispatch = useDispatch();
+
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <React.Fragment>
             <IconButton
                 onClick={handleClick}
+                dir="rtl"
                 size="small"
                 sx={{ padding: 2 }}
                 aria-controls={open ? 'account-menu' : undefined}
@@ -55,19 +63,17 @@ export default function AccountMenu() {
                     sx: {
                         overflow: 'visible',
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
                         '& .MuiAvatar-root': {
                             width: 32,
                             height: 32,
-                            ml: -0.5,
-                            mr: 1,
+                            padding: 0,
                         },
                         '&:before': {
                             content: '""',
                             display: 'block',
                             position: 'absolute',
                             top: 0,
-                            right: 14,
+                            left: 10,
                             width: 10,
                             height: 10,
                             bgcolor: 'background.paper',
@@ -76,34 +82,41 @@ export default function AccountMenu() {
                         },
                     },
                 }}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                transformOrigin={{ horizontal: 'left', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
             >
-                <MenuItem>
-                    <Avatar /> Profile
+                <MenuItem sx={{ padding: 1 }}>
+                    <Box width={"150px"} display={"flex"} position={"relative"} flexDirection="column" alignItems={"center"} >
+                        <Image fill={true} src={imgBG} alt={''} />
+                        <Typography zIndex={200} variant="caption" color={"white"}>
+                            محمد حسین مقدم فر
+                        </Typography>
+                        <Typography zIndex={200} variant="button" color={"white"}>
+                            ۰۹۳۸۵۷۶۷۵۷۵
+                        </Typography>
+                    </Box>
+
                 </MenuItem>
-                <MenuItem>
-                    <Avatar /> My account
+                <MenuItem sx={{ padding: 1 }}>
+                    <Image src={iconProfile} alt={''} />
+                    <Typography variant="caption" color={"black"}>
+                        حساب کاربری
+                    </Typography>
                 </MenuItem>
-                <Divider />
-                <MenuItem>
-                    <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                    </ListItemIcon>
-                    Add another account
+                <MenuItem sx={{ padding: 1 }}>
+                    <Image src={iconOrder} alt={''} />
+                    <Typography variant="caption" color={"black"}>
+                        سفارش های من
+
+                    </Typography>
                 </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <Settings fontSize="small" />
-                    </ListItemIcon>
-                    Settings
+                <MenuItem sx={{ padding: 1 }} onClick={()=>dispatch(setLogin(false))}>
+                    <Image src={iconLogout} alt={''} />
+                    <Typography variant="caption" color={"red"}>
+                        خروج
+                    </Typography>
                 </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                </MenuItem>
+
             </Menu>
         </React.Fragment>
     );
