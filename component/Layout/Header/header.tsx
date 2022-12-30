@@ -16,33 +16,50 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import loginIcon from '../../../assets/image/main/header/AccountMenu/accountLogin.icon.svg'
 
 import Image from 'next/image';
-import { Container, Divider, Grid, Grow, ListItemText, Menu, MenuItem, MenuList, Paper, Popper } from '@mui/material';
+import { Container, Divider, Grid, Grow, List, ListItemButton, ListItemText, ListSubheader, MenuItem, MenuList, Paper, Popper, SwipeableDrawer } from '@mui/material';
 import Link from 'next/link';
 import Searchbar from '../../common/Searchbar/Searchbar';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import Collapse from '@mui/material/Collapse';
+
+import { getProducts } from '../../../api/api'
+import GridViewIcon from '@mui/icons-material/GridView';
+import { useDispatch, useSelector } from 'react-redux';
+import AccountMenu from './AccountMenu/accountMenu';
+import { setLogin } from '../../../Toolkit/slices/authSlice/auth.slice';
+
 
 
 export default function header() {
-    const [onModalState, setModalState] = React.useState(false)
+
+    // useState Config
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [scrollYState, setScrollYState] = React.useState<number>(0);
+    const [onMenu, setOnMenu] = React.useState<boolean>(false);
+    const [onCollapse, setOnCollapse] = React.useState("")
+    const [products, setProducts] = React.useState([])
+    const [textSearch, setTextSearch] = React.useState('')
 
-    // Function handleClick Search subComponent
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        setModalState(true);
-        setAnchorEl(event.currentTarget);
-    }
-    const handleClickAway = () => {
-        setModalState(false);
-        setAnchorEl(null);
-    }
+    // Redux ToolKit
+    const isLogin = useSelector((state: any) => state.auth.isLogin)
+    const dispatch = useDispatch();
+
+    // Modal for gray background
     const Modal = styled('div')(() => ({
         position: 'fixed',
         zIndex: 500,
         backgroundColor: "rgba(0,0,0,.4)",
         width: "100%",
         height: "100%",
-        display: onModalState ? "block" : "none"
+        display: anchorEl ? "block" : "none"
     }));
+
+    // Get Products data
+    React.useEffect(() => { getProducts().then(res => setProducts(res.data)) }, []);
 
     // Function handle ScrollBar
     const onScroll = React.useCallback(() => {
@@ -56,40 +73,166 @@ export default function header() {
         }
     }, []);
 
-    return (
-        <Box sx={{ flexGrow: 1, paddingY: 6 }}>
-            <AppBar position="fixed" sx={{ boxShadow: 0 }}>
-                <Modal />
-                <Container maxWidth="lg">
-                    <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-                        {/* Logo Okala*/}
-                        <Box marginY={2} marginLeft={5} >
-                            <Link href={'/'} >
-                                <Image src={logo} width={76} alt={'Okala-logo'} />
-                            </Link>
-                        </Box>
+    //
 
-                        {/* Shops Button */}
-                        <IconButton
-                            size="small"
-                            sx={{
-                                backgroundColor: "#f8f8f8"
-                            }}
-                        >
-                            <Image src={shopsIcon} alt={'shops-Icon'} />
-                            <Typography
-                                variant='button'>
-                                مشاهده فروشگاه ها
-                            </Typography>
+    return (
+        <Box sx={{ flexGrow: 1, paddingY: { xs: 2, md: 6 } }}>
+            {/* AppBar */}
+            <AppBar position="fixed" sx={{ boxShadow: "5px 5px 1000px rgb(229, 231, 233)", ["& .MuiContainer-root"]: { padding: 0 } }}>
+
+                {/* Modal */}
+                <Modal />
+                {/* Container */}
+                <Container sx={{ maxWidth: { md: "lg" } }}>
+                    {/* main Structure */}
+                    <Toolbar sx={{ justifyContent: "space-between" }}>
+
+                        {/* Mobile State .. Hamburger menu */}
+                        <IconButton sx={{ display: { xs: "block", md: "none" } }} onClick={() => setOnMenu(true)}>
+                            <MenuIcon />
                         </IconButton>
 
-                        {/* SearchBar */}
-                        <ClickAwayListener onClickAway={handleClickAway}>
-                            <Box sx={{ width: 400 }} display="flex" justifyContent={"center"}>
+                        {/* Menu List */}
+                        <SwipeableDrawer
+                            anchor={"right"}
+                            open={onMenu}
+                            onClose={() => setOnMenu(false)}
+                            onOpen={() => setOnMenu(true)}
+                        >
+                            <Box
+                                sx={{ width: 250 }}
+                                role="presentation"
+                            >
+                                <List
+                                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                                    component="nav"
+                                    aria-labelledby="nested-list-subheader"
+                                    subheader={
+                                        <Box position="relative">
+                                            <Box position="absolute" display="block" top={2} left={2} zIndex={500}>
+                                                <IconButton onClick={() => setOnMenu(false)}>
+                                                    <CloseIcon />
+                                                </IconButton>
+                                            </Box>
+                                            <ListSubheader component="div" id="Okala" >
+                                                <Box position="relative" width={40} height={40} margin="auto">
+                                                    <Link href={'/'} >
+                                                        <Image fill={true} src={logo} alt={'Okala-logo'} />
+                                                    </Link>
+                                                </Box>
+                                            </ListSubheader>
+                                        </Box>
+                                    }
+                                >
+                                    <Divider sx={{ background: "rgb(250, 251, 253)" }} />
+                                    {products?.map((item: any) => {
+                                        return (
+                                            <>
+                                                <ListItemButton onClick={() => setOnCollapse(old => old === item.name ? "" : item.name)} dir="rtl" sx={{ flex: "0 0 auto" }}>
+                                                    {onCollapse === item.name ? <ExpandLess /> : <ExpandMore />}
+                                                    <ListItemText primary={item.name} sx={{
+                                                        flexGrow: "0",
+                                                        "& span": {
+                                                            fontSize: { xs: "1rem", md: "1.4rem", lg: "1.7rem" },
+                                                        },
+                                                    }} />
+                                                </ListItemButton>
 
-                                {scrollYState > 250 ?
-                                    <Box onClick={handleClick}  zIndex={500}>
-                                        <Searchbar open={!!anchorEl} />
+                                                <Collapse in={onCollapse === item.name} timeout="auto" unmountOnExit>
+                                                    {item?.sub?.map((value: any) => {
+                                                        return (
+                                                            <List component="div" disablePadding>
+                                                                <ListItemButton>
+                                                                    <ListItemText
+                                                                        sx={{
+                                                                            flexGrow: "0",
+                                                                            "& span": {
+                                                                                fontSize: { xs: "0.9rem", md: "1rem", lg: "1.2rem" },
+                                                                            },
+                                                                            marginRight: "10px",
+                                                                            marginY: 0,
+                                                                            padding: 0,
+                                                                            color: "rgb(119, 119, 119)",
+                                                                        }}
+                                                                        primary={
+                                                                            <Typography
+                                                                                variant='caption'
+                                                                            >{value?.title}
+                                                                            </Typography>
+                                                                        }
+                                                                    />
+                                                                </ListItemButton>
+                                                            </List>
+                                                        )
+                                                    })}
+
+                                                    <List component="div" disablePadding>
+                                                        <ListItemButton>
+                                                            <ListItemText
+                                                                sx={{
+                                                                    flexGrow: "0",
+                                                                    "& span": {
+                                                                        fontSize: { xs: "0.9rem", md: "1rem", lg: "1.2rem" },
+                                                                    },
+                                                                    marginRight: "10px",
+                                                                    marginY: 0,
+                                                                    color: "rgb(119, 119, 119)",
+                                                                }}
+                                                                primary={
+                                                                    <Typography
+                                                                        variant='caption'
+                                                                        sx={{ textDecoration: 'underline' }}
+                                                                        marginRight="20px"
+                                                                    >
+                                                                        مشاهده همه موارد
+                                                                    </Typography>
+                                                                }
+                                                            />
+                                                        </ListItemButton>
+                                                    </List>
+                                                </Collapse>
+                                            </>
+                                        )
+                                    })}
+                                </List>
+                            </Box>
+                        </SwipeableDrawer>
+
+                        {/* Desktop State .. Logo and Button  */}
+                        <Box sx={{ display: { xs: "relative", md: "flex" } }} margin="auto">
+                            {/* Logo Okala*/}
+                            <Box position="relative" sx={{ width: { xs: 50, md: 76 }, height: { xs: 20, md: 48 } }} marginY={2} marginLeft={5} >
+                                <Link href={'/'} >
+                                    <Image fill={true} src={logo} alt={'Okala-logo'} />
+                                </Link>
+                            </Box>
+
+                            <Box marginY="auto">
+                                {/* Shops Button */}
+                                <IconButton
+                                    onClick={()=>{}}
+                                    size="small"
+                                    sx={{
+                                        backgroundColor: "#f8f8f8",
+                                        display: { xs: "none", md: "flex" }
+                                    }}
+                                >
+                                    <Image src={shopsIcon} alt={'shops-Icon'} />
+                                    <Typography
+                                        variant='button'>
+                                        مشاهده فروشگاه ها
+                                    </Typography>
+                                </IconButton>
+                            </Box>
+
+                        </Box>
+
+                        {/* SearchBar */}
+                        <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
+                            <Box sx={{ width: 400, display: { xs: "none", md: "flex" } }} justifyContent={"center"} margin="auto">
+                                {isLogin && scrollYState > 251 ?
+                                    <Box onClick={(event) => setAnchorEl(event.currentTarget)} zIndex={500}>
+                                        <Searchbar w={400} open={!!anchorEl} handleClose={() => setAnchorEl(null)} handleText={setTextSearch} />
                                         <Box>
                                             <Popper
                                                 anchorEl={anchorEl}
@@ -109,7 +252,21 @@ export default function header() {
                                                                 id="composition-menu"
                                                                 aria-labelledby="composition-button"
                                                             >
-                                                                <MenuItem sx={{ width: "400px" }}>h</MenuItem>
+                                                                <MenuItem sx={{ width: "400px" }}>
+                                                                    {textSearch ?
+                                                                        <Box display="flex" justifyContent="center" marginY={"auto"} alignItems={"center"}>
+                                                                            <GridViewIcon sx={{ color: "rgb(224,224,224)" }} />
+                                                                            <Box marginRight={1}>
+                                                                                <Typography variant='subtitle2'>
+                                                                                    {textSearch}
+                                                                                </Typography>
+                                                                                <Typography variant='caption'>
+                                                                                    نمایش همه نتایح برای {textSearch}
+                                                                                </Typography>
+                                                                            </Box>
+                                                                        </Box> :
+                                                                        <></>}
+                                                                </MenuItem>
                                                                 <Divider />
                                                             </MenuList>
                                                         </Paper>
@@ -119,11 +276,12 @@ export default function header() {
                                         </Box>
                                     </Box>
                                     :
+                                    // Address
                                     <IconButton
-                                        onClick={handleClick}
+                                        onClick={(e) => { setAnchorEl(e.currentTarget) }}
                                         size="small"
                                     >
-                                        <Box display={"flex"} width="100%" >
+                                        <Box display={"flex"} width="100%">
                                             <Image src={locationIcon} width={18} alt={'shops-Icon'} />
                                             <Typography
                                                 variant='caption'>
@@ -148,24 +306,25 @@ export default function header() {
 
                                         </Box>
                                         <KeyboardArrowDownOutlinedIcon />
-
                                     </IconButton>
                                 }
                             </Box>
                         </ClickAwayListener>
 
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: "10px" }}>
-                            {/* <AccountMenu /> */}
-                            <IconButton 
-                            size="small"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                            >
-                            <Image src={loginIcon} alt="login Icon"/>
-                            <Typography variant='button'>
-                                ورود به اکالا
-                            </Typography>
-                            </IconButton>
+                            {isLogin ? <AccountMenu /> :
+                                <IconButton
+                                    size="small"
+                                    aria-label="show 17 new notifications"
+                                    color="inherit"
+                                    onClick = {()=> dispatch(setLogin(true))}
+                                >
+                                    <Image src={loginIcon} alt="login Icon" />
+                                    <Typography variant='button'>
+                                        ورود به اکالا
+                                    </Typography>
+                                </IconButton>
+                            }
                             <Divider orientation="vertical" flexItem />
                             <IconButton
                                 size="small"

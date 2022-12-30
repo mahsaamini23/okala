@@ -2,8 +2,8 @@ import api from "./axios";
 import { HttpResponse } from "types/http";
 import { User } from "types/model";
 
-export async function getExample() {
-  const res = await api.get<HttpResponse<User[]>>("/api/users/");
+export async function getProducts() {
+  const res = await api.get("/api/CategoriesProducts/");
   return res.data;
 }
 

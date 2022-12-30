@@ -1,13 +1,11 @@
 import React from "react";
 import {useCallback, useEffect, useRef, useState} from "react";
-import { items } from "../../../data/CategorySlider/CategorySlider";
+import ItemCategories from "../../../data/Categoryslider/CategorySlider";
 import Category from "../../main/CategorySlide/Category/Category";
 
 
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Image from 'next/image'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import GridViewIcon from '@mui/icons-material/GridView';
@@ -34,11 +32,11 @@ const CategorySlide=():JSX.Element=>{
 
     const handleNextCategory = useCallback(()=>{
         setShowBackButton(true);
-        categorySlide === items.length - 1 ? setCategorySlide(prev => 0) : setCategorySlide(prev => prev + 1)
+        categorySlide === ItemCategories.length - 1 ? setCategorySlide(prev => 0) : setCategorySlide(prev => prev + 1)
       },[categorySlide])
     
       const handlePrevCategory = useCallback(()=>{
-        categorySlide === 0 ? setCategorySlide(prev => items.length -1) : setCategorySlide(prev => prev - 1)
+        categorySlide === 0 ? setCategorySlide(prev => ItemCategories.length -1) : setCategorySlide(prev => prev - 1)
       },[categorySlide])
     
       useEffect(() => {
@@ -46,7 +44,6 @@ const CategorySlide=():JSX.Element=>{
       }, [categorySlide])
 
     return(
-        <Grid pt={{xs:6, md:8}} pb={{xs:4.5, md:4}} mb={{xs:6, md:1}} px={{xs:0, md:2}}>
           <Grid>
             <Grid pb={{xs:0, md:1}} width={'100%'} display={'flex'} alignItems={'center'} mb={{xs:0, md:4}}>
               <GridViewIcon sx={{fontSize:'20px', marginLeft:'6px'}}/>
@@ -78,8 +75,8 @@ const CategorySlide=():JSX.Element=>{
               >
                 <Grid container display={'flex'} justifyContent={'space-between'}>
                   <Grid container item width={'80%'} height={'400px'} overflow={'scroll'} display={'flex'} flexDirection={'row'} justifyContent={'center'} margin={'auto'}>
-                    {items.map((item:props) => (
-                    <SwiperSlide key={item.id} style={{ width:'40%',margin:'auto 40px auto -40px',display:'flex', justifyContent:'space-between', flexShrink:'100%', gap:'20px'}}>
+                    {ItemCategories.map((item:props) => (
+                    <SwiperSlide key={item.id} style={{ width:'40%',margin:'auto 40px auto -40px',display:'flex', justifyContent:'space-between', gap:'20px'}}>
                       <Category  id={item.id} name={item.name} background={item.background} image={item.image}/>
                     </SwiperSlide>
                     ))}      
@@ -100,7 +97,6 @@ const CategorySlide=():JSX.Element=>{
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
     )
 }
 export default CategorySlide;
