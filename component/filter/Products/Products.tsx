@@ -44,21 +44,20 @@ const Products=()=>{
                     </Grid>
                 </Grid>
             </Grid> 
-            <Grid height={'500px'}></Grid>
+            <Grid container item display={'flex'} justifyContent={'flex-start'} alignItems={'center'}  spacing={0} mb={3}>
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+            </Grid>
             <Grid>
                 <Stack spacing={2} display={'flex'} justifyContent={'center'}>
                     <Pagination count={5} variant="outlined" shape="rounded" sx={{alignSelf:'center'}} />
                 </Stack>
-            </Grid>
-            <Grid container item display={'flex'} justifyContent={'flex-start'} alignItems={'center'}  spacing={0}>
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
             </Grid>
         </Grid>
     )

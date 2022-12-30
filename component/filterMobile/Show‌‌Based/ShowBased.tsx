@@ -11,10 +11,13 @@ interface stateInterface {
     setOpenShowBased: (value : boolean) => void,
 }
 
-const ShowBased =({setOpenShowBased}:any) : JSX.Element =>{
+const ShowBased =({setOpenShowBased, setOpenAllFilters}:any) : JSX.Element =>{
 
     const handleOpenDialog=()=>{
         setOpenShowBased(true)
+    }
+    const handleOpenDialogFilters =()=>{
+        setOpenAllFilters(true)
     }
 
     return(
@@ -26,7 +29,7 @@ const ShowBased =({setOpenShowBased}:any) : JSX.Element =>{
             <Grid xs={1}  display={'flex'} justifyContent={'center'}>
                 <Grid width={'2px'} height={'20px'} bgcolor={'#e9e9e9'} borderRadius={'1px'}></Grid>
             </Grid>
-            <Grid item xs={5.5} display={'flex'} justifyContent={'center'} gap={'5px'}>
+            <Grid item xs={5.5} display={'flex'} justifyContent={'center'} gap={'5px'} onClick={handleOpenDialogFilters}>
                 <FilterListIcon/>
                 <Typography variant='subtitle2'>فیلترها</Typography>
             </Grid>

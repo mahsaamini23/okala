@@ -9,6 +9,7 @@ import Products from "../../component/filter/Products/Products";
 
 import ShowBased from "../../component/filterMobile/Show‌‌Based/ShowBased";
 import DialogShowBased from "../../component/filterMobile/DialogShowBased/DialogShowBased";
+import AllFilters from "../../component/filterMobile/AllFilters/AllFilters";
 
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -27,6 +28,7 @@ const Categories =(): JSX.Element=>{
 
     // logic for mobile
     const [openShowBased, setOpenShowBased] = useState<boolean>(false)
+    const [openAllFilters, setOpenAllFilters] = useState<boolean>(false)
     return(
         <Grid>
             <Grid mt={3} mb={4} mx={'auto'} px={4} bgcolor={'#fafafa'} sx={{display:{xs:'none', md:'block'}}}>
@@ -47,13 +49,13 @@ const Categories =(): JSX.Element=>{
                         <Products/>
                     </Grid>
                 </Grid>
-                <Grid container mt={4} mb={28} bgcolor={'red'}>hello</Grid>
             </Grid>
             <Grid sx={{display:{xs:'block',md:'none'}}}>
-                <ShowBased setOpenShowBased={setOpenShowBased}/>
+                <ShowBased setOpenShowBased={setOpenShowBased} setOpenAllFilters={setOpenAllFilters}/>
                 <DialogShowBased openShowBased={openShowBased} setOpenShowBased={setOpenShowBased}/>
+                <AllFilters openAllFilters={openAllFilters} setOpenAllFilters={setOpenAllFilters}/>
             </Grid>
-            <Grid container mt={4} mb={28}>footer</Grid>
+            {/* <Grid container mt={4} mb={28}>footer</Grid> */}
         </Grid>
     )
 }
