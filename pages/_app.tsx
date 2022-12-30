@@ -20,8 +20,20 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+export default function App({ Component, pageProps,...appProps }: AppPropsWithLayout) {
 
+  // array of all the paths that doesn't need layout
+  if ([`/auth`].includes(appProps.router.pathname)){
+    return (
+      <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+          <Component {...pageProps} />
+      </ThemeProvider>
+    </Provider>
+    )
+  }
+  
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
