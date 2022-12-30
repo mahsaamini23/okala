@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import InputBase from '@mui/material/InputBase';
-import SearchIcon from '../../../assets/image/main/header/search/search.icon.svg'
+import SearchIcon from '../../../assets/image/main/header/search/search.Icon.svg'
 import Image from 'next/image';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
