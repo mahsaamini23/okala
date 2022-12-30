@@ -127,7 +127,7 @@ export default function header() {
                                     <Divider sx={{ background: "rgb(250, 251, 253)" }} />
                                     {products?.map((item: any) => {
                                         return (
-                                            <>
+                                            <Box key={item.id}>
                                                 <ListItemButton onClick={() => setOnCollapse(old => old === item.name ? "" : item.name)} dir="rtl" sx={{ flex: "0 0 auto" }}>
                                                     {onCollapse === item.name ? <ExpandLess /> : <ExpandMore />}
                                                     <ListItemText primary={item.name} sx={{
@@ -141,7 +141,7 @@ export default function header() {
                                                 <Collapse in={onCollapse === item.name} timeout="auto" unmountOnExit>
                                                     {item?.sub?.map((value: any) => {
                                                         return (
-                                                            <List component="div" disablePadding>
+                                                            <List key={value.id} component="div" disablePadding>
                                                                 <ListItemButton>
                                                                     <ListItemText
                                                                         sx={{
@@ -191,7 +191,7 @@ export default function header() {
                                                         </ListItemButton>
                                                     </List>
                                                 </Collapse>
-                                            </>
+                                            </Box>
                                         )
                                     })}
                                 </List>

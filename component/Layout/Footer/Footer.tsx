@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <>
             <FooterMobile/>
-            <Grid xs={12} container sx={{ gap: '20px', marginTop: '30px' }}>
+            <Grid container sx={{ gap: '20px', marginTop: '30px' }}>
                 <Grid item xs={12} md={3}>
                     <Grid>
                         <Typography variant='h1'>راه های ارتباطی</Typography>

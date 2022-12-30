@@ -11,26 +11,22 @@ import { Box } from '@mui/system'
 
 type Props = {}
 
-function auth({}: Props) {
+function auth({ }: Props) {
   return (
-    <Grid container position={"relative"}>
+    <Grid container display={"flex"}>
       {/* Background */}
-        
-      <Grid item xs={6} position={"relative"}>
-        <Box position={"absolute"} sx={{ objectFit:"cover"}}>
-          <Image src={bgMain} alt="background login"/>
+      <Grid item xs={2} width={10} >
+        <Box top={0} zIndex={2} position={"fixed"}>
+          <Image src={bgMain} alt="background login" />
         </Box>
-        <Box position={"absolute"}>
-          <Image src={bgHover} alt="background login"/>
+        <Box top={0} position={"absolute"}>
+          <Image src={bgHover} alt="background login" />
         </Box>
-        <Box position={"absolute"}>
-          <Image src={bgHover1} alt="background login"/>
+        <Box top={0} position={"absolute"}>
+          <Image src={bgHover1} alt="background login" />
         </Box>
       </Grid>
-       <Grid item xs={6}>
 
-        asdf
-        </Grid>
 
     </Grid>
   )
