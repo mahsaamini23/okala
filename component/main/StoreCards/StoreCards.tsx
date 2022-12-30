@@ -22,7 +22,7 @@ const StoreCards = (): JSX.Element => {
             </Grid>
             <Grid container item xs={12} sx={{ gap:{xs:'10px', md:'20px'}, marginTop: '20px',marginBottom:{xs:'0', md:'30px'} }} >
                 {infoStoreCards.map(item => (
-                    <StoreCard id={item.id} image={item.image} title={item.title} rate={item.rate} subtitle={item.subtitle}></StoreCard>
+                    <StoreCard key={item.id} id={item.id} image={item.image} title={item.title} rate={item.rate} subtitle={item.subtitle}></StoreCard>
                 ))}
             </Grid>
             <Grid item md={12}  sx={{ display: { xs: 'none', md: 'flex' } , justifyContent: 'center', marginTop: '20px' }}>

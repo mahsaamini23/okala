@@ -5,8 +5,9 @@ import { User } from "types/model";
 import { Products } from "types/model";
 import products from "../data/Categoryslider/CategorySlider";
 
-const makeServer = () => {
+const makeServer = ({ environment = "test" } = {}) => {
   return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> }, any>({
+    environment,
     models: {
       user: Model,
       product: Model,

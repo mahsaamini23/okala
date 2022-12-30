@@ -10,7 +10,9 @@ import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import Layout from "../component/Layout/Layout";
 
-makeServer();
+if (process.env.NODE_ENV === "development"){
+  makeServer({ environment: "development" })
+}
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
