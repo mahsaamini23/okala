@@ -16,7 +16,7 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import loginIcon from '../../../assets/image/main/header/AccountMenu/accountLogin.icon.svg'
 
 import Image from 'next/image';
-import { Container, Divider, Grid, Grow, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, MenuList, Paper, Popper, SwipeableDrawer } from '@mui/material';
+import { Container, Divider, Grid, Grow, List, ListItemButton, ListItemText, ListSubheader, MenuItem, MenuList, Paper, Popper, SwipeableDrawer } from '@mui/material';
 import Link from 'next/link';
 import Searchbar from '../../common/Searchbar/Searchbar';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -27,25 +27,18 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 
 import { getProducts } from '../../../api/api'
+import GridViewIcon from '@mui/icons-material/GridView';
+
 
 
 export default function header() {
-    const [onModalState, setModalState] = React.useState(false)
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [scrollYState, setScrollYState] = React.useState<number>(0);
     const [onMenu, setOnMenu] = React.useState<boolean>(false);
     const [onCollapse, setOnCollapse] = React.useState("")
     const [products, setProducts] = React.useState([])
+    const [textSearch, setTextSearch] = React.useState('')
 
-    // Function handleClick Search subComponent
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        setModalState(true);
-        setAnchorEl(event.currentTarget);
-    }
-    const handleClickAway = () => {
-        setModalState(false);
-        setAnchorEl(null);
-    }
 
     // Modal for gray background
     const Modal = styled('div')(() => ({
@@ -54,7 +47,7 @@ export default function header() {
         backgroundColor: "rgba(0,0,0,.4)",
         width: "100%",
         height: "100%",
-        display: onModalState ? "block" : "none"
+        display: anchorEl ? "block" : "none"
     }));
 
     // Get Products data
@@ -73,7 +66,6 @@ export default function header() {
     }, []);
 
     // Handle open or close menubar mobile state
-
 
     return (
         <Box sx={{ flexGrow: 1, paddingY: { xs: 2, md: 6 } }}>
@@ -120,6 +112,7 @@ export default function header() {
                                         </Box>
                                     }
                                 >
+                                    <Divider sx={{ background: "rgb(250, 251, 253)" }} />
                                     {products?.map((item: any) => {
                                         return (
                                             <>
@@ -137,29 +130,59 @@ export default function header() {
                                                     {item?.sub?.map((value: any) => {
                                                         return (
                                                             <List component="div" disablePadding>
-                                                                <ListItemButton sx={{ pl: 4 }}>
+                                                                <ListItemButton>
                                                                     <ListItemText
                                                                         sx={{
                                                                             flexGrow: "0",
                                                                             "& span": {
                                                                                 fontSize: { xs: "0.9rem", md: "1rem", lg: "1.2rem" },
                                                                             },
-                                                                            marginRight: "25px",
+                                                                            marginRight: "10px",
                                                                             marginY: 0,
+                                                                            padding: 0,
                                                                             color: "rgb(119, 119, 119)",
                                                                         }}
-                                                                        primary={value?.title}
+                                                                        primary={
+                                                                            <Typography
+                                                                                variant='caption'
+                                                                            >{value?.title}
+                                                                            </Typography>
+                                                                        }
                                                                     />
                                                                 </ListItemButton>
                                                             </List>
                                                         )
                                                     })}
+
+                                                    <List component="div" disablePadding>
+                                                        <ListItemButton>
+                                                            <ListItemText
+                                                                sx={{
+                                                                    flexGrow: "0",
+                                                                    "& span": {
+                                                                        fontSize: { xs: "0.9rem", md: "1rem", lg: "1.2rem" },
+                                                                    },
+                                                                    marginRight: "10px",
+                                                                    marginY: 0,
+                                                                    color: "rgb(119, 119, 119)",
+                                                                }}
+                                                                primary={
+                                                                    <Typography
+                                                                        variant='caption'
+                                                                        sx={{ textDecoration: 'underline' }}
+                                                                        marginRight="20px"
+                                                                    >
+                                                                        مشاهده همه موارد
+                                                                    </Typography>
+                                                                }
+                                                            />
+                                                        </ListItemButton>
+                                                    </List>
                                                 </Collapse>
                                             </>
                                         )
                                     })}
                                 </List>
-                                <Divider />
                             </Box>
                         </SwipeableDrawer>
 
@@ -192,11 +215,11 @@ export default function header() {
                         </Box>
 
                         {/* SearchBar */}
-                        <ClickAwayListener onClickAway={handleClickAway}>
+                        <ClickAwayListener onClickAway={() => setAnchorEl(null)}>
                             <Box sx={{ width: 400, display: { xs: "none", md: "flex" } }} justifyContent={"center"} margin="auto">
-                                {scrollYState > 250 ?
-                                    <Box onClick={handleClick} zIndex={500}>
-                                        <Searchbar open={!!anchorEl} />
+                                {scrollYState > 251 ?
+                                    <Box onClick={(event) => setAnchorEl(event.currentTarget)} zIndex={500}>
+                                        <Searchbar w={400} open={!!anchorEl} handleClose={() => setAnchorEl(null)} handleText={setTextSearch} />
                                         <Box>
                                             <Popper
                                                 anchorEl={anchorEl}
@@ -216,7 +239,21 @@ export default function header() {
                                                                 id="composition-menu"
                                                                 aria-labelledby="composition-button"
                                                             >
-                                                                <MenuItem sx={{ width: "400px" }}>h</MenuItem>
+                                                                <MenuItem sx={{ width: "400px" }}>
+                                                                    {textSearch ?
+                                                                        <Box display="flex" justifyContent="center" marginY={"auto"} alignItems={"center"}>
+                                                                            <GridViewIcon sx={{ color: "rgb(224,224,224)" }} />
+                                                                            <Box marginRight={1}>
+                                                                                <Typography variant='subtitle2'>
+                                                                                    {textSearch}
+                                                                                </Typography>
+                                                                                <Typography variant='caption'>
+                                                                                    نمایش همه نتایح برای {textSearch}
+                                                                                </Typography>
+                                                                            </Box>
+                                                                        </Box> :
+                                                                        <></>}
+                                                                </MenuItem>
                                                                 <Divider />
                                                             </MenuList>
                                                         </Paper>
@@ -227,7 +264,7 @@ export default function header() {
                                     </Box>
                                     :
                                     <IconButton
-                                        onClick={handleClick}
+                                        onClick={(e) => { setAnchorEl(e.currentTarget) }}
                                         size="small"
                                     >
                                         <Box display={"flex"} width="100%">
