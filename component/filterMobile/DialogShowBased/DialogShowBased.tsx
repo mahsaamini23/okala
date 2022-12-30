@@ -8,7 +8,6 @@ import { TransitionProps } from '@mui/material/transitions';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
 
 interface stateInterface {
     openShowBased: boolean,
@@ -46,14 +45,15 @@ const DialogShowBased =({openShowBased,setOpenShowBased}:stateInterface) : JSX.E
                 </Grid>
                 <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="پرفروشترین"
+                    defaultValue="bestselling"
                     name="radio-buttons-group"
+                    sx={{marginLeft:'25px'}}
                 >
-                    <FormControlLabel value="bestselling" control={<Radio />} label="پرفروشترین" />
-                    <FormControlLabel value="biggest discount" control={<Radio />} label="بیشترین تخفیف" />
-                    <FormControlLabel value="newest" control={<Radio />} label="جدیدترین" />
-                    <FormControlLabel value="cheapest" control={<Radio />} label="ارزانترین" />
-                    <FormControlLabel value="most expensive" control={<Radio />} label="گرانترین" />
+                    <FormControlLabel value="bestselling" control={<Radio />} label="پرفروشترین" sx={{borderBottom:'1px solid #e9e9e9'}} />
+                    <FormControlLabel value="biggest discount" control={<Radio />} label="بیشترین تخفیف" sx={{borderBottom:'1px solid #e9e9e9', marginTop:'10px'}}/>
+                    <FormControlLabel value="newest" control={<Radio />} label="جدیدترین" sx={{borderBottom:'1px solid #e9e9e9', marginTop:'15px'}}/>
+                    <FormControlLabel value="cheapest" control={<Radio />} label="ارزانترین" sx={{borderBottom:'1px solid #e9e9e9', marginTop:'15px'}}/>
+                    <FormControlLabel value="most expensive" control={<Radio />} label="گرانترین" sx={{marginTop:'15px'}}/>
                 </RadioGroup>
             </Grid>
         </Dialog>
