@@ -12,7 +12,7 @@ import AdsNoLogin from '../component/main/AdsNoLogin/AdsNoLogin';
 import type { NextPageWithLayout } from './_app'
 import type { ReactElement } from 'react'
 import Layout from '../component/Layout/Layout';
-import { createStyles, Divider, Grid, Grow, MenuItem, MenuList, Paper, Popper, Typography } from '@mui/material';
+import { Divider, Grow, MenuItem, MenuList, Paper, Popper, Typography } from '@mui/material';
 import Searchbar from "../component/common/Searchbar/Searchbar"
 import { styled } from '@mui/material/styles';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
@@ -20,11 +20,17 @@ import { Box } from '@mui/system';
 import GridViewIcon from '@mui/icons-material/GridView';
 import { useSelector } from 'react-redux';
 
+import { ToastContainer, toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Home: NextPageWithLayout = () => {
+
   // useState Config
   const [scrollYState, setScrollYState] = React.useState<number>(0);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [textSearch, setTextSearch] = React.useState('')
+  ////just for detect componentDidMount
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
 
   // Redux Config
   const isLogin = useSelector((state: any) => state.auth.isLogin)
@@ -53,8 +59,28 @@ const Home: NextPageWithLayout = () => {
     display: !!anchorEl ? "block" : "none"
   }));
 
+  // Toasted 
+  React.useLayoutEffect(() => {
+    if (componentDidMount) {
+      isLogin? 
+      toast.success("محمد حسین مقدم فر عزیز خوش آمدید"):
+      toast.success("شما از سیستم خارج شدید")
+    } else (
+      setComponentDidMount(true))
+  }, [isLogin])
+
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        theme="dark"
+        transition={Flip}
+      />
       <Modal />
       {/* SearchBar */}
       {isLogin ?
