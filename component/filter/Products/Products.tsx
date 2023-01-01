@@ -44,7 +44,7 @@ const Products=()=>{
                     </Grid>
                 </Grid>
             </Grid> 
-            <Grid container item display={'flex'} justifyContent={'flex-start'} alignItems={'center'}  spacing={0} mb={3}>
+            <Grid my={2} container item display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
                 <ProductCard />
                 <ProductCard />
                 <ProductCard />
@@ -54,7 +54,7 @@ const Products=()=>{
                 <ProductCard />
                 <ProductCard />
             </Grid>
-            <Grid>
+            <Grid mt={7}>
                 <Stack spacing={2} display={'flex'} justifyContent={'center'}>
                     <Pagination count={5} variant="outlined" shape="rounded" sx={{alignSelf:'center'}} />
                 </Stack>

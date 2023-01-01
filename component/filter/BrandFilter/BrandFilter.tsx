@@ -40,7 +40,7 @@ const BrandFilter=({setShowAllFilter}:any) :JSX.Element =>{
     }
 
     return(
-        <Grid p={2} boxShadow={'0px 2px rgba(22 22 22 4%) !important'} bgcolor={'#fff'} borderRadius={'4px'}>
+        <Grid p={2} boxShadow={'0px 2px 10px 5px #e9e9e9'} bgcolor={'#fff'} borderRadius={'4px'}>
             <Grid mb={'10px'} height={'33px'} display={'flex'} justifyContent={'space-between'} 
                 alignItems={'baseline'} position={'relative'}>
                 <Grid display={'flex'} justifyContent={'flex-start'} alignItems={'center'} gap={'5px'}>

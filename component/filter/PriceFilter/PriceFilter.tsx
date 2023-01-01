@@ -37,7 +37,7 @@ const PriceFilter =({setShowAllFilter}:any) :JSX.Element=>{
     }
 
     return(
-        <Grid p={2} bgcolor={'#fff'} boxShadow={'0px 2px rgba(22 22 22 4%) !important'} borderRadius={'4px'} borderBottom={{xs:'1px solid #e9e9e9', md:'0'}}>
+        <Grid p={2} bgcolor={'#fff'} boxShadow={'0px 2px 10px 5px #e9e9e9'} borderRadius={'4px'} borderBottom={{xs:'1px solid #e9e9e9', md:'0'}}>
             <Grid mb={'10px'} display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
                 <Grid display={'flex'} justifyContent={'flex-start'} alignItems={'center'} gap={'5px'}>
                     <Grid width='4px' height='16px' bgcolor={'#7cc8cc'} borderRadius={'5px'} sx={{display:{xs:'none', md:'block'}}}></Grid>
