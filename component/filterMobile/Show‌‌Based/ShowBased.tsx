@@ -6,10 +6,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 
 
 
-interface stateInterface {
-    openShowBased: boolean,
-    setOpenShowBased: (value : boolean) => void,
-}
+
 
 const ShowBased =({setOpenShowBased, setOpenAllFilters}:any) : JSX.Element =>{
 
