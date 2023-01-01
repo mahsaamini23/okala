@@ -24,9 +24,9 @@ const Categories =(): JSX.Element=>{
 
     return(
         <Grid>
-            //content for desktop
-            <Grid mt={3} mb={4} mx={'auto'} px={4} bgcolor={'#fafafa'} sx={{display:{xs:'none', md:'block'}}}>
-                <Grid container item mb={4} display={'flex'} justifyContent={'space-between'}>
+            {/* content for desktop */}
+            <Grid pt={2} mb={4} mx={'auto'} px={4} bgcolor={'#fafafa'} sx={{display:{xs:'none', md:'block'}}}>
+                <Grid container item pb={4} display={'flex'} justifyContent={'space-between'}>
                     <Typography variant={'caption'}>نام فروشگاه</Typography>
                     <Typography variant={'caption'}>تعداد کالا</Typography>
                 </Grid>
@@ -37,14 +37,14 @@ const Categories =(): JSX.Element=>{
                         <SwitchFilter/>
                         <PriceFilter setShowAllFilter={setShowAllFilter}/>
                     </Grid>
-                    <Grid container item display={'flex'} flexDirection={'column'}
-                    bgcolor={'#fff'} borderRadius={'4px'} padding={'25px 16px'}
+                    <Grid mb={2} container item display={'flex'} flexDirection={'column'}
+                    bgcolor={'#fff'} borderRadius={'4px'} padding={'25px 16px'} boxShadow={'0px 2px 10px 5px #e9e9e9'}
                     >
                         <Products/>
                     </Grid>
                 </Grid>
             </Grid>
-            //content for mobile
+            {/* content for mobile */}
             <Grid mt={3} sx={{display:{xs:'block',md:'none'}}}>
                 <ShowBased setOpenShowBased={setOpenShowBased} setOpenAllFilters={setOpenAllFilters}/>
                 <Filter header={"فیلترها"} title={"حذف همه فیلترها"} openFilter={openAllFilters} setOpenFilter={setOpenAllFilters} nameBtn={"اعمال فیلتر"} children={<MobileAllFilters setOpenCategory={setOpenCategory} setOpenBrand={setOpenBrand}/>}/>
