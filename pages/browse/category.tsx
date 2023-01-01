@@ -1,36 +1,30 @@
 import {useState} from "react";
-import { GetStaticPaths } from "next";
 
 import BrandFilter from "../../component/filter/BrandFilter/BrandFilter";
 import PriceFilter from "../../component/filter/PriceFilter/PriceFilter";
 import SwitchFilter from "../../component/filter/SwitchFilter/SwitchFilter";
 import AllFilter from "../../component/filter/AllFilters/AllFilters";
 import Products from "../../component/filter/Products/Products";
-
+import Filter from "../../component/filterMobile/Filter/Filter";
+import CategoryFilter from "../../component/filter/CategoryFilter/CategoryFilter";
 import ShowBased from "../../component/filterMobile/Show‌‌Based/ShowBased";
-import DialogShowBased from "../../component/filterMobile/DialogShowBased/DialogShowBased";
-import AllFilters from "../../component/filterMobile/AllFilters/AllFilters";
 
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-
-interface stateInterface {
-    showAllFilter: boolean,
-    setShowAllFilter: (value : boolean) => void,
-    openShowBased:boolean,
-    setOpenShowBased: (value : boolean) => void,
-}
+import MobileAllFilters from "../../component/filterMobile/MobileAllFilters/MobileAllFilters";
 
 const Categories =(): JSX.Element=>{
+    //logic for desktop
     const [showAllFilter, setShowAllFilter] = useState<boolean>(false)
-
-
     // logic for mobile
     const [openShowBased, setOpenShowBased] = useState<boolean>(false)
     const [openAllFilters, setOpenAllFilters] = useState<boolean>(false)
+    const [openCategory, setOpenCategory] = useState<boolean>(false)
+    const [openBrand, setOpenBrand] = useState<boolean>(false)
+
     return(
         <Grid>
+            //content for desktop
             <Grid mt={3} mb={4} mx={'auto'} px={4} bgcolor={'#fafafa'} sx={{display:{xs:'none', md:'block'}}}>
                 <Grid container item mb={4} display={'flex'} justifyContent={'space-between'}>
                     <Typography variant={'caption'}>نام فروشگاه</Typography>
@@ -50,12 +44,13 @@ const Categories =(): JSX.Element=>{
                     </Grid>
                 </Grid>
             </Grid>
+            //content for mobile
             <Grid mt={3} sx={{display:{xs:'block',md:'none'}}}>
                 <ShowBased setOpenShowBased={setOpenShowBased} setOpenAllFilters={setOpenAllFilters}/>
-                <DialogShowBased openShowBased={openShowBased} setOpenShowBased={setOpenShowBased}/>
-                <AllFilters openAllFilters={openAllFilters} setOpenAllFilters={setOpenAllFilters}/>
+                <Filter header={"فیلترها"} title={"حذف همه فیلترها"} openFilter={openAllFilters} setOpenFilter={setOpenAllFilters} nameBtn={"اعمال فیلتر"} children={<MobileAllFilters setOpenCategory={setOpenCategory} setOpenBrand={setOpenBrand}/>}/>
+                <Filter header={"دسته بندی نتایج"} title={"حذف فیلتر"} openFilter={openCategory} setOpenFilter={setOpenCategory} nameBtn={"ثبت فیلتر"} children={<CategoryFilter/>}/>
+                <Filter header={"برند"} title={"حذف فیلتر"} openFilter={openBrand} setOpenFilter={setOpenBrand} nameBtn={"ثبت فیلتر"} children={<BrandFilter/>}/>
             </Grid>
-            {/* <Grid container mt={4} mb={28}>footer</Grid> */}
         </Grid>
     )
 }
