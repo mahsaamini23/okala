@@ -61,7 +61,8 @@ const theme = createTheme({
     
     palette: {
         Poster:{
-            main: 'rgba(55,143,56)'
+            main: 'rgba(55,143,56)',
+
         },
         primary: {
             main: '#121212'
@@ -100,6 +101,11 @@ const theme = createTheme({
             fontSize: 18,
             fontWeight: 400,
             color: 'rgb(54, 54, 54)',
+        },
+        h6: {
+            fontSize:"1rem",
+            fontWeight: 500,
+            color: "black"
         },
         subtitle1: {
             fontSize: 16,
