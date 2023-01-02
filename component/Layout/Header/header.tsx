@@ -224,10 +224,12 @@ export default function header() {
                                     }}
                                 >
                                     <Image src={shopsIcon} alt={'shops-Icon'} />
-                                    <Typography
-                                        variant='button'>
-                                        مشاهده فروشگاه ها
-                                    </Typography>
+                                    <Link href={"/#GoToStore"}>
+                                        <Typography
+                                            variant='button'>
+                                            مشاهده فروشگاه ها
+                                        </Typography>
+                                    </Link>
                                 </IconButton>
                             </Box>
 
