@@ -25,7 +25,7 @@ const makeServer = ({ environment = "test" } = {}) => {
     },
     routes() {
       this.passthrough('/_next/static/development/_devPagesManifest.json');
-      this.namespace = "https://okala-one.vercel.app/api";
+      this.namespace = "api";
       this.get(
         "/CategoriesProducts",
         (schema, request) => {
