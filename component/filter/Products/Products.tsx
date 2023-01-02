@@ -9,7 +9,32 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import ProductCard from "./ProductCard/ProductCard";
 
-const Products=()=>{
+
+type Item={
+    idProduct: number,
+    idShop: number,
+    idCategory: number,
+    idSubCategory: number,
+    idBrand: number,
+    type: string,
+    points: {
+        1: number,
+        2: number,
+        3: number,
+        4: number,
+        5: number,
+        avg: number
+    },
+    image: string|any,
+    price: number,
+    order: number,
+    entity: number,
+    title: string,
+    date: Date,
+    purches:number
+}
+
+const Products=({productsList}:any) =>{
     const [filterBtn, setFilterBtn] = useState([{title:'پرفروشترین'}, {title:'بیشترین تخفیف'},{title:'جدیدترین'},{title:'ارزانترین'},{title:'گرانترین'}]);
 
     return(
@@ -45,14 +70,9 @@ const Products=()=>{
                 </Grid>
             </Grid> 
             <Grid my={2} container item display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {productsList.map((product : Item )=>(
+                    <ProductCard image={product.image} price={product.price} title={product.title} order={product.order} />
+                ))}
             </Grid>
             <Grid mt={7}>
                 <Stack spacing={2} display={'flex'} justifyContent={'center'}>
