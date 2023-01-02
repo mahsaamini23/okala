@@ -60,7 +60,7 @@ const Home: NextPageWithLayout = () => {
   }));
 
   // Toasted 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if (componentDidMount) {
       isLogin? 
       toast.success("محمد حسین مقدم فر عزیز خوش آمدید"):

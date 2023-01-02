@@ -32,6 +32,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import AccountMenu from './AccountMenu/accountMenu';
 import { setLogin } from '../../../Toolkit/slices/authSlice/auth.slice';
 
+// Modal Address
+import Address from "./Address/Address"
 
 
 export default function header() {
@@ -43,6 +45,8 @@ export default function header() {
     const [onCollapse, setOnCollapse] = React.useState("")
     const [products, setProducts] = React.useState([])
     const [textSearch, setTextSearch] = React.useState('')
+    ////open Address Modal State
+    const [openAddrModal,setOpenAddrModal] = React.useState(false)
 
     // Redux ToolKit
     const isLogin = useSelector((state: any) => state.auth.isLogin)
@@ -79,6 +83,8 @@ export default function header() {
         <Box sx={{ flexGrow: 1, paddingY: { xs: 2, md: 6 } }}>
             {/* AppBar */}
             <AppBar position="fixed" sx={{ boxShadow: "5px 5px 1000px rgb(229, 231, 233)", ["& .MuiContainer-root"]: { padding: 0 } }}>
+                {/* Address Modal */}
+                <Address open={openAddrModal} setOpen = {setOpenAddrModal}></Address>
 
                 {/* Modal */}
                 <Modal />
@@ -92,7 +98,7 @@ export default function header() {
                             <MenuIcon />
                         </IconButton>
 
-                        {/* Menu List */}
+                        {/* Mobile State --> Menu List */}
                         <SwipeableDrawer
                             anchor={"right"}
                             open={onMenu}
@@ -278,7 +284,7 @@ export default function header() {
                                     :
                                     // Address
                                     <IconButton
-                                        onClick={(e) => { setAnchorEl(e.currentTarget) }}
+                                        onClick={(e) => { setOpenAddrModal(true) }}
                                         size="small"
                                     >
                                         <Box display={"flex"} width="100%">
