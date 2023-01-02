@@ -56,8 +56,6 @@ const AdsNoLogin = (props: Props) => {
                 </Grid>
             </Container>
         </MyComponent>
-        
-
     )
 }
 
