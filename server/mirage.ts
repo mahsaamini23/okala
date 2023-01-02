@@ -5,7 +5,7 @@ import { User } from "types/model";
 import { Products } from "types/model";
 import { ProductsList} from "types/model";
 import products from "../data/Categoryslider/CategorySlider";
-// import { productList } from "../data/ProductList/productList";
+import productLists  from "../data/ProductList/productList";
 
 const makeServer = ({ environment = "test" } = {}) => {
   return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> , productList: ModelDefinition<ProductsList>}, any> ({
@@ -21,30 +21,7 @@ const makeServer = ({ environment = "test" } = {}) => {
     fixtures: {
       users,
       products,
-      productLists : [{
-        idProduct:2313,
-        idShop:2,
-        idCategory:3,
-        idBrand: 1, //برند زرده ی طلایی
-        type:'تخم مرِغ',
-
-        Points:{
-            1:4,
-            2:0,
-            3:0,
-            4:4,
-            5:4,
-            average:2.4,
-        },
-
-        // image: img2311,
-        price:400500,
-        order:3,
-        entity:true,
-        title:'تخم مرِغ ۹ عددی زرده طلایی',
-        date:1401/9/24,
-        purches:12,
-    },],
+      productLists ,
     },
     routes() {
       this.passthrough('/_next/static/development/_devPagesManifest.json');
