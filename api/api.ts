@@ -7,7 +7,12 @@ export async function getProducts() {
   return res.data;
 }
 
+export async function getProductList() {
+  const res = await api.get("/api/ProductsList/");
+  return res.data;
+}
+
 export async function postExample() {
-    const res = await api.post("/api/users");
-    return res.data;
-  }
+  const res = await api.post("/api/users");
+  return res.data;
+}
