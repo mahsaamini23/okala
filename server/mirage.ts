@@ -8,12 +8,12 @@ import products from "../data/Categoryslider/CategorySlider";
 // import { productList } from "../data/ProductList/productList";
 
 const makeServer = ({ environment = "test" } = {}) => {
-  return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> , productData: ModelDefinition<ProductsList>}, any> ({
+  return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> , productList: ModelDefinition<ProductsList>}, any> ({
     environment,
     models: {
       user: Model,
       product: Model,
-      productData:Model,
+      productList:Model,
     },
     seeds(server) {
       server.loadFixtures();
@@ -21,7 +21,7 @@ const makeServer = ({ environment = "test" } = {}) => {
     fixtures: {
       users,
       products,
-      productList : [{
+      productLists : [{
         idProduct:2313,
         idShop:2,
         idCategory:3,
@@ -79,7 +79,7 @@ const makeServer = ({ environment = "test" } = {}) => {
           if (request.queryParams.error) return new Response(400);
           return {
             message: "Fetch productsList success",
-            data: request.queryParams.empty ? [] : schema.all("productData").models,
+            data: request.queryParams.empty ? [] : schema.all("productList").models,
           };
         },
         { timing: 100 }

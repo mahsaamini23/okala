@@ -933,3 +933,4 @@ export const productList = [
     // ...drinks,
 ]
 
+export default productList
