@@ -22,19 +22,19 @@ import img2381 from "../../assets/image/Protein/2381.png";
 import img2391 from "../../assets/image/Protein/2391.png";
 import img2392 from "../../assets/image/Protein/2392.png";
 import img2393 from "../../assets/image/Protein/2393.png";
-import img2394 from "../../assets/image/Protein/2394.png";
+// import img2394 from "../../assets/image/Protein/2394.png";
 import img23101 from "../../assets/image/Protein/23101.png";
 import img23102 from "../../assets/image/Protein/23102.png";
-import img23111 from "../../assets/image/Protein/239111.png";
-import img23112 from "../../assets/image/Protein/239112.png";
-import img23113 from "../../assets/image/Protein/239113.png";
-import img23121 from "../../assets/image/Protein/239121.png";
-import img23122 from "../../assets/image/Protein/239122.png";
-import img23123 from "../../assets/image/Protein/239123.png";
-import img23131 from "../../assets/image/Protein/239131.png";
-import img23141 from "../../assets/image/Protein/239141.png";
-import img23142 from "../../assets/image/Protein/239142.png";
-import img23143 from "../../assets/image/Protein/239143.png";
+import img23111 from "../../assets/image/Protein/23111.png";
+import img23112 from "../../assets/image/Protein/23112.png";
+import img23113 from "../../assets/image/Protein/23113.png";
+import img23121 from "../../assets/image/Protein/23121.png";
+import img23122 from "../../assets/image/Protein/23122.png";
+import img23123 from "../../assets/image/Protein/23123.png";
+import img23131 from "../../assets/image/Protein/23131.png";
+import img23141 from "../../assets/image/Protein/23142.png";
+import img23142 from "../../assets/image/Protein/23142.png";
+import img23143 from "../../assets/image/Protein/23143.png";
 
 
 
@@ -96,7 +96,7 @@ const protein = [
         order:0,
         entity:true,
         title:'تخم مرغ ۶ عددی زرده طلایی',
-        date:1401/09/20,
+        date:1401/9/20,
         purches:2,
     },
     {
@@ -120,7 +120,7 @@ const protein = [
         order:5,
         entity:true,
         title:'تخم مرِغ ۱۵ عددی زرده طلایی',
-        date:1401/09/26,
+        date:1401/9/26,
         purches:11,
     },
     {
@@ -144,7 +144,7 @@ const protein = [
         order:3,
         entity:true,
         title:'تخم مرِغ ۹ عددی زرده طلایی',
-        date:1401/09/24,
+        date:1401/9/24,
         purches:12,
     },
     {
@@ -168,7 +168,7 @@ const protein = [
         order:10,
         entity:true,
         title:'تخم مرغ ۲۰ عددی زرده طلایی',
-        date:1401/09/11,
+        date:1401/9/11,
         purches:10,
     },
     {
@@ -192,7 +192,7 @@ const protein = [
         order:0,
         entity:false,
         title:'تخم مرغ در پوش دار ۲۰ عددی تلاونگ',
-        date:1401/09/14,
+        date:1401/9/14,
         purches:14,
     },
     {
@@ -216,7 +216,7 @@ const protein = [
         order:0,
         entity:false,
         title:'تخم مرغ ۹ عددی تلاونگ',
-        date:1401/09/15,
+        date:1401/9/15,
         purches:11,
     },
     {
@@ -240,7 +240,7 @@ const protein = [
         order:0,
         entity:false, 
         title:'تخم مرغ ۱۵ عددی تلاونگ',
-        date:1401/09/13,
+        date:1401/9/13,
         purches:11,
     },
     {
@@ -264,7 +264,7 @@ const protein = [
         order:0,
         entity:false,
         title:'تخم مرغ ۶ عددی تلاونگ',
-        date:1401/09/28,
+        date:1401/9/28,
         purches:7,
     },
     {
@@ -288,7 +288,7 @@ const protein = [
         order:0,
         entity:false,
         title:'تخم مرغ 30 عددی وانیا',
-        date:1401/09/19,
+        date:1401/9/19,
         purches:6,
     },
     {
@@ -312,7 +312,7 @@ const protein = [
         order:0,
         entity:false,
         title:'رول فلفلی سفیده پخته تخم مرغ ۲۰۰ گرمی تلارول',
-        date:1401/09/12,
+        date:1401/9/12,
         purches:0,
     },
     // گوشت ماهی
@@ -337,7 +337,7 @@ const protein = [
         order:5,
         entity:true,
         title:'استیک قزل سالمون 500 گرمی شارین',
-        date:1401/09/08,
+        date:1401/9/11,
         purches:4,
     },
     {
@@ -361,7 +361,7 @@ const protein = [
         order:0,
         entity:false,
         title:'فیله ماهی تیلاپیا ۶۰۰ گرمی شارین',
-        date:1401/09/10,
+        date:1401/9/10,
         purches:0,
     },
     {
@@ -385,7 +385,7 @@ const protein = [
         order:0,
         entity:false,
         title:'فیله ماهی گالیت ۵۰۰ گرمی شارین',
-        date:1401/09/11,
+        date:1401/9/11,
         purches:0,
     },
     {
@@ -409,7 +409,7 @@ const protein = [
         order:0,
         entity:false,
         title:'فیله ماهی بدون پوست حسون 700 گرمی شارین',
-        date:1401/09/16,
+        date:1401/9/16,
         purches:11,
     },
     {
@@ -433,7 +433,7 @@ const protein = [
         order:0,
         entity:false,
         title:'فیله ماهی حسون بدون پوست 400 گرمی کیمبال',
-        date:1401/09/16,
+        date:1401/9/16,
         purches:143,
     },
     
@@ -458,7 +458,7 @@ const protein = [
         order:0,
         entity:false,
         title:'فیله قزل آلا 400 گرمی کیمبال',
-        date:1401/09/17,
+        date:1401/9/17,
         purches:7,
     },
     {
@@ -482,7 +482,7 @@ const protein = [
         order:0,
         entity:false,
         title:'فیله ماهی بلک مارلین 400 گرمی تحفه',
-        date:1401/09/22,
+        date:1401/9/22,
         purches:0,
     },
     {
@@ -506,7 +506,7 @@ const protein = [
         order:0,
         entity:false,
         title:'ماهی حسون 700 گرمی تحفه',
-        date:1401/09/13,
+        date:1401/9/13,
         purches:1,
     },
     {
@@ -530,7 +530,7 @@ const protein = [
         order:0,
         entity: false,
         title:'فیله ماهی سوخاری 500 گ مارین',
-        date:1401/09/12,
+        date:1401/9/12,
         purches:1,
     },
     //گوشت گاو و گوساله
@@ -555,7 +555,7 @@ const protein = [
         order:5,
         entity:true,
         title:'چرخکرده مخلوط نیم کیلویی پویا پروتئین',
-        date:1401/09/17,
+        date:1401/9/17,
         purches:10,
     },
     {
@@ -579,7 +579,7 @@ const protein = [
         order:0,
         entity:true,
         title:'چرخکرده مخلوط 1 کیلویی پویا پروتئین',
-        date:1401/09/18,
+        date:1401/9/18,
         purches:37,
     },
     {
@@ -603,7 +603,7 @@ const protein = [
         order:0,
         entity:false,
         title:'چرخکرده گوساله 1 کیلویی پویا پروتئین',
-        date:1401/09/28,
+        date:1401/9/28,
         purches:7,
     }, 
     {
@@ -622,12 +622,12 @@ const protein = [
             average:4.3,
         },
 
-        image: img2394,
+        image: img2393,
         price:-1,
         order:0,
         entity:false,
         title:'ران 1 گوساله پویا پروتئین',
-        date:1401/09/25,
+        date:1401/9/25,
         purches:12,
     },
     {
@@ -651,7 +651,7 @@ const protein = [
         order:0,
         entity:false,
         title:'ران گوساله یک کیلوگرمی هایزم',
-        date:1401/09/23,
+        date:1401/9/23,
         purches:6,
     },
     {
@@ -675,7 +675,7 @@ const protein = [
         order:0,
         entity:false,
         title:'چرخکرده مخلوط 800 گرمی هایزم',
-        date:1401/09/25,
+        date:1401/9/25,
         purches:22,
     },
     {
@@ -699,7 +699,7 @@ const protein = [
         order:0,
         entity:false,
         title:'گوشت چرخکرده مخلوط 1 کیلویی آریان',
-        date:1401/09/3,
+        date:1401/9/3,
         purches:14,
     },
     {
@@ -723,7 +723,7 @@ const protein = [
         order:0,
         entity:false,
         title:'سیراب و شیردان گوساله یک دست کامل رزا',
-        date:1402/09/26,
+        date:1402/9/26,
         purches:1,
     },
     {
@@ -747,7 +747,7 @@ const protein = [
         order:0,
         entity:false,
         title:'ران گوساله 1 کیلویی رزا',
-        date:1401/09/22,
+        date:1401/9/22,
         purches:54,
     },
     {
@@ -771,7 +771,7 @@ const protein = [
         order:3,
         entity:true,
         title:'چرخکرده مخلوط یک کیلویی آیدا پروتئین',
-        date:1401/09/20,
+        date:1401/9/20,
         purches:105,
     },
     {
@@ -795,7 +795,7 @@ const protein = [
         order:0,
         entity:false,
         title:'چرخکرده مخلوط 1 کیلویی آوا',
-        date:1401/09/13,
+        date:1401/9/13,
         purches:225,
     },
     {
@@ -819,7 +819,7 @@ const protein = [
         order:0,
         entity:false,
         title:'گوشت مخلوط گوساله 1 کیلویی آوا',
-        date:1401/09/12,
+        date:1401/9/12,
         purches:113,
     },
     {
@@ -843,7 +843,7 @@ const protein = [
         order:10,
         entity:true,
         title:'جوجه کباب زعفرانی800 گرمی پمینا',
-        date:1402/09/12,
+        date:1402/9/12,
         purches:32,
     },
     {
@@ -862,12 +862,12 @@ const protein = [
             average:3.1,
         },
 
-        image: img23141,
+        image: img23142,
         price:729000,
         order:5,
         entity:true,
         title:'ران مرغ 900 گرمی یخچال',
-        date:1402/09/15,
+        date:1402/9/15,
         purches:27,
     },
     {
@@ -891,7 +891,7 @@ const protein = [
         order:5,
         entity:true,
         title:'ران مرغ 900 گرمی یخچال',
-        date:1401/09/27,
+        date:1401/9/27,
         purches:27,
     },
     {
@@ -915,7 +915,7 @@ const protein = [
         order:0,
         entity:false,
         title:'مغز ران مرغ ۹۰۰ گرمی یخچال',
-        date:1401/09/21,
+        date:1401/9/21,
         purches:13,
     },
 ];
@@ -927,9 +927,9 @@ const drinks = [
 ];
 
 export const productList = [
-    ...Laban,
-    ...protein,
-    ...Kharbar,
-    ...drinks,
+    {protein},
+    // ...Laban,
+    // ...Kharbar,
+    // ...drinks,
 ]
 
