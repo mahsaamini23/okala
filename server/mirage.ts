@@ -3,14 +3,17 @@ import { createServer, Model, Response } from "miragejs";
 import { ModelDefinition } from "miragejs/-types";
 import { User } from "types/model";
 import { Products } from "types/model";
+import { ProductsList} from "types/model";
 import products from "../data/Categoryslider/CategorySlider";
+// import { productList } from "../data/ProductList/productList";
 
 const makeServer = ({ environment = "test" } = {}) => {
-  return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> }, any>({
+  return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> , productList: ModelDefinition<ProductsList>}, any> ({
     environment,
     models: {
       user: Model,
       product: Model,
+      productList:Model,
     },
     seeds(server) {
       server.loadFixtures();
@@ -18,6 +21,30 @@ const makeServer = ({ environment = "test" } = {}) => {
     fixtures: {
       users,
       products,
+      productLists : [{
+        idProduct:2313,
+        idShop:2,
+        idCategory:3,
+        idBrand: 1, //برند زرده ی طلایی
+        type:'تخم مرِغ',
+
+        Points:{
+            1:4,
+            2:0,
+            3:0,
+            4:4,
+            5:4,
+            average:2.4,
+        },
+
+        // image: img2311,
+        price:400500,
+        order:3,
+        entity:true,
+        title:'تخم مرِغ ۹ عددی زرده طلایی',
+        date:1401/9/24,
+        purches:12,
+    },],
     },
     routes() {
       this.passthrough('/_next/static/development/_devPagesManifest.json');
@@ -44,6 +71,18 @@ const makeServer = ({ environment = "test" } = {}) => {
           };
         },
         { timing: 1000 }
+      );
+
+      this.get(
+        "/ProductsList",
+        (schema, request) => {
+          if (request.queryParams.error) return new Response(400);
+          return {
+            message: "Fetch productsList success",
+            data: request.queryParams.empty ? [] : schema.all("productList").models,
+          };
+        },
+        { timing: 100 }
       );
 
       this.post(

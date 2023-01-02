@@ -1,4 +1,6 @@
-import {useState} from "react";
+import {useState, useEffect } from "react";
+
+import { getProductList } from "../../api/api";
 
 import BrandFilter from "../../component/filter/BrandFilter/BrandFilter";
 import PriceFilter from "../../component/filter/PriceFilter/PriceFilter";
@@ -16,6 +18,15 @@ import MobileAllFilters from "../../component/filterMobile/MobileAllFilters/Mobi
 const Categories =(): JSX.Element=>{
     //logic for desktop
     const [showAllFilter, setShowAllFilter] = useState<boolean>(false)
+    const [productsList, setProductsList] = useState([])
+    //get productList
+    useEffect(() => { getProductList().then(res => {
+        console.log(res);
+        setProductsList(res.data)
+    })}, []);
+    // console.log(productsList)
+
+
     // logic for mobile
     const [openShowBased, setOpenShowBased] = useState<boolean>(false)
     const [openAllFilters, setOpenAllFilters] = useState<boolean>(false)
