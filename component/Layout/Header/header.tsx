@@ -46,7 +46,7 @@ export default function header() {
     const [products, setProducts] = React.useState([])
     const [textSearch, setTextSearch] = React.useState('')
     ////open Address Modal State
-    const [openAddrModal,setOpenAddrModal] = React.useState(false)
+    const [openAddrModal, setOpenAddrModal] = React.useState(false)
 
     // Redux ToolKit
     const isLogin = useSelector((state: any) => state.auth.isLogin)
@@ -84,7 +84,7 @@ export default function header() {
             {/* AppBar */}
             <AppBar position="fixed" sx={{ boxShadow: "5px 5px 1000px rgb(229, 231, 233)", ["& .MuiContainer-root"]: { padding: 0 } }}>
                 {/* Address Modal */}
-                <Address open={openAddrModal} setOpen = {setOpenAddrModal}></Address>
+                <Address open={openAddrModal} setOpen={setOpenAddrModal}></Address>
 
                 {/* Modal */}
                 <Modal />
@@ -216,7 +216,7 @@ export default function header() {
                             <Box marginY="auto">
                                 {/* Shops Button */}
                                 <IconButton
-                                    onClick={()=>{}}
+                                    onClick={() => { }}
                                     size="small"
                                     sx={{
                                         backgroundColor: "#f8f8f8",
@@ -323,7 +323,7 @@ export default function header() {
                                     size="small"
                                     aria-label="show 17 new notifications"
                                     color="inherit"
-                                    onClick = {()=> dispatch(setLogin(true))}
+                                    onClick={() => dispatch(setLogin(true))}
                                 >
                                     <Image src={loginIcon} alt="login Icon" />
                                     <Typography variant='button'>
@@ -342,12 +342,14 @@ export default function header() {
                                         <Image src={basketIcon} alt={'shops-Icon'} />
                                     </Grid>
                                     <Grid item xs={8} display="flex" flexDirection={"column"} alignItems={'flex-start'} marginRight={2}>
-                                        <Typography variant={"button"} component={"p"}>
-                                            سبد خرید
-                                        </Typography>
-                                        <Typography variant={"button"} component={"p"} fontSize="0.75rem">
-                                            از چند فروشگاه
-                                        </Typography>
+                                        <Link href={"/cart"}>
+                                            <Typography variant={"button"} component={"p"}>
+                                                سبد خرید
+                                            </Typography>
+                                            <Typography variant={"button"} component={"p"} fontSize="0.75rem">
+                                                از چند فروشگاه
+                                            </Typography>
+                                        </Link>
                                     </Grid>
                                 </Grid>
                             </IconButton>
