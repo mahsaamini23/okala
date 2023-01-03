@@ -11,6 +11,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 const StoreCards = (): JSX.Element => {
     return (
         <Grid container>
+            <Button id="GoToStore"></Button>
             <Grid container item xs={12}>
                 <Grid item xs={1} md={0.25}>
                     <StoreIcon />
@@ -25,7 +26,7 @@ const StoreCards = (): JSX.Element => {
                     <StoreCard key={item.id} id={item.id} image={item.image} title={item.title} rate={item.rate} subtitle={item.subtitle}></StoreCard>
                 ))}
             </Grid>
-            <Grid item md={12}  sx={{ display: { xs: 'none', md: 'flex' } , justifyContent: 'center', marginTop: '20px' }}>
+            <Grid item md={12}  sx={{display: { xs: 'none', md: 'flex' } , justifyContent: 'center', marginTop: '20px' }}>
                 <Button sx={{ border: '1px solid #e0e0e0', borderRadius: '8px', padding: '12px 40px' , fontWeight:'bold', margin:'0 px'}}>
                     <Typography>مشاهده همه فروشگاه ها</Typography>
                     <ArrowBackIosIcon sx={{ fontSize: "small", color: '#757575'}} />

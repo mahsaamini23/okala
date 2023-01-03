@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { useRouter } from 'next/navigation';
 
 //Logo and Icons
 import logo from "../../../assets/image/main/header/okala.logo.svg"
@@ -16,7 +17,7 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import loginIcon from '../../../assets/image/main/header/AccountMenu/accountLogin.icon.svg'
 
 import Image from 'next/image';
-import { Container, Divider, Grid, Grow, List, ListItemButton, ListItemText, ListSubheader, MenuItem, MenuList, Paper, Popper, SwipeableDrawer } from '@mui/material';
+import { Badge, Container, Divider, Grid, Grow, List, ListItemButton, ListItemText, ListSubheader, MenuItem, MenuList, Paper, Popper, SwipeableDrawer } from '@mui/material';
 import Link from 'next/link';
 import Searchbar from '../../common/Searchbar/Searchbar';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -38,6 +39,9 @@ import Address from "./Address/Address"
 
 export default function header() {
 
+    // Link tp pages
+    const router = useRouter();
+
     // useState Config
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [scrollYState, setScrollYState] = React.useState<number>(0);
@@ -50,6 +54,7 @@ export default function header() {
 
     // Redux ToolKit
     const isLogin = useSelector((state: any) => state.auth.isLogin)
+    const totalPurches = useSelector((state: any) => state.cart.total)
     const dispatch = useDispatch();
 
     // Modal for gray background
@@ -224,10 +229,12 @@ export default function header() {
                                     }}
                                 >
                                     <Image src={shopsIcon} alt={'shops-Icon'} />
-                                    <Typography
-                                        variant='button'>
-                                        مشاهده فروشگاه ها
-                                    </Typography>
+                                    <Link href={"/#GoToStore"}>
+                                        <Typography
+                                            variant='button'>
+                                            مشاهده فروشگاه ها
+                                        </Typography>
+                                    </Link>
                                 </IconButton>
                             </Box>
 
@@ -339,17 +346,25 @@ export default function header() {
                             >
                                 <Grid container display="flex" justifyItems={"center"} alignItems="center">
                                     <Grid item xs={2}>
-                                        <Image src={basketIcon} alt={'shops-Icon'} />
+                                        <Badge badgeContent={totalPurches} color={"error"}>
+                                            <Image src={basketIcon} alt={'shops-Icon'} />
+                                        </Badge>
                                     </Grid>
-                                    <Grid item xs={8} display="flex" flexDirection={"column"} alignItems={'flex-start'} marginRight={2}>
-                                        <Link href={"/cart"}>
-                                            <Typography variant={"button"} component={"p"}>
-                                                سبد خرید
-                                            </Typography>
-                                            <Typography variant={"button"} component={"p"} fontSize="0.75rem">
-                                                از چند فروشگاه
-                                            </Typography>
-                                        </Link>
+                                    <Grid item xs={isLogin?10:8}
+                                        display="flex"
+                                        flexDirection={"column"}
+                                        alignItems={'flex-start'}
+                                        marginRight={isLogin?0:2}
+                                        onClick={() => router.push("/cart")}
+                                    >
+                                        <Typography variant={"button"} component={"p"} marginRight={isLogin?1:0}>
+                                            سبد خرید
+                                        </Typography>
+                                        {isLogin ? null
+                                            : <Typography variant={"button"} component={"p"} fontSize="0.75rem">
+                                            از چند فروشگاه
+                                        </Typography>
+                                        }
                                     </Grid>
                                 </Grid>
                             </IconButton>
