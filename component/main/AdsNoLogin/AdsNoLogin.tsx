@@ -28,7 +28,7 @@ const MyComponent = styled('div')({
 
 const AdsNoLogin = (props: Props) => {
     return (
-        <MyComponent sx={{display:"flex", backgroundColor: "rgba(232,245,233)",color: 'darkslategray',direction: "row"}}>
+        <MyComponent sx={{display:"flex", backgroundColor: "rgba(232,245,233)",color: 'darkslategray',flexDirection: "row"}}>
             <Container maxWidth="lg" >
                 <Grid container >
                     <Grid item xs={7}>

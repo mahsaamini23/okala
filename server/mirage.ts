@@ -4,16 +4,19 @@ import { ModelDefinition } from "miragejs/-types";
 import { User } from "types/model";
 import { Products } from "types/model";
 import { ProductsList} from "types/model";
+import { Shop} from "types/model";
 import products from "../data/Categoryslider/CategorySlider";
 import productLists  from "../data/ProductList/productList";
+import shops from '../data/StoreCards/StoreCards';
 
 const makeServer = ({ environment = "test" } = {}) => {
-  return createServer<{ user: ModelDefinition<Omit<User, "id">> , product: ModelDefinition<Products> , productList: ModelDefinition<ProductsList>}, any> ({
+  return createServer<{ user: ModelDefinition<Omit<User, "id">> ,shop:ModelDefinition<Shop> , product: ModelDefinition<Products> , productList: ModelDefinition<ProductsList>}, any> ({
     environment,
     models: {
       user: Model,
       product: Model,
       productList:Model,
+      shop: Model
     },
     seeds(server) {
       server.loadFixtures();
@@ -21,11 +24,25 @@ const makeServer = ({ environment = "test" } = {}) => {
     fixtures: {
       users,
       products,
-      productLists ,
+      productLists,
+      shops
     },
     routes() {
       this.passthrough('/_next/static/development/_devPagesManifest.json');
       this.namespace = "api";
+
+      this.get(
+        "/Shops",
+        (schema, request) => {
+          if (request.queryParams.error) return new Response(400);
+          return {
+            message: "Fetch shop list success",
+            data: request.queryParams.empty ? [] : schema.all("shop").models,
+          };
+        },
+        { timing: 100 }
+      );
+
       this.get(
         "/CategoriesProducts",
         (schema, request) => {

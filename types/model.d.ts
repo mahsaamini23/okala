@@ -38,4 +38,14 @@ export type ProductsList ={
     date: Date,
     purches:number
 };
+export type Shop = [
+  {
+  id:number,
+  title:string,
+  rate: string,
+  subtitle:string,
+  image:StaticImageData
 }
+];
+}
+
