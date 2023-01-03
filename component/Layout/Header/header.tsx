@@ -87,7 +87,7 @@ export default function header() {
     return (
         <Box sx={{ flexGrow: 1, paddingY: { xs: 2, md: 6 } }}>
             {/* AppBar */}
-            <AppBar position="fixed" sx={{ boxShadow: "5px 5px 1000px rgb(229, 231, 233)", ["& .MuiContainer-root"]: { padding: 0 } }}>
+            <AppBar position="fixed" sx={{ boxShadow: "5px 5px 30px rgba(229, 231, 233, 0.5)", ["& .MuiContainer-root"]: { padding: 0 } }}>
                 {/* Address Modal */}
                 <Address open={openAddrModal} setOpen={setOpenAddrModal}></Address>
 
@@ -115,7 +115,7 @@ export default function header() {
                                 role="presentation"
                             >
                                 <List
-                                    sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                                    sx={{ width: '100%', maxWidth: 360, bgColor: 'background.paper' }}
                                     component="nav"
                                     aria-labelledby="nested-list-subheader"
                                     subheader={
@@ -225,7 +225,7 @@ export default function header() {
                                     size="small"
                                     sx={{
                                         backgroundColor: "#f8f8f8",
-                                        display: { xs: "none", md: "flex" }
+                                        display: { xs: "none", md: "flex" },
                                     }}
                                 >
                                     <Image src={shopsIcon} alt={'shops-Icon'} />
@@ -346,7 +346,7 @@ export default function header() {
                             >
                                 <Grid container display="flex" justifyItems={"center"} alignItems="center">
                                     <Grid item xs={2}>
-                                        <Badge badgeContent={totalPurches} color={"error"}>
+                                        <Badge badgeContent={totalPurches?totalPurches.toLocaleString("fa"):0} color={"error"}>
                                             <Image src={basketIcon} alt={'shops-Icon'} />
                                         </Badge>
                                     </Grid>

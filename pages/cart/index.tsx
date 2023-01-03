@@ -10,9 +10,8 @@ import { Shop } from "types/model";
 import ProductCard from '../../component/cart/ProductCart'
 import { productListType } from '../../data/ProductList/productList'
 
-type Props = {}
 
-const index = (props: Props) => {
+const index = () => {
 
   //useState
   const [listShop, setListShop] = React.useState<Shop>([{ image: '', id: 0, subtitle: '', rate: "", title: "" }])
@@ -37,26 +36,41 @@ const index = (props: Props) => {
   // Product id in cart
   const idProducts = cart?.reduce((ids: any[], item: { id: any }) => [...ids, item.id], [])
 
+  // Total Price
+  const totalPrice = productsList.filter((item: any) => idProducts.includes(item.idProduct)).reduce((total, item: productListType) => total + item.price * cart[idProducts.indexOf(item.idProduct)].order, 0)
+
+  // Total Order
+  const totalOrder = productsList.filter((item: any) => idProducts.includes(item.idProduct)).reduce((total, item: productListType) => total + item.order * cart[idProducts.indexOf(item.idProduct)].order, 0)
+
+  // Shops
+  const idShops = productsList.filter((item: any) => idProducts.includes(item.idProduct)).reduce((idShops: any[], item: productListType) => idShops.includes(item.idShop)? idShops:[...idShops, item.idShop], [])
+
+  console.log(productsList)
   return (
     <Container maxWidth="lg">
       {total
         ?
         <Grid container direction={"row"} justifyContent={"start"}>
-          <Grid item display={"flex"} flexGrow={1} flexDirection="column" zIndex={1100} sx={{background:"white"}} borderRadius="10px" padding={4} margin={2}>
-            <Box display={"flex"} alignItems={"center"} marginX={3}>
-              <Image width={70} src={listShop[0].image} alt="" />
-              <Typography marginRight={2}> {listShop[0].title}</Typography>
-            </Box>
-            {productsList.filter((item: any) => idProducts.includes(item.idProduct)).map((product: productListType) => (
+            <Grid item display={"flex"} flexGrow={1} flexDirection="column" sx={{ background: "white" }} borderRadius="10px" padding={4} margin={2}>
+            {idShops.map(id => {
+            return(
               <>
-                <Box display={"flex"} justifyContent={"center"} width="100%">
-                  <ProductCard idProduct={product.idProduct} image={product.image} price={product.price} title={product.title} order={product.order} />
-                </Box>
-                <Divider light />
+              <Box display={"flex"} alignItems={"center"} marginX={3}>
+                <Image width={70} src={listShop[id].image} alt="" />
+                <Typography marginRight={2}> {listShop[id].title}</Typography>
+              </Box>
+              {productsList.filter((item: productListType) => (idProducts.includes(item.idProduct) && item.idShop === id)).map((product: productListType) => (
+                <>
+                  <Box display={"flex"} justifyContent={"center"} width="100%">
+                    <ProductCard idProduct={product.idProduct} image={product.image} price={product.price} title={product.title} order={product.order} />
+                  </Box>
+                  <Divider light />
+                </>
+              ))}
               </>
-            ))}
-          </Grid>
-          <Grid item width={"416px"} zIndex={1100} sx={{ background: "white" }} borderRadius={2} padding={4} margin={2}>
+            )})}
+            </Grid>
+          <Grid item width={"416px"} zIndex={600} sx={{ background: "white" }} borderRadius={2} padding={4} margin={2}>
             {/* Title */}
             <Typography paddingY={2}>
               جزییات فاکتور
@@ -64,39 +78,42 @@ const index = (props: Props) => {
             {/* Total Price */}
             <Box display={"flex"} justifyContent="space-between" paddingY={2}>
               <Typography>
-                مجموع خرید شما ({total}کالا)
+                مجموع خرید شما ({total.toLocaleString("fa")}کالا)
               </Typography>
               <Typography>
-                مجموع قیمت ریال
+                {totalPrice.toLocaleString("fa")}  ریال
               </Typography>
             </Box>
-            <Divider />
+            <Divider light />
             {/* benfit */}
             <Box display={"flex"} justifyContent="space-between" paddingY={2}>
               <Typography>
                 سود شما از این خرید
               </Typography>
               <Typography>
-                مجموع قیمت ریال
+                {totalOrder.toLocaleString("fa")} ریال
               </Typography>
             </Box>
-            <Divider />
+            <Divider light />
 
             <Typography paddingY={2}>
               هزینه ارسال
             </Typography>
-            <Divider />
+            <Divider light />
 
             <Box display={"flex"} justifyContent="space-between" paddingY={2}>
               <Typography>
                 مبلغ قابل پرداخت
               </Typography>
               <Typography>
-                مجموع قیمت ریال
+                {(totalPrice - totalOrder).toLocaleString("fa")} ریال
               </Typography>
             </Box>
-            <Button fullWidth sx={{ color: "white", backgroundColor: "red" }}>
+            <Button fullWidth  sx={{background:"#f01436", ["&:hover"]:{background:"#e11436"}}}>
+              <Typography variant="button" color="white">
               انتخاب زمان تحویل
+              </Typography>
+
             </Button>
           </Grid>
         </Grid>

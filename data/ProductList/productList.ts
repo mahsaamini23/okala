@@ -78,7 +78,7 @@ const protein = [
      //تخم مرغ
     {
         idProduct:2311,
-        idShop:2,
+        idShop:1,
         idCategory:3,
         idBrand: 1, //برند زرده ی طلایی
         type:'تخم مرِغ',
@@ -101,7 +101,7 @@ const protein = [
     },
     {
         idProduct:2312,
-        idShop:2,
+        idShop:1,
         idCategory:3,
         idBrand: 1, //برند زرده ی طلایی
         type:'تخم مرِغ',
@@ -125,7 +125,7 @@ const protein = [
     },
     {
         idProduct:2313,
-        idShop:2,
+        idShop:1,
         idCategory:3,
         idBrand: 1, //برند زرده ی طلایی
         type:'تخم مرِغ',
@@ -149,7 +149,7 @@ const protein = [
     },
     {
         idProduct:2314,
-        idShop:2,
+        idShop:1,
         idCategory:3,
         idBrand: 1, //برند زرده ی طلایی
         type:'تخم مرِغ',
@@ -931,7 +931,7 @@ const drinks = [
 export const productList = [
     {
         idProduct:2311,
-        idShop:2,
+        idShop:1,
         idCategory:3,
         idBrand: 1, //برند زرده ی طلایی
         type:'تخم مرِغ',
@@ -954,7 +954,7 @@ export const productList = [
     },
     {
         idProduct:2312,
-        idShop:2,
+        idShop:1,
         idCategory:3,
         idBrand: 1, //برند زرده ی طلایی
         type:'تخم مرِغ',
@@ -978,7 +978,7 @@ export const productList = [
     },
     {
         idProduct:2313,
-        idShop:2,
+        idShop:1,
         idCategory:3,
         idBrand: 1, //برند زرده ی طلایی
         type:'تخم مرِغ',
