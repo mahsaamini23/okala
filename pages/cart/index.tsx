@@ -1,37 +1,100 @@
-import { Grid, Box, Typography, Divider } from '@mui/material'
+import { Grid, Box, Typography, Divider, Button } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import emptyCart from '../../assets/image/cart/emptyCart.png'
 import { useSelector } from 'react-redux';
-import { getShops } from '../../api/api'
+import { getProductList, getShops } from '../../api/api'
 
-import { Shop} from "types/model";
+import { Shop } from "types/model";
+import ProductCard from '../../component/cart/ProductCart'
+import { productListType } from '../../data/ProductList/productList'
 
 type Props = {}
 
 const index = (props: Props) => {
 
   //useState
-  const [listShop,setListShop] = React.useState<Shop>([{image:'',id:0,subtitle:'',rate:"",title:""}])
-
+  const [listShop, setListShop] = React.useState<Shop>([{ image: '', id: 0, subtitle: '', rate: "", title: "" }])
+  const [productsList, setProductsList] = React.useState([])
+  
   //redux Toolkit
   const total = useSelector((state: any) => state.cart.total)
+  const cart = useSelector((state:any) => state.cart.cart)
 
-  React.useEffect(()=>{
+  // get Shops
+  React.useEffect(() => {
     getShops().then(res => setListShop(res.data))
-  },[])
+  }, [])
+
+  //get productList
+  React.useEffect(() => {
+    getProductList().then(res => {
+      setProductsList(res.data)
+    })
+  }, []);
+
+  // Product id in cart
+  const idProducts = cart?.reduce((ids: any[], item: { id: any }) => [...ids,item.id],[])
+
   return (
     <>
       {total
         ?
-        <Grid container>
-          <Grid>
-            <Image src={listShop[0].image} alt=""/>
-            <Typography> {listShop[0].title}</Typography>
+        <Grid container direction={"row"}>
+          <Grid item display={"flex"} flexGrow={1} flexDirection="column">
+            <Box display={"flex"} justifyContent={"center"}>
+              <Image width={50} src={listShop[0].image} alt="" />
+              <Typography> {listShop[0].title}</Typography>
+            </Box>
+            {productsList.filter((item:any) => idProducts.includes(item.idProduct)).map((product: productListType) => (
+              <Box display={"flex"} justifyContent={"center"} width="100%">
+                <ProductCard idProduct={product.idProduct} image={product.image} price={product.price} title={product.title} order={product.order} />
+              </Box>
+            ))}
           </Grid>
-          <Grid item width={"416px"}>
+          <Grid item width={"416px"} zIndex={1100} sx={{ background: "white" }} borderRadius={2} padding={4} margin={2}>
+            {/* Title */}
+            <Typography paddingY={2}>
+              جزییات فاکتور
+            </Typography>
+            {/* Total Price */}
+            <Box display={"flex"} justifyContent="space-between" paddingY={2}>
+              <Typography>
+                مجموع خرید شما ({total}کالا)
+              </Typography>
+              <Typography>
+                مجموع قیمت ریال
+              </Typography>
+            </Box>
+            <Divider />
+            {/* benfit */}
+            <Box display={"flex"} justifyContent="space-between" paddingY={2}>
+              <Typography>
+                سود شما از این خرید
+              </Typography>
+              <Typography>
+                مجموع قیمت ریال
+              </Typography>
+            </Box>
+            <Divider />
 
+            <Typography paddingY={2}>
+              هزینه ارسال
+            </Typography>
+            <Divider />
+
+            <Box display={"flex"} justifyContent="space-between" paddingY={2}>
+              <Typography>
+                مبلغ قابل پرداخت
+              </Typography>
+              <Typography>
+                مجموع قیمت ریال
+              </Typography>
+            </Box>
+            <Button fullWidth sx={{ color: "white", backgroundColor: "red" }}>
+              انتخاب زمان تحویل
+            </Button>
           </Grid>
         </Grid>
 
