@@ -70,7 +70,6 @@ const theme = createTheme({
             main: '#757575'
         },
         error: {
-            light: '#fff',
             main: '#f01436'
         },
         warning: {

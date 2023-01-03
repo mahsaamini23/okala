@@ -62,7 +62,7 @@ const ProductCard = ({ idProduct, image, price, title, order }: Props) => {
             </Grid>
             <Grid item display={'flex'} alignItems={"end"} justifyContent="center" flexDirection={"column-reverse"}>
                 <Grid display={"flex"} flexDirection="column" alignItems={"end"}>
-                    <Typography variant='caption' sx={{ textDecoration: "line-through" }}> ۱۷۰۰۰</Typography>
+                    <Typography variant='caption' sx={{ textDecoration: "line-through" }}> {(price-order).toLocaleString("fa")}</Typography>
                     <Typography variant='subtitle2'>{price.toLocaleString("fa")} ریال</Typography>
                 </Grid>
                 <Grid marginBottom={3} width={'25px'} height={'20px'} bgcolor={'#f01436'} color={'#fff'} borderRadius={'5px'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
