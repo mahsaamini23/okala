@@ -7,6 +7,11 @@ export async function getProducts() {
   return res.data;
 }
 
+export async function getShops() {
+  const res = await api.get("/api/Shops/");
+  return res.data;
+}
+
 export async function getProductList() {
   const res = await api.get("/api/ProductsList/");
   return res.data;
