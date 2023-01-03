@@ -9,24 +9,24 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function SimpleAccordion() {
     const [showDetails, setShowDetails] = useState<boolean>(false)
-
     const handleShowDetail=()=>{
         setShowDetails(current => !current)
     }
+    
     return (
-        <Grid pb={3}  sx={{backgroundColor:{xs:'#fff', md:'#fafafa'}, paddingX:{xs:'16px', md:'0'}}} my={2}>
+        <Grid pb={3} sx={{backgroundColor:{xs:'#fff', md:'#fafafa'}, paddingX:{xs:'16px', md:'0'}}} my={2}>
             <Grid>
                 {showDetails?
-                <Grid pt={2} display={'flex'} justifyContent={{xs:'space-between', md:'center'}} alignItems={'center'}>
+                <Grid onClick={handleShowDetail} pt={2} display={'flex'} justifyContent={{xs:'space-between', md:'center'}} alignItems={'center'}>
                     <Typography sx={{typography: {xs:'caption', md:'subtitle2'}}}>بستن</Typography>
-                    <IconButton onClick={handleShowDetail}>
+                    <IconButton >
                         <KeyboardArrowUpIcon/>
                     </IconButton>
                 </Grid>
                 :
-                <Grid pt={2} display={'flex'} justifyContent={{xs:'space-between', md:'center'}} alignItems={'center'}>
+                <Grid onClick={handleShowDetail} pt={2} display={'flex'} justifyContent={{xs:'space-between', md:'center'}} alignItems={'center'}>
                     <Typography sx={{typography: {xs:'caption', md:'subtitle2'}}}>فروشگاه اُکالا، بزرگترین سوپرمارکت آنلاین ایران</Typography>
-                    <IconButton onClick={handleShowDetail}>
+                    <IconButton>
                         <KeyboardArrowDownIcon/>
                     </IconButton>
                 </Grid>
