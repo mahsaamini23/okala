@@ -25,40 +25,50 @@ const ProductCard = ({ idProduct, image, price, title, order }: Props) => {
     let total = cart.filter((item: { id: number; order: number; }): { id: number; order: number; } | boolean => item.id === idProduct)[0]?.order;
 
     return (
-        <Grid width={'100%'} height={'300px'} px={2} py={4} display={'flex'} flexDirection={'column'} gap={'10px'} border={'1px solid #e9e9e9'}>
-            <Image src={image} alt="product" style={{ width: '100px', height: '100px', display: 'flex', alignSelf: 'center' }} />
-            <Grid mb={2} position={"relative"} container display={'flex'} alignItems={'flex-end'} justifyContent={"center"}>
-                <Box
-                    sx={{
-                        background: "white",
-                        borderRadius: 50,
-                        border: "1px solid #f01436"
-                    }}
-                    component="div"
-                    display="flex"
-                    right={0}
-                    
-                >
-                    <AddIcon color="error" onClick={() => { dispatch(addProduct(idProduct)) }}/>
-                    {total ? <Typography marginX={1}> {total.toLocaleString("fa")}</Typography> : null}
-                    {(total === 1) ?
-                     <Image onClick={()=>{dispatch(removeProduct(idProduct))}} width={22} src={deleteIcon} alt="" /> : (total > 1 ?
-                        <Box display={"flex"} alignItems={"center"}  onClick={()=>{dispatch(removeProduct(idProduct))}}>
-                            <RemoveIcon fontSize='small' color={"error"}/>
-                        </Box>
-                    : null)}
+        <Grid
+            container
+            height={'auto'}
+            px={2} py={4}
+            display={'flex'}
+            flexDirection={'row'}
+            gap={'10px'}
+            justifyContent="space-between"
+        >
+            <Grid item display={"flex"} alignItems={"center"}>
+                <Image src={image} alt="product" style={{ width: '150px', height: '100px' }} />
+                <Box display="flex" flexDirection="column" justifyContent="space-around" height={"100%"}>
+                    <Typography variant='caption'>{title}</Typography>
+                    <Box
+                        sx={{
+                            background: "white",
+                            borderRadius: 50,
+                            border: "1px solid #f01436"
+                        }}
+                        component="div"
+                        display="flex"
+                        right={0}
+                        width={"75px"}
+                    >
+                        <AddIcon color="error" onClick={() => { dispatch(addProduct(idProduct)) }} />
+                        {total ? <Typography marginX={1}> {total.toLocaleString("fa")}</Typography> : null}
+                        {(total === 1) ?
+                            <Image onClick={() => { dispatch(removeProduct(idProduct)) }} width={22} src={deleteIcon} alt="" /> : (total > 1 ?
+                                <Box display={"flex"} alignItems={"center"} onClick={() => { dispatch(removeProduct(idProduct)) }}>
+                                    <RemoveIcon fontSize='small' color={"error"} />
+                                </Box>
+                                : null)}
+                    </Box>
                 </Box>
             </Grid>
-            <Grid container display={'flex'} justifyContent={'space-between'}>
-                <Grid >
+            <Grid item display={'flex'} alignItems={"end"} justifyContent="center" flexDirection={"column-reverse"}>
+                <Grid display={"flex"} flexDirection="column" alignItems={"end"}>
+                    <Typography variant='caption' sx={{ textDecoration: "line-through" }}> ۱۷۰۰۰</Typography>
                     <Typography variant='subtitle2'>{price.toLocaleString("fa")} ریال</Typography>
-                    <Typography variant='caption'> ۱۷۰۰۰</Typography>
                 </Grid>
-                <Grid width={'25px'} height={'20px'} bgcolor={'#f01436'} color={'#fff'} borderRadius={'5px'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                <Grid marginBottom={3} width={'25px'} height={'20px'} bgcolor={'#f01436'} color={'#fff'} borderRadius={'5px'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
                     <Typography variant='caption' color={'#fff'} >{order}٪</Typography>
                 </Grid>
             </Grid>
-            <Typography variant='subtitle2'>{title}</Typography>
         </Grid>
     )
 }
