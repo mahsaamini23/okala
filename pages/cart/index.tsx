@@ -54,20 +54,20 @@ const index = () => {
             <Grid item display={"flex"} flexGrow={1} flexDirection="column" sx={{ background: "white" }} borderRadius="10px" padding={4} margin={2}>
             {idShops.map(id => {
             return(
-              <>
+              <Box key={"shops"+id}>
               <Box display={"flex"} alignItems={"center"} marginX={3}>
                 <Image width={70} src={listShop[id].image} alt="" />
                 <Typography marginRight={2}> {listShop[id].title}</Typography>
               </Box>
               {productsList.filter((item: productListType) => (idProducts.includes(item.idProduct) && item.idShop === id)).map((product: productListType) => (
-                <>
+                <Box key={"product"+product.idProduct}>
                   <Box display={"flex"} justifyContent={"center"} width="100%">
                     <ProductCard idProduct={product.idProduct} image={product.image} price={product.price} title={product.title} order={product.order} />
                   </Box>
                   <Divider light />
-                </>
+                </Box>
               ))}
-              </>
+              </Box>
             )})}
             </Grid>
           <Grid item width={"416px"} zIndex={600} sx={{ background: "white" }} borderRadius={2} padding={4} margin={2}>

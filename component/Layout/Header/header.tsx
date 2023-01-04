@@ -138,7 +138,7 @@ export default function header() {
                                     <Divider sx={{ background: "rgb(250, 251, 253)" }} />
                                     {products?.map((item: any) => {
                                         return (
-                                            <Box key={item.id}>
+                                            <Box key={"menu"+item.id}>
                                                 <ListItemButton onClick={() => setOnCollapse(old => old === item.name ? "" : item.name)} dir="rtl" sx={{ flex: "0 0 auto" }}>
                                                     {onCollapse === item.name ? <ExpandLess /> : <ExpandMore />}
                                                     <ListItemText primary={item.name} sx={{
@@ -152,7 +152,7 @@ export default function header() {
                                                 <Collapse in={onCollapse === item.name} timeout="auto" unmountOnExit>
                                                     {item?.sub?.map((value: any) => {
                                                         return (
-                                                            <List key={value.id} component="div" disablePadding>
+                                                            <List key={value.title+value.id} component="div" disablePadding>
                                                                 <ListItemButton>
                                                                     <ListItemText
                                                                         sx={{
@@ -188,6 +188,10 @@ export default function header() {
                                                                     marginRight: "10px",
                                                                     marginY: 0,
                                                                     color: "rgb(119, 119, 119)",
+                                                                }}
+                                                                onClick={()=> {
+                                                                    router.push("../browse/category");
+                                                                    setOnMenu(false)
                                                                 }}
                                                                 primary={
                                                                     <Typography
