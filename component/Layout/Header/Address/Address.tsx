@@ -29,9 +29,10 @@ type props = {
     open: boolean
 }
 export default function Address({ open, setOpen }: props) {
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
+    const handleClose = () => setOpen(false);
+    const [idAddress, setIdAddress] = React.useState(0);
+    const handleClick = (id:number) => { setIdAddress(id)};
     return (
         <Box>
             <Modal
@@ -60,12 +61,12 @@ export default function Address({ open, setOpen }: props) {
                             sx={{ width: '100%', bgcolor: 'background.paper' }}
                             aria-label="contacts"
                         >
-                            <ListItem disablePadding sx={{ flexDirection: "column", alignItems: "start", background: "rgba(224, 242, 244, 1)", ["&:hover"]: { background: "rgba(176, 222, 224, 1)", fontWeight: 800 }, marginBottom:1 }}>
-                                <ListItemButton sx={{ justifyContent: "space-between", width: "100%", flexDirection: "column" }}>
+                            <ListItem disablePadding sx={{ flexDirection: "column", alignItems: "start", background:idAddress===0?"rgba(224, 242, 244, 1)":"", ["&:hover"]: { background: "rgba(176, 222, 224, 1)", fontWeight: 800 }, marginBottom: 1 }}>
+                                <ListItemButton onClick={() => handleClick(0)} sx={{ justifyContent: "space-between", width: "100%", flexDirection: "column" }}>
                                     <Grid container flexDirection={"row"}>
-                                        <ListItemIcon sx={{ minWidth: "40px" }}>
+                                        {idAddress === 0 ? <ListItemIcon sx={{ minWidth: "40px" }}>
                                             <Image src={checkedIcon} alt={''} ></Image>
-                                        </ListItemIcon>
+                                        </ListItemIcon> : null}
                                         <Typography>
                                             منطقه ۹، استاد معین، شهید لشکری، آزادی نرسیده به آزادی
                                             - واحد 21
@@ -90,12 +91,12 @@ export default function Address({ open, setOpen }: props) {
                                 </ListItemButton>
                             </ListItem>
 
-                            <ListItem disablePadding  sx={{ flexDirection: "column", alignItems: "start", ["&:hover"]: { fontWeight: 800 } }}>
-                                <ListItemButton dir='rtl' sx={{ justifyContent: "space-between", width: "100%", flexDirection: "column" }}>
+                            <ListItem disablePadding sx={{ flexDirection: "column",  background:idAddress===1?"rgba(224, 242, 244, 1)":"",  alignItems: "start", ["&:hover"]: { fontWeight: 800 } }}>
+                                <ListItemButton onClick={() => handleClick(1)} dir='rtl' sx={{ justifyContent: "space-between", width: "100%", flexDirection: "column" }}>
                                     <Grid container flexDirection={"row"}>
-                                        <ListItemIcon sx={{ minWidth: "40px" }}>
+                                        {idAddress === 1 ? <ListItemIcon sx={{ minWidth: "40px" }}>
                                             <Image src={checkedIcon} alt={''} ></Image>
-                                        </ListItemIcon>
+                                        </ListItemIcon> : null}
                                         <Typography>
                                             منطقه ۹، استاد معین، شهید لشکری، آزادی نرسیده به آزادی
                                             - واحد 21
@@ -122,9 +123,9 @@ export default function Address({ open, setOpen }: props) {
 
                         </List>
                         <Divider />
-                        <Grid position="absolute" display="flex" justifyContent="end" left={10} top ={500} >
+                        <Grid position="absolute" display="flex" justifyContent="end" left={10} top={500} >
                             <Button
-                                onClick ={handleClose}
+                                onClick={handleClose}
                                 sx={{
                                     border: "1px solid rgba(175, 175, 175, 1)",
                                     color: "rgba(240, 20, 54, 1)",
