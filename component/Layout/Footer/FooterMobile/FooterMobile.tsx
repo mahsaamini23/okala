@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogin } from '../../../../Toolkit/slices/authSlice/auth.slice';
+import { useRouter } from 'next/navigation';
 
 function BasketIcon(props: SvgIconProps) {
     return (
@@ -38,11 +39,14 @@ export default function FooterMobile() {
     const [value, setValue] = React.useState(0);
 
     // var Redux
-    const isLogin = useSelector((state:any) => state.auth.isLogin)
+    const isLogin = useSelector((state: any) => state.auth.isLogin)
     const dispatch = useDispatch();
 
+    // Router
+    const router = useRouter();
+
     return (
-        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, display:{xs:"block",md:"none"} }} elevation={3}>
+        <Paper sx={{ zIndex:1000, position: 'fixed', bottom: 0, left: 0, right: 0, display: { xs: "block", md: "none" } }} elevation={3}>
             <BottomNavigation
                 showLabels
                 value={value}
@@ -50,12 +54,14 @@ export default function FooterMobile() {
                     setValue(newValue);
                 }}
             >
-                <BottomNavigationAction label={<Typography sx={{ color: value === 0 ? "red" : "" ,fontSize: { xs: "0.7rem", md: "1rem", lg: "1.2rem" }}}>خانه</Typography>} icon={<HomeIcon sx={{ color: value === 0 ? "red" : "" }} />} />
-                <BottomNavigationAction label={<Typography sx={{ color: value === 1 ? "red" : "" ,fontSize: { xs: "0.7rem", md: "1rem", lg: "1.2rem" }}}>سبد خرید</Typography>} icon={<BasketIcon sx={{ color: value === 1 ? "red" : "black" }} />} />
-                <BottomNavigationAction label={<Typography sx={{ color: value === 2 ? "red" : "" ,fontSize: { xs: "0.7rem", md: "1rem", lg: "1.2rem" }}}>سفارش ها</Typography>} icon={<OrderIcon sx={{ color: value === 2 ? "red" : "white" }} />} />
-                <BottomNavigationAction onClick={()=>{dispatch(setLogin(true))}} label={<Typography sx={{ color: value === 3 ? "red" : "" ,fontSize: { xs: "0.7rem", md: "1rem", lg: "1.2rem" }}}>
-                     {isLogin?"حساب کاربری":"ورود به اکالا"}
-                     </Typography>} icon={<UserIcon sx={{ color: value === 3 ? "red" : "white" }} />} />
+                <BottomNavigationAction label={<Typography sx={{ color: value === 0 ? "red" : "", fontSize: { xs: "0.7rem", md: "1rem", lg: "1.2rem" } }}>خانه</Typography>} icon={<HomeIcon sx={{ color: value === 0 ? "red" : "" }} />} />
+                <BottomNavigationAction onClick={() => router.push("/cart")} label={<Typography sx={{ color: value === 1 ? "red" : "", fontSize: { xs: "0.7rem", md: "1rem", lg: "1.2rem" } }}>سبد خرید</Typography>} icon={<BasketIcon sx={{ color: value === 1 ? "red" : "black" }} />} />
+                <BottomNavigationAction label={<Typography sx={{ color: value === 2 ? "red" : "", fontSize: { xs: "0.7rem", md: "1rem", lg: "1.2rem" } }}>سفارش ها</Typography>} icon={<OrderIcon sx={{ color: value === 2 ? "red" : "white" }} />} />
+                <BottomNavigationAction onClick={() => { dispatch(setLogin(true)) }}
+                    label={
+                        <Typography sx={{ color: value === 3 ? "red" : "", fontSize: { xs: "0.65rem", md: "1rem", lg: "1.2rem" } }}>
+                            {isLogin ? "حساب کاربری" : "ورود به اکالا"}
+                        </Typography>} icon={<UserIcon sx={{ color: value === 3 ? "red" : "white" }} />} />
             </BottomNavigation>
         </Paper>
     );

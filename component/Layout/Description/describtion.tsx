@@ -1,42 +1,44 @@
 import * as React from "react";
-import {useState} from "react";
+import { useState } from "react";
 
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Container } from "@mui/material";
 
 export default function SimpleAccordion() {
     const [showDetails, setShowDetails] = useState<boolean>(false)
-    const handleShowDetail=()=>{
+    const handleShowDetail = () => {
         setShowDetails(current => !current)
     }
-    
+
     return (
-        <Grid pb={3} sx={{backgroundColor:{xs:'#fff', md:'#fafafa'}, paddingX:{xs:'16px', md:'0'}}} my={2}>
-            <Grid>
-                {showDetails?
-                <Grid onClick={handleShowDetail} pt={2} display={'flex'} justifyContent={{xs:'space-between', md:'center'}} alignItems={'center'}>
-                    <Typography sx={{typography: {xs:'caption', md:'subtitle2'}}}>بستن</Typography>
-                    <IconButton >
-                        <KeyboardArrowUpIcon/>
-                    </IconButton>
+        <Container maxWidth="lg">
+            <Grid pb={3} sx={{ backgroundColor: { xs: '#fff', md: '#fafafa' }, paddingX: { xs: '16px', md: '0' } }} my={2}>
+                <Grid>
+                    {showDetails ?
+                        <Grid onClick={handleShowDetail} pt={2} display={'flex'} justifyContent={{ xs: 'space-between', md: 'center' }} alignItems={'center'}>
+                            <Typography sx={{ typography: { xs: 'caption', md: 'subtitle2' } }}>بستن</Typography>
+                            <IconButton >
+                                <KeyboardArrowUpIcon />
+                            </IconButton>
+                        </Grid>
+                        :
+                        <Grid onClick={handleShowDetail} pt={2} display={'flex'} justifyContent={{ xs: 'space-between', md: 'center' }} alignItems={'center'}>
+                            <Typography sx={{ typography: { xs: 'caption', md: 'subtitle2' } }}>فروشگاه اُکالا، بزرگترین سوپرمارکت آنلاین ایران</Typography>
+                            <IconButton>
+                                <KeyboardArrowDownIcon />
+                            </IconButton>
+                        </Grid>
+                    }
                 </Grid>
-                :
-                <Grid onClick={handleShowDetail} pt={2} display={'flex'} justifyContent={{xs:'space-between', md:'center'}} alignItems={'center'}>
-                    <Typography sx={{typography: {xs:'caption', md:'subtitle2'}}}>فروشگاه اُکالا، بزرگترین سوپرمارکت آنلاین ایران</Typography>
-                    <IconButton>
-                        <KeyboardArrowDownIcon/>
-                    </IconButton>
-                </Grid>
-                }
-            </Grid>
-            <Grid display={showDetails ? 'block' : 'none'} mb={5}>
-                <Typography my={2} sx={{typography: {xs:'subtitle1', md:'h2'}}}>
-                فروشگاه اُکالا، بزرگترین سوپرمارکت آنلاین ایران
-                </Typography>
-                <Typography sx={{typography: {xs:'caption', md:'subtitle2'}}}>
+                <Grid display={showDetails ? 'block' : 'none'} mb={5}>
+                    <Typography my={2} sx={{ typography: { xs: 'subtitle1', md: 'h2' } }}>
+                        فروشگاه اُکالا، بزرگترین سوپرمارکت آنلاین ایران
+                    </Typography>
+                    <Typography sx={{ typography: { xs: 'caption', md: 'subtitle2' } }}>
                         شرکت اکالا (توسعه تجارت الکترونک کوروش) یکی از زیرمجموعه‌های
                         هولدینگ بزرگ گروه صنعتی گلرنگ است که به عنوان بزرگ‌ترین سوپرمارکت
                         اینترنتی در ایران فعالیت می‌کند .کالاهایی که از طریق اکالا به فروش
@@ -60,8 +62,9 @@ export default function SimpleAccordion() {
                         سفارش‌های خود را ثبت کنند. مشتریان می‌توانند پیگیری سفارش‌ها و
                         خریدهای خود و هرگونه انتقاد و پیشنهاد از طریق تیم پشتیبانی و شماره
                         تماس 1536 انجام دهند.
-                </Typography>
+                    </Typography>
+                </Grid>
             </Grid>
-        </Grid>
+        </Container>
     )
 }
