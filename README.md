@@ -1,4 +1,4 @@
-#In this project is used Mirage so it is obvious that api dont work in vercel! please clone project and run it yourself.
+# In this project is used Mirage, so it is obvious that api dont work in vercel! please clone project and run it yourself.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
