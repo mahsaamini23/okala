@@ -77,7 +77,7 @@ const AdsSlider=()=>{
           </Grid>
         </Grid>
       </Swiper>
-      <Grid container px={4} display={'flex'} justifyContent={'space-between'} position={'absolute'} top={'120px'} zIndex={'100'}>
+      {/* <Grid container px={4} display={'flex'} justifyContent={'space-between'} position={'absolute'} top={'120px'} zIndex={'100'}>
         <Grid container  item className="prev-arrow" 
           sx={{width:'45px', height:'45px',backgroundColor:'#fff', borderRadius:'100%', cursor:'pointer'}} 
           justifyContent={'center'} alignItems={'center'} onClick={handlePrevSlide}>
@@ -87,7 +87,7 @@ const AdsSlider=()=>{
           display={'flex'} justifyContent={'center'} alignItems={'center'} onClick={handleNextSlide}>
           <ArrowBackIosIcon sx={{fontSize:25, paddingLeft:'5px'}}/>
         </Grid> 
-      </Grid>
+      </Grid> */}
     </Grid>
   )
 }
