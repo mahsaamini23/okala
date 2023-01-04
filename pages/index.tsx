@@ -141,7 +141,7 @@ const Home: NextPageWithLayout = () => {
       {isLogin ? <></> : <AdsNoLogin />}
       <AdsSlider />
       <Container maxWidth="lg">
-        <StoreCards />
+        <StoreCards withButton={true}/>
         <CategorySlider />
         <Banner />
 

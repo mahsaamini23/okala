@@ -60,8 +60,8 @@ export default function Address({ open, setOpen }: props) {
                             sx={{ width: '100%', bgcolor: 'background.paper' }}
                             aria-label="contacts"
                         >
-                            <ListItem disablePadding dir='rtl' sx={{ flexDirection: "column", alignItems: "start", background: "rgba(224, 242, 244, 1)", ["&:hover"]: { background: "rgba(176, 222, 224, 1)", fontWeight: 800 }, marginBottom:1 }}>
-                                <ListItemButton dir='rtl' sx={{ justifyContent: "space-between", width: "100%", flexDirection: "column" }}>
+                            <ListItem disablePadding sx={{ flexDirection: "column", alignItems: "start", background: "rgba(224, 242, 244, 1)", ["&:hover"]: { background: "rgba(176, 222, 224, 1)", fontWeight: 800 }, marginBottom:1 }}>
+                                <ListItemButton sx={{ justifyContent: "space-between", width: "100%", flexDirection: "column" }}>
                                     <Grid container flexDirection={"row"}>
                                         <ListItemIcon sx={{ minWidth: "40px" }}>
                                             <Image src={checkedIcon} alt={''} ></Image>
@@ -73,12 +73,12 @@ export default function Address({ open, setOpen }: props) {
                                         </Typography>
                                     </Grid>
                                     <Grid container flexDirection={"row"} justifyContent="space-between" marginTop={5}>
-                                        <Grid xs={1} alignSelf="center" justifyContent={"end"}>
+                                        <Grid item xs={1} alignSelf="center" justifyContent={"end"}>
                                             <Typography variant={"caption"} fontSize={16}>
                                                 09385767575
                                             </Typography>
                                         </Grid>
-                                        <Grid xs={4} >
+                                        <Grid item xs={4} >
                                             <IconButton size='large' sx={{ background: "white", margin: 2 }}>
                                                 <Image src={editIcon} alt={''}></Image>
                                             </IconButton>
@@ -90,7 +90,7 @@ export default function Address({ open, setOpen }: props) {
                                 </ListItemButton>
                             </ListItem>
 
-                            <ListItem disablePadding dir='rtl' sx={{ flexDirection: "column", alignItems: "start", ["&:hover"]: { fontWeight: 800 } }}>
+                            <ListItem disablePadding  sx={{ flexDirection: "column", alignItems: "start", ["&:hover"]: { fontWeight: 800 } }}>
                                 <ListItemButton dir='rtl' sx={{ justifyContent: "space-between", width: "100%", flexDirection: "column" }}>
                                     <Grid container flexDirection={"row"}>
                                         <ListItemIcon sx={{ minWidth: "40px" }}>
@@ -103,12 +103,12 @@ export default function Address({ open, setOpen }: props) {
                                         </Typography>
                                     </Grid>
                                     <Grid container flexDirection={"row"} justifyContent="space-between" marginTop={5}>
-                                        <Grid xs={1} alignSelf="center" justifyContent={"end"}>
+                                        <Grid item xs={1} alignSelf="center" justifyContent={"end"}>
                                             <Typography variant={"caption"} fontSize={16}>
                                                 09385767575
                                             </Typography>
                                         </Grid>
-                                        <Grid xs={4} >
+                                        <Grid item xs={4} >
                                             <IconButton size='large' sx={{ background: "white", margin: 2 }}>
                                                 <Image src={editIcon} alt={''}></Image>
                                             </IconButton>

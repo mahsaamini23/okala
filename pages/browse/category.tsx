@@ -21,7 +21,6 @@ const Categories =(): JSX.Element=>{
     const [productsList, setProductsList] = useState([])
     //get productList
     useEffect(() => { getProductList().then(res => {
-        console.log(res);
         setProductsList(res.data)
     })}, []);
     // console.log(productsList)

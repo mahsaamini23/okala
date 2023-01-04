@@ -71,7 +71,7 @@ const Products=({productsList}:any) =>{
             </Grid> 
             <Grid my={2} container item display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
                 {productsList.map((product : Item )=>(
-                    <ProductCard image={product.image} price={product.price} title={product.title} order={product.order} />
+                    <ProductCard idProduct={product.idProduct} image={product.image} price={product.price} title={product.title} order={product.order} />
                 ))}
             </Grid>
             <Grid mt={7}>

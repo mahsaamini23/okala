@@ -62,17 +62,15 @@ const theme = createTheme({
     palette: {
         Poster:{
             main: 'rgba(55,143,56)',
-
         },
         primary: {
-            main: '#121212'
+            main: '#121212',
         },
         secondary: {
             main: '#757575'
         },
         error: {
-            light: '#fff',
-            main: '#e74c3c'
+            main: '#f01436'
         },
         warning: {
             main: '#f01436'
@@ -82,7 +80,9 @@ const theme = createTheme({
         },
         success: {
             main: '#07bc0c'
-        }
+        },
+        
+
     },
     typography: {
         fontFamily: 'IRANSans',
