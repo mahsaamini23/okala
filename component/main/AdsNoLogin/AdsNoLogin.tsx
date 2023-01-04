@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import { IconButton } from '@mui/material';
 import { styled } from '@mui/system';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { useRouter } from 'next/navigation';
 
 type Props = {}
 const MyComponent = styled('div')({
@@ -31,6 +32,10 @@ const MyComponent = styled('div')({
   });
 
 const AdsNoLogin = (props: Props) => {
+
+    //Router
+    const router = useRouter();
+
     return (
         <>
         <MyComponent sx={{display:"flex", backgroundColor:{xs: "",md:"rgba(232,245,233)"},color: 'darkslategray',flexDirection: "row"}}>
@@ -46,7 +51,9 @@ const AdsNoLogin = (props: Props) => {
                     </Grid>
 
                     <Grid item alignSelf={"end"}>
-                        <IconButton sx={{
+                        <IconButton 
+                        onClick={()=>router.push("../auth")}
+                        sx={{
                             display:{xs:"none",md:"flex"},
                             bgcolor: "rgba(55,143,56)",
                             ['&:hover']: {
