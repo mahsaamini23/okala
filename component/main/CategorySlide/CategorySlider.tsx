@@ -83,7 +83,7 @@ const CategorySlide=():JSX.Element=>{
                   </Grid>
                 </Grid>
               </Swiper>
-              <Grid container display={'flex'} justifyContent={'space-between'} position={'absolute'} top={{xs:'50px', md:'115px'}}  zIndex={'100'}>
+              {/* <Grid container display={'flex'} justifyContent={'space-between'} position={'absolute'} top={{xs:'50px', md:'115px'}}  zIndex={'100'}>
                 <Grid container  item className="prev-arrow" sx={{width:'45px', height:'45px',backgroundColor:'#fff', borderRadius:'100%', cursor:'pointer'}} 
                   display={showBackButton ? 'flex' : 'none'} justifyContent={'center'} alignItems={'center'} position={'absolute'} top={'0px'} right={'0'}
                   onClick={handlePrevCategory}>
@@ -94,7 +94,7 @@ const CategorySlide=():JSX.Element=>{
                   onClick={handleNextCategory}>
                   <ArrowBackIosIcon sx={{fontSize:25, paddingLeft:'5px'}}/>
                 </Grid> 
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
     )
